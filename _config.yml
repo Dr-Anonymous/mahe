@@ -12,4 +12,4 @@ permalink: pretty
 plugins:
   - jemoji
   - jekyll-sitemap
-  - redirect_from
+  - jekyll-redirect-from
