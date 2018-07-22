@@ -82,14 +82,7 @@
                         } else {
                             frm.hide();
                             var subfolderName = '';// document.getElementById('myName').value;
-                           /* $.ajax({
-                                url: '',//URL of webhook endpoint for sending a Slack notification
-                                data: {
-                                     title: subfolderName + ' is uploading screenshots',
-                                     message: ''
-                                }
-                            });*/
-                            google.script.run.withSuccessHandler(afterSubfolderCreated).createSubfolder(subfolderName);
+                           afterSubfolderCreated("1lqPQxB92tSuLf8cp--31ySbuzEgM8E6m");
                             return false;
                         }
                     } else {
