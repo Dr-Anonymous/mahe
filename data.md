@@ -1,5 +1,7 @@
 ---
+layout: null
 ---
+<script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
 <body onload="callGoogleScript();">
 function callGoogleScript() {
 	  var id= value;
