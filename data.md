@@ -17,9 +17,14 @@ var request = jQuery.ajax({
  
  // print the returned data from jsonp
   function loadData(e) {
-        console.log(e);
+  var rows= e;
+         for (var i = 0; i < rows.length; i++) {
+          for (var p = 0; p < rows[i].length; p++) { 
+         $("#main").append(rows[i][p]);
+          }
+  }
         }
   </script>
 <script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
-
+<div id="main"></div>
 </body>
