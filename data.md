@@ -17,7 +17,6 @@ var request = jQuery.ajax({
  
  // print the returned data from jsonp
   function loadData(e) {
-  console.log(e);
   var rows= e;
          for (var i = 0; i < rows.length; i++) {
 	 if (Array.isArray(rows[i])){
@@ -34,9 +33,6 @@ var request = jQuery.ajax({
 <div id="main"></div>
 <script>
 function getURLParameter(name) {
-	console.log(decodeURI(
-        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-    ));
     return decodeURI(
         (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
     );
