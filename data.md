@@ -20,7 +20,7 @@ var request = jQuery.ajax({
   console.log(e);
   var rows= e;
          for (var i = 0; i < rows.length; i++) {
-	 if (Array.isArray(rows)){
+	 if (Array.isArray(rows[i])){
           for (var p = 0; p < rows[i].length; p++) { 
          $("#main").append(rows[i][p]+"<br>");
         	  }
