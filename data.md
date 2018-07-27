@@ -5,7 +5,7 @@ layout: null
 <script>
 function callGoogleScript() {
 	  
-    var url = "https://script.google.com/macros/s/AKfycbwQt4QiNTg8RjaAVd4KHZ_yClTbzgrvF34FZIIgEmIb8yGSHn8/exec?callback=loadData&id=1vsGEAbtDMvbURAUq-pio2O2oYaX-i76hjOPYNX4KwMk&sheet=Sheet1&num=2";
+    var url = "https://script.google.com/macros/s/AKfycbwQt4QiNTg8RjaAVd4KHZ_yClTbzgrvF34FZIIgEmIb8yGSHn8/exec?callback=loadData&id=1vsGEAbtDMvbURAUq-pio2O2oYaX-i76hjOPYNX4KwMk&sheet=Sheet1&num="+getURLParameter(num);
 // Make an AJAX call to Google Script
 var request = jQuery.ajax({
       crossDomain: true,
@@ -28,4 +28,11 @@ var request = jQuery.ajax({
   </script>
 <script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
 <div id="main"></div>
+<script>
+function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}	
+</script>
 </body>
