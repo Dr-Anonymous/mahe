@@ -4,8 +4,8 @@ layout: null
 <body onload="callGoogleScript();">
 <script>
 function callGoogleScript() {
-	var num= getURLParameter("num")||"";
-    var url = "https://script.google.com/macros/s/AKfycbwQt4QiNTg8RjaAVd4KHZ_yClTbzgrvF34FZIIgEmIb8yGSHn8/exec?callback=loadData&id=1vsGEAbtDMvbURAUq-pio2O2oYaX-i76hjOPYNX4KwMk&sheet=Sheet1&num="+ num;
+
+	var url = "https://script.google.com/macros/s/AKfycbwQt4QiNTg8RjaAVd4KHZ_yClTbzgrvF34FZIIgEmIb8yGSHn8/exec?callback=loadData&id=1vsGEAbtDMvbURAUq-pio2O2oYaX-i76hjOPYNX4KwMk&sheet=Sheet1&num="+ getURLParameter("num");
 // Make an AJAX call to Google Script
 var request = jQuery.ajax({
       crossDomain: true,
