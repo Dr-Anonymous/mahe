@@ -20,10 +20,13 @@ var request = jQuery.ajax({
   console.log(e);
   var rows= e;
          for (var i = 0; i < rows.length; i++) {
-          /*for (var p = 0; p < rows[i].length; p++) { 
+	 if (Array.isArray(rows)){
+          for (var p = 0; p < rows[i].length; p++) { 
          $("#main").append(rows[i][p]+"<br>");
-        	  }*/
-		  $("#main").append(rows[i]+"<br>");
+        	  }
+	}else{
+	  $("#main").append(rows[i]+"<br>");
+	}
 	  }
 }
   </script>
