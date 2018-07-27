@@ -34,7 +34,9 @@ var request = jQuery.ajax({
 <div id="main"></div>
 <script>
 function getURLParameter(name) {
-	console.log(name);
+	console.log(decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    ););
     return decodeURI(
         (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
     );
