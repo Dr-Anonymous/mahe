@@ -17,7 +17,7 @@ docs:
   icon: insert_drive_file
   
 - title: Upload
-  url: https://script.google.com/macros/s/AKfycbxAOq39hNFpe6Ylgn28SK8R2dgV6XAII_V_Sxga4eb_mVNRu9Y/exec
+  url: /upload
   class: btn-floating green darken-2 waves-effect waves-default
   icon: cloud_upload
   
