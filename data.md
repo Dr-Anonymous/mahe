@@ -19,9 +19,9 @@ var request = jQuery.ajax({
   function loadData(e) {
   console.log(e);
   var rows= e;
-         for (var i = 0; i < rows.length; i++) {
+         for (var i = 1; i < rows.length; i++) {
 	 if (Array.isArray(rows[i])){
-          for (var p = 1; p < rows[i].length; p++) { 
+          for (var p = 0; p < rows[i].length; p++) { 
          $("#main").append(rows[i][p]+"<br>");
         	  }
 	}else{
