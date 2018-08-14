@@ -7,9 +7,9 @@ layout: default
 <p>Effective date: August 14, 2018</p>
 
 
-<p>orthosam ("us", "we", or "our") operates the https://orthosam.com website (the "Service").</p>
+<p><a href="https://samuel.cf">Samuel Ch</a> ("us", "we", or "our") operates the https://orthosam.com website (the "Service").</p>
 
-<p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. This Privacy Policy  for orthosam is powered by <a href="https://www.freeprivacypolicy.com/free-privacy-policy-generator.php">FreePrivacyPolicy.com</a>.</p>
+<p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
 
 <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from https://orthosam.com</p>
 
@@ -109,9 +109,4 @@ layout: default
 
 
 <h2>Contact Us</h2>
-<p>If you have any questions about this Privacy Policy, please contact us:</p>
-<ul>
-        <li>By email: mail@orthosam.com</li>
-            <li>By visiting this page on our website: https://orthosam.com/contact</li>
-      
-        </ul>                                
+<p>If you have any questions about this Privacy Policy, please contact us by email: <a href="mailto:mail@orthosam.com">mail@orthosam.com</a></p>
