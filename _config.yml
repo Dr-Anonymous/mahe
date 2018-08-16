@@ -2,7 +2,7 @@ url: https://orthosam.com
 title: Orthosam.com
 description: Orthopaedic surgery and medical software consultancy
 show_downloads: false
-google_analytics: true
+google_analytics: UA-124029190-1
 theme: jekyll-theme-slate
 timezone: Asia/Calcutta
 exclude: [exclude]
