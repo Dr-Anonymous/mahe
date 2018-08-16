@@ -4,7 +4,7 @@ layout: default
 <h1>Cancellations and Refunds Policy</h1>
 
 <p>Thank you for shopping at Orthosam.com. If you are not entirely satisfied with your purchase, we're here to help.</p>
-<p>Please read this policy carefully. This is the Return and Refund Policy of Orthosam.com</p>
+<p>Please read this policy carefully. This is the Cancellations and Refund Policy of Orthosam.com</p>
 
 
 <h2>Digital products</h2>
@@ -19,7 +19,7 @@ You will receive the credit within a certain amount of days, depending on your c
 
 <h2>Contact us</h2>
 
-<p>If you have any questions about our Returns and Refunds Policy, please contact us:</p>
+<p>If you have any questions about our Cancellations and Refunds Policy, please contact us:</p>
 
 <ul>
 <li>
@@ -29,4 +29,3 @@ You will receive the credit within a certain amount of days, depending on your c
     <p>By email: mail@orthosam.com</p>
 </li>
 </ul>
-
