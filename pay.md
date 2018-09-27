@@ -1,7 +1,7 @@
 ---
 ---
 # Payment options
-
+<body onload="mobi()">
 <div id="mobile">
   <p>Click <a href="upi://pay?pa=samuel.cherukuri@icici&pn=Samuel%20Manoj%20Ch">this link</a> to pay directly ( you should already have a UPI app like BHIM/ Google TEZ/ Whatsapp installed on your mobile device).</p> </div>
 
@@ -33,5 +33,5 @@ function mobi() {
     return false;
   }
   };
-  window.onload = mobi;
   </script>
+</body>
