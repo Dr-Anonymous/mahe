@@ -2,7 +2,7 @@
 ---
 # Payment options
 
-Scan QR code to pay from any UPI app (like BHIM/ Google TEZ)-
+Scan QR code to pay from any UPI app (like BHIM/ Google TEZ/ Whatsapp)-
 
 <img src= "https://drive.google.com/uc?id=18BBMEjLRE4oPLORlc51o9oepmsvpFskb">
 
