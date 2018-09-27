@@ -1,5 +1,16 @@
 ---
 ---
+# Payment options
+
+Scan QR code to pay from any UPI app (like BHIM/ Google TEZ)-
+
+<img src= "https://drive.google.com/uc?id=18BBMEjLRE4oPLORlc51o9oepmsvpFskb">
+
+or click [this link](upi://pay?pa=samuel.cherukuri@icici&pn=CHERUKURI%20SAMUEL%20MANOJ&am=200.00&tn=hello&tr=123
+) (on a mobile device with) to pay directly.
+
+And for those of you still paying with cards--
+
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="5YNGF879W6MUA">
