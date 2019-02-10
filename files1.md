@@ -1,6 +1,8 @@
 ---
 layout: card
 ---
+<iframe src="https://drive.google.com/embeddedfolderview?id=1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri#grid" style="width:100%; height:600px; border:0;"></iframe>
+<!--
 <body onload="callGoogleScript();">
 <script>
     var id= urlPara("id");
@@ -38,3 +40,4 @@ return url.searchParams.get(p);
 
 </script>
 </body>
+-->
