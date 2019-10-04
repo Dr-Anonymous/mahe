@@ -1,5 +1,5 @@
 ---
-layout: withScript
+layout: default
 ---
 <script>
       function onSuccess(html) {
@@ -16,7 +16,7 @@ layout: withScript
           google.script.run.withSuccessHandler(onSuccess).bookSlots(info);
           return false;
           }
-    </script>
+</script>
       <form id="myForm" action="#">
       Select required date: <input type="date" id= "date">
       <input type="button" onclick="loadSlots(); return false;" value="Show available slots">
