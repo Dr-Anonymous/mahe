@@ -1,16 +1,25 @@
 ---
 layout: withScript
 ---
-
-  <style>
-  body {
-  margin: 0;
-}
-iframe {
-  height:calc(100vh - 4px);
-  width:calc(100vw - 4px);
-  box-sizing: border-box;
-}
-  </style>
-
-<iframe src="https://script.google.com/macros/s/AKfycbxFp-8PpdD4dQguUj_uYDhaYtqWyqtXpiFmlOEM2b2kh2HOh0uL/exec" frameborder="0" allowfullscreen></iframe>
+<script>
+      function onSuccess(html) {
+       var div = document.getElementById('output');
+       div.innerHTML = html;
+      }
+        function loadSlots() {
+      var reqDate= new Date(document.getElementById('date').value);
+        onSuccess("Loading available slots for "+ reqDate +". Please wait.....");
+        google.script.run.withSuccessHandler(onSuccess)
+          .getSlots(reqDate.toISOString());
+          }
+      function book(info){
+          google.script.run.withSuccessHandler(onSuccess).bookSlots(info);
+          return false;
+          }
+    </script>
+      <form id="myForm" action="#">
+      Select required date: <input type="date" id= "date">
+      <input type="button" onclick="loadSlots(); return false;" value="Show available slots">
+      </form>
+    <br>
+    <div id="output">Choose date</div>
