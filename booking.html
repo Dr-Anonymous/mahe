@@ -10,12 +10,22 @@ layout: default
       var reqDate= new Date(document.getElementById('date').value);
         onSuccess("Loading available slots for "+ reqDate +". Please wait.....");
         var url = "https://script.google.com/macros/s/AKfycbxFp-8PpdD4dQguUj_uYDhaYtqWyqtXpiFmlOEM2b2kh2HOh0uL/exec?callback=onSuccess&q=" ;
-        var request = jQuery.ajax({
+        url= url+ reqDate.toISOString();
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+         document.getElementById("output").innerHTML = xmlhttp.responseText;
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+              
+        /*  var request = jQuery.ajax({
           crossDomain: true,
           url: url+ reqDate.toISOString(),
           method: "GET",
           dataType: "jsonp"
-        });
+        });*/
        }
       
       function book(info){
