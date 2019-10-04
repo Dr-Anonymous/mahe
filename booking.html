@@ -9,11 +9,17 @@ layout: default
         function loadSlots() {
       var reqDate= new Date(document.getElementById('date').value);
         onSuccess("Loading available slots for "+ reqDate +". Please wait.....");
-        google.script.run.withSuccessHandler(onSuccess)
-          .getSlots(reqDate.toISOString());
-          }
+        var url = "https://script.google.com/macros/s/AKfycbxFp-8PpdD4dQguUj_uYDhaYtqWyqtXpiFmlOEM2b2kh2HOh0uL/exec?callback=onSuccess&q=" ;
+        var request = jQuery.ajax({
+          crossDomain: true,
+          url: url+ reqDate.toISOString(),
+          method: "GET",
+          dataType: "jsonp"
+        });
+       }
+      
       function book(info){
-          google.script.run.withSuccessHandler(onSuccess).bookSlots(info);
+          bookSlots(info);
           return false;
           }
 </script>
