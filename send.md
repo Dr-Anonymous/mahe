@@ -1,3 +1,5 @@
+<script type="text/javascript" src="sendSMS.js"></script>
+
 ---
 layout: default
 ---
@@ -8,4 +10,3 @@ layout: default
 <button onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value)">Send</button>
 </div>
 <p id="demo"></p>
-<script type="text/javascript" src="sendSMS.js"></script>
