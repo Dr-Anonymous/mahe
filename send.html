@@ -14,7 +14,7 @@ var body = `{
     "to": "cVv1_TyGS22qVDsPBj83TI:APA91bE322pvqwFCVCWbVxuVItg-34-hHAdPHvLZASQsicrXN_F06nsH2d17-5UpeLzXImmZ4HBcyREQ4F0hBiCxkv0KHV3YxgFerADS-CQvNHVgxGay3WV_LuxSfXT89Cog2qG6j8IF",
     "data": {
     "phone": "9866812555",
-    "say": (function(){ var myvariable= document.getElementById("say").value; return myvariable })()
+    "say": document.getElementById("say").value
       }
 }`;
 
@@ -26,7 +26,7 @@ const init = {
 
 fetch('https://fcm.googleapis.com/fcm/send', init)
 .then((response) => {
-  return response.json(); // or .text() or .blob() ...
+  return response.json();
 })
 .then((text) => {
   // text is the response body
