@@ -10,6 +10,12 @@ Message: <input type="text" id="say">
 <p id="demo"></p>
 
 <script>
+document.getElementById("say").addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   myFunction();
+  }
+});
 function myFunction() {
 const headers = new Headers();
 headers.append('Content-Type', 'application/json');
