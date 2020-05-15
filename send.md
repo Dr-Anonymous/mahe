@@ -2,20 +2,20 @@
 layout: default
 ---
 <div id= "form">
-Phone number: <input type="text" id="phone">
-Message: <input type="text" id="say">
+  Phone number: <textarea id="phone"></textarea>
+  Message: <textarea type="text" id="say"></textarea>
 <br><br>
 <button onclick="myFunction()">Send</button>
 </div>
 <p id="demo"></p>
 
 <script>
-document.getElementById("say").addEventListener("keyup", function(event) {
+/*document.getElementById("say").addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
    event.preventDefault();
    myFunction();
   }
-});
+});*/
 function myFunction() {
 const headers = new Headers();
 headers.append('Content-Type', 'application/json');
