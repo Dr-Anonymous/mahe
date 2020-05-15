@@ -1,41 +1,40 @@
 Phone number: <input type="text" id="phone">
 Message: <input type="text" id="say">
 <br><br>
-<button onclick="myFunction(document.getElementById('say').value)">Send</button>
+<button onclick="myFunction()">Send</button>
 <p id="demo"></p>
 
 <script>
-function myFunction(say) {
+function myFunction() {
 const headers = new Headers();
 headers.append('Content-Type', 'application/json');
 headers.append('Authorization', 'key=AAAAuA5SsNc:APA91bHokGLHzZS5BGPd3iVJ1fp7MxF8M2wdE3dEeTHTxY9r0sA1UgcDkRmwAvCojLYDDgSmQsPUNo1CYHHIRYKINqc31lz9ALNzhXK8bRPctK1HlwRaIBwn8uklIjLWouT3D9m6vjn1');
-
-const body = '{
+headers.append('content-length', '485');
+var body = `{
     "to": "cVv1_TyGS22qVDsPBj83TI:APA91bE322pvqwFCVCWbVxuVItg-34-hHAdPHvLZASQsicrXN_F06nsH2d17-5UpeLzXImmZ4HBcyREQ4F0hBiCxkv0KHV3YxgFerADS-CQvNHVgxGay3WV_LuxSfXT89Cog2qG6j8IF",
     "data": {
     "phone": "9866812555",
-    "say": "hello" //document.getElementById("say").value
+    "say": "hello there"
       }
-}';
+}`;
 
 const init = {
   method: 'POST',
   headers,
   body
 };
+
 fetch('https://fcm.googleapis.com/fcm/send', init)
 .then((response) => {
   return response.json();
 })
 .then((text) => {
   // text is the response body
-  //document.getElementById("demo").innerHTML = text;
-    console.log(text);
+  document.getElementById("demo").innerHTML = text;
 })
 .catch((e) => {
   // error in e.message
-  //document.getElementById("demo").innerHTML = e.message;
-    console.log(e.message);
+  document.getElementById("demo").innerHTML = e.message;
 });
 //(function(){ var myvariable= document.getElementById("say").value; return myvariable })()
 }
