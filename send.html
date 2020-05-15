@@ -6,8 +6,8 @@ Message: <input type="text" id="say">
 
 <script>
 function myFunction() {
-var abc= document.getElementById("say").value;
-document.getElementById("demo").innerHTML = abc;
+var say= document.getElementById("say").value;
+var phone= document.getElementById("phone").value;
   
 const headers = new Headers();
 headers.append('Content-Type', 'application/json');
@@ -16,8 +16,8 @@ headers.append('content-length', '485');
 const body = `{
     "to": "cVv1_TyGS22qVDsPBj83TI:APA91bE322pvqwFCVCWbVxuVItg-34-hHAdPHvLZASQsicrXN_F06nsH2d17-5UpeLzXImmZ4HBcyREQ4F0hBiCxkv0KHV3YxgFerADS-CQvNHVgxGay3WV_LuxSfXT89Cog2qG6j8IF",
     "data": {
-    "phone": "9866812555",
-    "say": "hello there"
+    "phone": phone,
+    "say": say
       }
 }`;
 
