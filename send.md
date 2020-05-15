@@ -1,7 +1,12 @@
+---
+layout: default
+---
+<div id= "form">
 Phone number: <input type="text" id="phone">
 Message: <input type="text" id="say">
 <br><br>
 <button onclick="myFunction()">Send</button>
+</div>
 <p id="demo"></p>
 
 <script>
@@ -13,8 +18,8 @@ headers.append('content-length', '485');
 const body = `{
     "to": "cVv1_TyGS22qVDsPBj83TI:APA91bE322pvqwFCVCWbVxuVItg-34-hHAdPHvLZASQsicrXN_F06nsH2d17-5UpeLzXImmZ4HBcyREQ4F0hBiCxkv0KHV3YxgFerADS-CQvNHVgxGay3WV_LuxSfXT89Cog2qG6j8IF",
     "data": {
-    "phone": "9866812555",
-    "say": "hello there"
+    "phone": ${'"'+document.getElementById("phone").value+'"'},
+    "say": ${'"'+document.getElementById("say").value+'"'}
       }
 }`;
 
@@ -26,16 +31,18 @@ const init = {
 
 fetch('https://fcm.googleapis.com/fcm/send', init)
 .then((response) => {
-  return response.json();
+  return response.text();
 })
 .then((text) => {
   // text is the response body
-  document.getElementById("demo").innerHTML = text;
+    document.getElementById("form").style.display = "none";
+  document.getElementById("demo").innerHTML = "Sent";
+    console.log(text);
 })
 .catch((e) => {
   // error in e.message
-  document.getElementById("demo").innerHTML = e.message;
+  document.getElementById("demo").innerHTML = "Server error. Try again";
+    console.log(e.message);
 });
-//(function(){ var myvariable= document.getElementById("say").value; return myvariable })()
 }
 </script>
