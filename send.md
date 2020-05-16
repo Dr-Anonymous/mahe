@@ -16,7 +16,6 @@ var say= say;
 const headers = new Headers();
 headers.append('Content-Type', 'application/json');
 headers.append('Authorization', 'key=AAAAuA5SsNc:APA91bHokGLHzZS5BGPd3iVJ1fp7MxF8M2wdE3dEeTHTxY9r0sA1UgcDkRmwAvCojLYDDgSmQsPUNo1CYHHIRYKINqc31lz9ALNzhXK8bRPctK1HlwRaIBwn8uklIjLWouT3D9m6vjn1');
-headers.append('content-length', '485');
 const body = `{
     "to": "/topics/all",
     "data": {
