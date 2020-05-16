@@ -39,7 +39,7 @@ var request = jQuery.ajax({
   try {
 	   $('textarea#code').val(e);
 	}catch(err) {
-       // $("#btn").html(err);
+	  $('textarea#code').val(err);
 	}
     }
     function saveCode(){
