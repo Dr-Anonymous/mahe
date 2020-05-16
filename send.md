@@ -1,11 +1,11 @@
 ---
-layout: default
+layout: withScript
 ---
-<div id= "form">
+<div id= "form" style="display: none;">
   Phone number: <textarea id="phone"></textarea>
   Message: <textarea type="text" id="say"></textarea>
 <br><br>
-<button onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value)">Send</button>
+<button id= "btn" onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value)">Send</button>
 </div>
 <p id="demo"></p>
 
@@ -19,7 +19,7 @@ headers.append('Authorization', 'key=AAAAuA5SsNc:APA91bHokGLHzZS5BGPd3iVJ1fp7MxF
 const body = `{
     "to": "/topics/all",
     "data": {
-    "phone": ${'"'+ phone +'"'},
+    "phone": "${phone}",
     "say": ${'"'+ say +'"'}
       }
 }`;
@@ -36,8 +36,9 @@ fetch('https://fcm.googleapis.com/fcm/send', init)
 })
 .then((text) => {
   // text is the response body
+    document.getElementById("btn").value = "Sending...";
     document.getElementById("form").style.display = "none";
-  document.getElementById("demo").innerHTML = "Sent";
+    document.getElementById("demo").innerHTML = "Sent";
     console.log(text);
 })
 .catch((e) => {
