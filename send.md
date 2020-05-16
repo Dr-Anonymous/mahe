@@ -8,7 +8,7 @@ layout: withScript
 <br><br>
 <button id= "btn" onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value);">Send</button>
 </div>
-<div id="my-signin2" data-width="300" data-height="200" data-longtitle="true"></div>
+<div id="my-signin2"></div>
 <a href="javascript:;" id="signout" onclick="signOut();" style="display: none;">Sign out</a>
 
 <script>
