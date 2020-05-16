@@ -49,7 +49,14 @@ function myFunction(phone,say) {
 //change button state
 document.getElementById("btn").innerText = "Sending...";
 //make call to script
-  UrlFetchApp.fetch("http://t.orthosam.com/send.php?phone="+phone+"&say="+say);
+  fetch("http://t.orthosam.com/send.php?phone="+phone+"&say="+say)
+  .then(function(data) {
+    // Here you get the data to modify as you please
+    })
+  })
+  .catch(function(error) {
+    // If there is any error you will catch them here
+  });
 }
 //send sms end
 </script>
