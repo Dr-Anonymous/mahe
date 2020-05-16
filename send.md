@@ -51,10 +51,15 @@ document.getElementById("btn").innerText = "Sending...";
 //make call to script
   fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say)
   .then(function(data) {
-    // Here you get the data to modify as you please
+    // Here you get the data
+    document.getElementById("form").style.display = "none";
+    document.getElementById("demo").innerHTML = "Sent. <a href='javascript:location.reload();' id='reload'>Send another message</a>";
+    console.log(data);
     })
   .catch(function(error) {
-    // If there is any error you will catch them here
+    // If there is any error
+    document.getElementById("demo").innerHTML = "Server error. Try again";
+    console.log(error);
   });
 }
 //send sms end
