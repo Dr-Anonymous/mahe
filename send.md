@@ -6,7 +6,7 @@ layout: withScript
   Phone number: <textarea id="phone"></textarea>
   Message: <textarea type="text" id="say"></textarea>
 <br><br>
-<button id= "btn" onclick="myFunction(document.getElementById('phone').value,(document.getElementById('say').value).replace(/'/g, ''));">Send</button>
+<button id= "btn" onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value);">Send</button>
 </div>
 <div id="my-signin2"></div>
 <a href="javascript:;" id="signout" onclick="signOut();" style="display: none;">Sign out</a>
