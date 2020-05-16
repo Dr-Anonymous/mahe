@@ -49,7 +49,7 @@ function myFunction(phone,say) {
 //change button state
 document.getElementById("btn").innerText = "Sending...";
 //make call to script
-  fetch("http://t.orthosam.com/send.php?phone="+phone+"&say="+say)
+  fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say)
   .then(function(data) {
     // Here you get the data to modify as you please
     })
