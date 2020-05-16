@@ -9,8 +9,11 @@ layout: withScript
 </div>
 <p id="demo">You must be signed-in to access this app</p>
 <div id="my-signin2" data-width="300" data-height="200" data-longtitle="true"></div>
+<a href="#" id="signout" onclick="signOut();" style="display: none;">Sign out</a>
+
 <script>
-    function onSuccess(googleUser) {
+//code for google sign-in
+function onSuccess(googleUser) {
       document.getElementById("form").style.display = "initial";
       document.getElementById("my-signin2").style.display = "none";
       document.getElementById("signout").style.display = "initial";
@@ -31,17 +34,14 @@ layout: withScript
         'onfailure': onFailure
       });
     }
-  </script>
-<a href="#" id="signout" onclick="signOut();" style="display: none;">Sign out</a>
-<script>
+ //google signout
  function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
     console.log('User signed out.');
     });
   }
-</script>
-<script>
+//send sms
 function myFunction(phone,say) {
 var phone= phone;
 var say= say;
@@ -79,4 +79,5 @@ fetch('https://fcm.googleapis.com/fcm/send', init)
     console.log(e.message);
 });
 }
+//send sms end
 </script>
