@@ -6,10 +6,11 @@
 
 <body>
 <body>
-  <div id="my-signin2"></div>
+  <div id="my-signin2" data-width="300" data-height="200" data-longtitle="true"></div>
   <script>
     function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+     var profile = googleUser.getBasicProfile();
+      console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
     }
     function onFailure(error) {
       console.log(error);
