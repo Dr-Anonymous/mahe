@@ -25,11 +25,12 @@
         <center><button id= "btn" onclick="saveCode();">Save this code</button></center>
         
     <script>
-var url = "https://script.google.com/macros/s/AKfycbympDG5nl25pZhm-UuOpxKgDG3_u37cUJMWNNj1BOxkRDEm1PY/exec?callback=loadNew&code=new";
+$('textarea#code').val("Loading previously saved code")
+var url1 = "https://script.google.com/macros/s/AKfycbympDG5nl25pZhm-UuOpxKgDG3_u37cUJMWNNj1BOxkRDEm1PY/exec?callback=loadNew&code=new";
 // Make an AJAX call to get previously saved code
 var request = jQuery.ajax({
       crossDomain: true,
-      url: url,
+      url: url1,
       method: "GET",
       dataType: "jsonp"
     });
