@@ -21,14 +21,32 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.5/js/components/htmleditor.js"></script>
     </head>
     <body>
-    <textarea id= "code" data-uk-htmleditor="{enablescripts:true}"><p>your code here</p></textarea>
-        <center><button onclick="saveCode();">Save this code</button></center>
+    <textarea id= "code" data-uk-htmleditor="{enablescripts:true}"></textarea>
+        <center><button id= "btn" onclick="saveCode();">Save this code</button></center>
         
     <script>
+        console.log("hello");
     function saveCode(){
         var code = encodeURIComponent($('textarea#code').val());
-        var url= "mailto:mail@orthosam.com?subject=mypage&body="+code;
-    window.location.href = url;
+        if (code=='') return;
+	  $("#btn").html("Saving code....");
+	var url = "https://script.google.com/macros/s/AKfycbympDG5nl25pZhm-UuOpxKgDG3_u37cUJMWNNj1BOxkRDEm1PY/exec?callback=loadData&code="+code ;
+// Make an AJAX call to Google Script
+var request = jQuery.ajax({
+      crossDomain: true,
+      url: url,
+      method: "GET",
+      dataType: "jsonp"
+    });
+  }
+ 
+ // print the returned data from jsonp
+  function loadData(e) {
+  try {
+	   $("#btn").html("Saved.");
+	}catch(err) {
+        $("#btn").html(err);
+	}
     }
     </script>
     </body>
