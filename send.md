@@ -73,7 +73,7 @@ fetch('https://fcm.googleapis.com/fcm/send', init)
 .then((text) => {
   // text is the response body
     document.getElementById("form").style.display = "none";
-    document.getElementById("demo").innerHTML = "Sent. <a href="javascript:location.reload();" id="reload">Send another message</a>";
+    document.getElementById("demo").innerHTML = "Sent. <a href='javascript:location.reload();' id='reload'>Send another message</a>";
     console.log(text);
 })
 .catch((e) => {
