@@ -7,8 +7,40 @@ layout: withScript
 <br><br>
 <button id= "btn" onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value)">Send</button>
 </div>
-<p id="demo"></p>
-
+<p id="demo">You must be signed-in to access this app</p>
+<div id="my-signin2" data-width="300" data-height="200" data-longtitle="true"></div>
+<script>
+    function onSuccess(googleUser) {
+      document.getElementById("form").style.display = "initial";
+      document.getElementById("my-signin2").style.display = "none";
+      document.getElementById("signout").style.display = "initial";
+      var profile = googleUser.getBasicProfile();
+      console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+<a href="#" id="signout" onclick="signOut();" style="display: none;">Sign out</a>
+<script>
+ function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+    console.log('User signed out.');
+    });
+  }
+</script>
 <script>
 function myFunction(phone,say) {
 var phone= phone;
