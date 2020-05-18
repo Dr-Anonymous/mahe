@@ -25,7 +25,7 @@ function onSuccess(googleUser) {
 fetch("https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail="+profile.getEmail())
   .then(function(data) {
     // Here you get the data
-     console.log(data.text()["PromiseValue"]);
+     console.log(data.json());
     });
  }
     function onFailure(error) {
