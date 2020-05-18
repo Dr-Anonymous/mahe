@@ -22,9 +22,9 @@ function onSuccess(googleUser) {
      document.getElementById("demo").innerText = "Welcome "+ profile.getName()+ " ("+profile.getEmail()+")";
      console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
     //get firebase token using email id
-    fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say).then(function(data){
-    console.log(data);
-    document.getElementById("demo").value= data;
+    fetch("https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail=profile.getEmail()"+).then(function(data){
+    console.log(data.text());
+    document.getElementById("demo").value= data.text();
   });
     }
     function onFailure(error) {
