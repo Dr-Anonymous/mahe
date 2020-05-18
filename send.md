@@ -1,7 +1,8 @@
 ---
 layout: withScript
 ---
-<p id="demo" value= "hi">You must be signed-in to access this app</p>
+<p id="demo">You must be signed-in to access this app</p>
+<p id="id"></p>
 <div id= "form" style="display: none;">
   Phone number: <textarea id="phone"></textarea>
   Message: <textarea type="text" id="say"></textarea>
@@ -26,8 +27,7 @@ function onSuccess(googleUser) {
  var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            console.log(xmlHttp.responseText);
-            document.getElementById("demo").value= xmlHttp.responseText;
+            document.getElementById("id").innerText= xmlHttp.responseText;
     }
     xmlHttp.open("GET", url, true); // true for asynchronous 
     xmlHttp.send(null);
@@ -61,7 +61,7 @@ function myFunction(phone,say) {
  document.getElementById("btn").innerText = "Sending...";
  
 //make call to script
-  fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say)
+  fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say+"&id="+document.getElementById("id").innerText)
   .then(function(data) {
     // Here you get the data
     document.getElementById("form").style.display = "none";
