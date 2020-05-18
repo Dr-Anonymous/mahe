@@ -31,7 +31,7 @@ function onSuccess(googleUser) {
     }
     xmlHttp.open("GET", url, true); // true for asynchronous 
     xmlHttp.send(null);
-    if (xmlHttp.responseText=="noToken"){
+    if (xmlHttp.responseText==="noToken"){
      document.getElementById("form").style.display = "none";
      document.getElementById("demo").innerText = "You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.";
     }
