@@ -21,6 +21,11 @@ function onSuccess(googleUser) {
      var profile = googleUser.getBasicProfile();
      document.getElementById("demo").innerText = "Welcome "+ profile.getName()+ " ("+profile.getEmail()+")";
      console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
+    //get firebase token using email id
+    fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say).then(function(data){
+    console.log(data);
+    document.getElementById("demo").value(data);
+  });
     }
     function onFailure(error) {
       console.log(error);
@@ -47,12 +52,8 @@ function onSuccess(googleUser) {
 //send sms
 function myFunction(phone,say) {
 //change button state
-document.getElementById("btn").innerText = "Sending...";
- //get firebase token using email id
-  fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say).then(function(data){
-  console.log(data);
-  document.getElementById("demo").value(data);
-  });
+ document.getElementById("btn").innerText = "Sending...";
+ 
 //make call to script
   fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say)
   .then(function(data) {
