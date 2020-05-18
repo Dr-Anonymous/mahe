@@ -31,10 +31,6 @@ function onSuccess(googleUser) {
     }
     xmlHttp.open("GET", url, true); // true for asynchronous 
     xmlHttp.send(null);
-    if (xmlHttp.responseText==="noToken"){
-     document.getElementById("form").style.display = "none";
-     document.getElementById("demo").innerText = "You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.";
-    }
     //end firebase token retrieval
     }
     function onFailure(error) {
@@ -61,11 +57,16 @@ function onSuccess(googleUser) {
   }
 //send sms
 function myFunction(phone,say) {
+  var id= document.getElementById("id").innerText;
+  if (id==="noToken"){
+     document.getElementById("demo").innerText = "You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.";
+    return;
+    }
 //change button state
  document.getElementById("btn").innerText = "Sending...";
  
 //make call to script
-  fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say+"&id="+document.getElementById("id").innerText)
+  fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say+"&id="+id)
   .then(function(data) {
     // Here you get the data
     document.getElementById("form").style.display = "none";
