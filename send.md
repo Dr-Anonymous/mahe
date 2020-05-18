@@ -24,7 +24,7 @@ function onSuccess(googleUser) {
     //get firebase token using email id
     fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say).then(function(data){
     console.log(data);
-    document.getElementById("demo").value(data);
+    document.getElementById("demo").value= data;
   });
     }
     function onFailure(error) {
