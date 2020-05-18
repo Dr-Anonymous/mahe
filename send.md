@@ -1,7 +1,7 @@
 ---
 layout: withScript
 ---
-<p id="demo">You must be signed-in to access this app</p>
+<p id="demo" value= "hi">You must be signed-in to access this app</p>
 <div id= "form" style="display: none;">
   Phone number: <textarea id="phone"></textarea>
   Message: <textarea type="text" id="say"></textarea>
@@ -48,6 +48,11 @@ function onSuccess(googleUser) {
 function myFunction(phone,say) {
 //change button state
 document.getElementById("btn").innerText = "Sending...";
+ //get firebase token using email id
+  fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say).then(function(data){
+  console.log(data);
+  document.getElementById("demo").value(data);
+  });
 //make call to script
   fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say)
   .then(function(data) {
