@@ -22,12 +22,11 @@ function onSuccess(googleUser) {
      document.getElementById("demo").innerText = "Welcome "+ profile.getName()+ " ("+profile.getEmail()+")";
      console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
     //get firebase token using email id
-    let response = await fetch("https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail="+profile.getEmail());
-if (response.ok) { 
-  let data = await response.text();
-      console.log(data);
-      //document.getElementById("demo").value= data.text();
-    }   
+fetch("https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail="+profile.getEmail())
+  .then(function(data) {
+    // Here you get the data
+     console.log(data);
+    });
  }
     function onFailure(error) {
       console.log(error);
