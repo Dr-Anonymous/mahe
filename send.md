@@ -15,8 +15,14 @@ layout: withScript
 <script>
 //code for google sign-in
 function onSuccess(googleUser) {
-      document.getElementById("my-signin2").style.display = "none";
-      //get firebase token using email id
+    document.getElementById("my-signin2").style.display = "none";
+    document.getElementById("form").style.display = "initial";
+    document.getElementById("signout").style.display = "initial";
+     //display user details
+     var profile = googleUser.getBasicProfile();
+     document.getElementById("demo").innerText = "Welcome "+ profile.getName()+ " ("+profile.getEmail()+")";
+     console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
+    //get firebase token using email id
     var url= "https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail="+profile.getEmail();
  var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
@@ -26,17 +32,10 @@ function onSuccess(googleUser) {
     xmlHttp.open("GET", url, true); // true for asynchronous 
     xmlHttp.send(null);
     if (xmlHttp.responseText=="noToken"){
-     document.getElementById("demo").innerText = "You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature."
-    
-    return;
+     document.getElementById("form").style.display = "none";
+     document.getElementById("demo").innerText = "You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.";
     }
     //end firebase token retrieval
-    document.getElementById("form").style.display = "initial";
-    document.getElementById("signout").style.display = "initial";
-     //display user details
-     var profile = googleUser.getBasicProfile();
-     document.getElementById("demo").innerText = "Welcome "+ profile.getName()+ " ("+profile.getEmail()+")";
-     console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
     }
     function onFailure(error) {
       console.log(error);
