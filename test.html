@@ -22,8 +22,12 @@
     </head>
     <body>
     <textarea id= "code" data-uk-htmleditor="{enablescripts:true}"></textarea>
-        <center><button id= "btn" onclick="saveCode();">Save this code</button></center>
-	    <textarea id="old">Old Code</textarea>
+        <center>
+		<button id= "btn" onclick="saveCode();">Save this code</button><br>
+		<p>Old code:</p>
+		<textarea id="old" style="width: -webkit-fill-available;">Old Code</textarea>
+	</center>
+	    
     <script>
 var url1 = "https://script.google.com/macros/s/AKfycbympDG5nl25pZhm-UuOpxKgDG3_u37cUJMWNNj1BOxkRDEm1PY/exec?callback=loadNew&code=new";
 // Make an AJAX call to get previously saved code
