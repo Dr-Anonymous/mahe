@@ -4,7 +4,7 @@ layout: withScript
 <p id="demo">You must be signed-in to access this app</p>
 <p id="id" style="display: none;"></p>
 <div id= "form" style="display: none;">
-  Phone number: <a href ="/mycontacts">View your contacts here</a><textarea id="phone"></textarea>
+  Phone number: <a href ="/mycontacts" target="_blank">View your contacts here</a><textarea id="phone"></textarea>
   SMS Message: <textarea type="text" id="say"></textarea>
 <br><br>
 <button id= "btn" onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value);">Send</button>
