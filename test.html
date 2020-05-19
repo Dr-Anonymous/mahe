@@ -37,7 +37,7 @@ var request = jQuery.ajax({
  // load the saved code into text area
   function loadNew(e) {
   try {
-	   $('#old').load(e);
+	   $('#old').html(e);
 	}catch(err) {
 	  $('#code').val(err);
 	}
