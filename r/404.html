@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Redirects | r.myfiles.ga</title>
+<meta name="generator" content="Jekyll v3.7.3.1" />
+<meta property="og:title" content="URL redirect tool" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="free redirect tool" />
+<meta property="og:description" content="free redirect tool" />
+<link rel="canonical" href="https://r.myfiles.ga/" />
+<meta property="og:url" content="https://r.myfiles.ga/" />
+<meta property="og:site_name" content="r.myfiles.ga" />
+<script type="application/ld+json">
+{"@type":"WebSite","headline":"Welcome","url":"https://r.myfiles.ga/","name":"myfiles.ga","description":"your online place","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+<body onload="callGoogleScript();">
+<script>
+function callGoogleScript() {
+if(isNaN(window.location.pathname.slice(1)))
+{
+	console.log("its text");	
+	return;
+}
+var url = "https://script.google.com/macros/s/AKfycbwQt4QiNTg8RjaAVd4KHZ_yClTbzgrvF34FZIIgEmIb8yGSHn8/exec?callback=loadData&id=1ZrGx_JUs8avZ3yT5nRf1eDI7pUl1PiP2Xrrlc0IGyuw&sheet=Sheet1&num="+ window.location.pathname.slice(1);
+// Make an AJAX call to Google Script
+var request = jQuery.ajax({
+      crossDomain: true,
+      url: url,
+      method: "GET",
+      dataType: "jsonp"
+    });
+  }
+ 
+ // print the returned data from jsonp
+  function loadData(e) {
+  //console.log(e);
+  try {
+  var rows= e;
+         for (var i = 1; i < rows.length; i++) {
+	   $("#main").append(rows[i]+"<br>");
+	window.location.assign(rows[2]);
+	 }
+	}catch(err) {
+        $("#main").html("No such redirect present");
+	}
+}
+  </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div id="main">Redirecting to...</div>
+</body>
+</html>
