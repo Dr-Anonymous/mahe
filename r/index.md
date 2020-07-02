@@ -23,7 +23,7 @@ var request = jQuery.ajax({
  // print the returned data from jsonp
   function loadData(e) {
   try {
-	   $("#form").html("<h2>your url is <a style='color:#b5e853;' href='https://r.orthosam.com/"+ e+"'>r.orthosam.com/"+ e+"</a></h2><p>Shorten another url ? Reloads are free !</p>");
+	   $("#form").html("<p>your url is <a href='https://orthosam.com/r/"+ e+"'>orthosam.com/r/"+ e+"</a></p><p>Shorten another url ? Reloads are free !</p>");
 	}catch(err) {
         $("#form").html(err);
 	}
