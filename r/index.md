@@ -25,12 +25,12 @@ var request = jQuery.ajax({
   try {
 	   $("#form").html("<h2>your url is <a style='color:#b5e853;' href='https://r.orthosam.com/"+ e+"'>r.orthosam.com/"+ e+"</a></h2><p>Shorten another url ? Reloads are free !</p>");
 	}catch(err) {
-        $("#form head").html(err);
+        $("#form").html(err);
 	}
 }
 </script>
 
-<form>
+<form id="form">
   URL description (this is to easily identify it):<br>
   <input type="text" id="description" name="description" placeholder="samuel thesis file" style="width: -webkit-fill-available;height: 2em;">
   <br>
