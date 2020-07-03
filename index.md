@@ -23,16 +23,16 @@ layout: default
 You've reached the best place to avail comprehensive orthopaedic surgery and medical software solutions. Head on to the [about](/about) section to know more of the services we offer and how to deploy them.
 
 {: .card shadow }
-Looking for some goodies ? [Files for public access:open_file_folder:](https://drive.google.com/drive/folders/1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri).
+[Files :open_file_folder: for public access](https://drive.google.com/drive/folders/1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri).
 
 {: .card shadow }
-Have a file :floppy_disk: to share ? [Use this link](https://orthosam.com/upload)
+[Have a file to share ?:ok_hand:](https://orthosam.com/upload)
 
 {: .card shadow }
-[Net2SMS](/net2sms)
+[Net2SMS :iphone: ](/net2sms)
 
 {: .card shadow }
-[URLredirect tool](/r)
+[URLredirect :leftwards_arrow_with_hook: tool](/r)
 
 >_Any suggestions/ queries :question:	 :e-mail:_ [mail@orthosam.com](mailto:mail@orthosam.com).
 
