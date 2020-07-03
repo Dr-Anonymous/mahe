@@ -14,7 +14,7 @@ var request = jQuery.ajax({
       method: "GET",
       dataType: "jsonp"
     });
- }
+	
  // print the returned data from jsonp
   function loadData(e) {
   //console.log(e);
@@ -25,4 +25,5 @@ var request = jQuery.ajax({
 	}catch(err) {
         //$("#main_content").html("No such redirect present");
 	}
+}
   </script>
