@@ -24,7 +24,7 @@ var request = jQuery.ajax({
          for (var i = 0; i < e.length; i++) {
 		$("#main_content").append("<td>"+ e[i]+"</td>");
 	 }
-	      $("#main_content").append("</tr>");
+	      $("#main_content").append("</tr></table>");
 	}catch(err) {
         //$("#main_content").html("No such redirect present");
 	}
