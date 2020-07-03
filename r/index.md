@@ -29,7 +29,7 @@ var request = jQuery.ajax({
 	}
 }
 </script>
-<p>This free URLshortner tool creates easy to remember short redirets for your online files/folders.</p>
+<p>This free URLshortner creates short, easy to remember redirets for your online files/folders.</p>
 <form id="form">
   Description (to easily identify it later):<br>
   <input type="text" id="description" name="description" placeholder="Eg: My thesis file" style="width: -webkit-fill-available;height: 2em;">
