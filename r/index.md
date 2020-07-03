@@ -23,7 +23,7 @@ var request = jQuery.ajax({
  // print the returned data from jsonp
   function loadData(e) {
   try {
-	   $("#form").html("<p>Your url is <a href='https://orthosam.com/r/"+ e+"'>orthosam.com/r/"+ e+"</a></p><p>Shorten another url ? Reloads are free !</p>");
+	   $("#form").html("<p>Your url is <a href='https://orthosam.com/r/"+ e+"'>./"+ e+"</a></p><p>Shorten another url ? Reloads are free !</p>");
 	}catch(err) {
         $("#form").html(err);
 	}
@@ -39,4 +39,4 @@ var request = jQuery.ajax({
   <br><br>
 	<center><button onclick="submitForm($('#description').val(), $('#url').val()); return false;" style="border-radius: 6px;width: 50%;height: 2em;">Shorten this url !</button></center>
 </form>
-<p>View all redirects at <a href="https://docs.google.com/spreadsheets/d/1ZrGx_JUs8avZ3yT5nRf1eDI7pUl1PiP2Xrrlc0IGyuw/">url directory</a></p>
+<p>View all redirects at <a href="./directory">url directory</a></p>
