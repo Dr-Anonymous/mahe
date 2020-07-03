@@ -29,14 +29,14 @@ var request = jQuery.ajax({
 	}
 }
 </script>
-
+<p>This free URLshortner tool creates easy to remember short redirets for your online files/folders.</p>
 <form id="form">
-  URL description (this is to easily identify it):<br>
-  <input type="text" id="description" name="description" placeholder="samuel thesis file" style="width: -webkit-fill-available;height: 2em;">
+  Description (to easily identify it later):<br>
+  <input type="text" id="description" name="description" placeholder="Eg: My thesis file" style="width: -webkit-fill-available;height: 2em;">
   <br>
-  URL or link to the page:<br>
-  <input type="text" id="url" name="url" placeholder="https://docs.google.com/forms/d/e/sdf" style="width: -webkit-fill-available;height: 2em;" required>
+  URL (web address of the page):<br>
+  <input type="text" id="url" name="url" placeholder="Eg: https://docs.google.com/forms/d/e/sdf" style="width: -webkit-fill-available;height: 2em;" required>
   <br><br>
-	<center><button onclick="submitForm($('#description').val(), $('#url').val()); return false;" style="border-radius: 6px;width: 50%;height: 2em;">Get my url !</button></center>
+	<center><button onclick="submitForm($('#description').val(), $('#url').val()); return false;" style="border-radius: 6px;width: 50%;height: 2em;">Shorten this url !</button></center>
 </form>
 <p>View all redirects at <a href="https://docs.google.com/spreadsheets/d/1ZrGx_JUs8avZ3yT5nRf1eDI7pUl1PiP2Xrrlc0IGyuw/">url directory</a></p>
