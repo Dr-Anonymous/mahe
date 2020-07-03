@@ -2,9 +2,8 @@
 layout: default
 ---
 
-# URL directory
+## Loading URL directory....
 
-Loading....
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -21,9 +20,11 @@ var request = jQuery.ajax({
   function loadData(e) {
   //console.log(e);
   try {
+  	$("#main_content").html("<table><tr><th>ShortURL</th><th>Description</th><th>Full URL</th></tr><tr>")
          for (var i = 0; i < e.length; i++) {
-     $("#main_content").append("<p>"+ e[i]+"</p><br>");
+		$("#main_content").append("<td>"+ e[i]+"</td>");
 	 }
+	      $("#main_content").append("</tr>");
 	}catch(err) {
         //$("#main_content").html("No such redirect present");
 	}
