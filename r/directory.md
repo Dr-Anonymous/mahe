@@ -20,7 +20,7 @@ var request = jQuery.ajax({
   function loadData(e) {
   try {
   	var html = "<table><tr><th>ShortURL</th><th>Description</th><th>Full URL</th></tr>";
-         for (var i = 0; i < e.length; i++) {
+         for (var i = 1; i < e.length; i++) {
 		html= html+ "<tr>";
 		
 		for (var j = 0; j < e[i].length; j++) {
