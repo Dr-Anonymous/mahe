@@ -22,8 +22,9 @@ var request = jQuery.ajax({
   	var html = "<table><tr><th>ShortURL</th><th>Description</th><th>Full URL</th></tr>";
          for (var i = 0; i < e.length; i++) {
 		html= html+ "<tr>";
-		for (var j = 0; j < i.length; j++) {
-		html = html + "<td>"+ i[j]+"</td>";
+		
+		for (var j = 0; j < e[i].length; j++) {
+		html = html + "<td>"+ e[i][j]+"</td>";
 		}
 		html= html+ "</tr>";
 	 }
