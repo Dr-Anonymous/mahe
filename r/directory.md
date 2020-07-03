@@ -21,8 +21,8 @@ var request = jQuery.ajax({
   function loadData(e) {
   //console.log(e);
   try {
-         for (var i = 1; i < e.length; i++) {
-     $("#main_content").html("<p>"+ e[i]+"</p><br><p>"+ e[2] +"</p>");
+         for (var i = 0; i < e.length; i++) {
+     $("#main_content").append("<p>"+ e[i]+"</p><br>");
 	 }
 	}catch(err) {
         //$("#main_content").html("No such redirect present");
