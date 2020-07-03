@@ -22,13 +22,11 @@ layout: default
 
 You've reached the best place to avail comprehensive orthopaedic surgery and medical software solutions. Head on to the [about](/about) section to know more of the services we offer and how to deploy them.
 
-<a href="https://drive.google.com/drive/folders/1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri">
 {: .card shadow }
-Files :open_file_folder: for public access
-</a>
+[Files :open_file_folder: for public access](https://drive.google.com/drive/folders/1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri)
 
 {: .card shadow }
-[Have a file to share ?:ok_hand:](https://orthosam.com/upload)
+[Have a file to share? :ok_hand:](https://orthosam.com/upload)
 
 {: .card shadow }
 [Net2SMS :iphone: ](/net2sms)
