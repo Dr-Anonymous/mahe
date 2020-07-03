@@ -10,7 +10,7 @@ layout: default
   margin: 1%;
   padding: 1%;
   position: relative;
-  width: 44%;
+  width: 46%;
 }
 .shadow {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
