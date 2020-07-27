@@ -20,7 +20,7 @@ layout: default
 
 # Hi there !
 
-You've reached the best place to avail comprehensive orthopaedic surgery and medical software solutions. Head on to the [about](/about) section to know more of the services we offer and how to deploy them.
+You've reached the best place to avail comprehensive orthopaedic surgery and medical software solutions. Head on to the [about](/about) section to know more of the services we offer.
 
 {: .card shadow }
 [Files :open_file_folder: for public access](https://drive.google.com/drive/folders/1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri)
@@ -34,7 +34,11 @@ You've reached the best place to avail comprehensive orthopaedic surgery and med
 {: .card shadow }
 [URLredirect :leftwards_arrow_with_hook: tool](/r)
 
->_Any suggestions/ queries :question:	 :e-mail:_ [mail@orthosam.com](mailto:mail@orthosam.com).
+{: .card shadow }
+[QA :grey_question: ](https://qa.orthosam.com)
+the medical question-answer site
+
+>_Any suggestions/ queries :e-mail:_ [mail@orthosam.com](mailto:mail@orthosam.com).
 
 <!--
 ## Posts
