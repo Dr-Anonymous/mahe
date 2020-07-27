@@ -35,7 +35,8 @@ You've reached the best place to avail comprehensive orthopaedic surgery and med
 [URLredirect :leftwards_arrow_with_hook: tool](/r)
 
 {: .card shadow }
-[QA :grey_question: ](https://qa.orthosam.com)  the medical question-answer site
+[QA :grey_question: ](https://qa.orthosam.com)
+<br>the medical question-answer site
 
 >_Any suggestions/ queries :e-mail:_ [mail@orthosam.com](mailto:mail@orthosam.com).
 
