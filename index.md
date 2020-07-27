@@ -40,8 +40,8 @@ the medical question-answer site
 
 >_Any suggestions/ queries :e-mail:_ [mail@orthosam.com](mailto:mail@orthosam.com).
 
-<!--
-## Posts
+ {% if site.show_posts %}
+ ## Posts
 
 <ul>
   {% for post in site.posts %}
@@ -51,4 +51,4 @@ the medical question-answer site
     </li>
   {% endfor %}
 </ul>
--->
+ {% endif %}
