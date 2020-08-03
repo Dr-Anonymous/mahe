@@ -1,15 +1,5 @@
 ---
 ---
-<script>
-var amount= window.location.pathname.slice(5);
-if(isNaN(amount)
-{
-	console.log(amount);	
-} else {
-window.location.assign("upi://pay?pa=orthosam@icici&pn=Samuel%20Manoj%20Ch&am="+amount+".00")
- }
-</script>
-
 # Payment options
 
 <div id="mobile">
