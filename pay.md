@@ -1,5 +1,12 @@
 ---
 ---
+<script>
+var url_string = window.location.href;
+var url = new URL(url_string);
+var c = url.searchParams.get("amount");
+console.log(c);
+</script>
+
 # Payment options
 
 <div id="mobile">
