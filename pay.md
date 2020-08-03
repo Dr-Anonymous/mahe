@@ -1,9 +1,20 @@
 ---
 ---
+<script>
+var amount= window.location.pathname.slice(5);
+if(isNaN(amount)
+{
+	console.log(amount);	
+} else {
+window.location.assign("upi://pay?pa=orthosam@icici&pn=Samuel%20Manoj%20Ch&am="+amount+".00")
+ }
+</script>
+
 # Payment options
 
 <div id="mobile">
-  <p>Click <a href="upi://pay?pa=orthosam@icici&pn=Samuel%20Manoj%20Ch">this link</a> from a mobile device to pay directly ( you should already have a UPI app like BHIM/ GooglePay/ Paytm installed on your device).</p> </div>
+  <p>Click <a href="upi://pay?pa=orthosam@icici&pn=Samuel%20Manoj%20Ch">this link</a> from a mobile device to pay directly ( you should already have a UPI app like BHIM/ GooglePay/ Paytm installed on your device).</p>
+</div>
 
 <div id="web"><p>Or scan QR code from any UPI app to pay -
 
