@@ -42,7 +42,6 @@ the medical question-answer site
 
 >_Any suggestions/ queries :e-mail:_ [mail@orthosam.com](mailto:mail@orthosam.com).
 
-<!--
  {% if site.show_posts %}
  ## Posts
 
@@ -55,4 +54,3 @@ the medical question-answer site
   {% endfor %}
 </ul>
  {% endif %}
--->
