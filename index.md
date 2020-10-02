@@ -20,7 +20,9 @@ layout: default
 
 # Hi there !
 
-You've reached the best place to avail comprehensive orthopaedic and medical software solutions. Head on to the [about](/about) section to know more of the services we offer.
+You've reached the official site of Orthosam. Head on to the [about](/about) section to know more of the services we offer.
+
+Quick Links:
 
 {: .card shadow }
 [Files :open_file_folder: for public access](https://drive.google.com/drive/folders/1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri)
