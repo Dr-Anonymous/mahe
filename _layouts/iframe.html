@@ -31,8 +31,11 @@
         </header>
     </div>
 <style>
-  frame {
+  .frame {
   max-width: 100%;
+  }
+  #main_content {
+  padding: 0px; 
   }
   iframe {
   height:calc(100vh - 4px);
@@ -43,7 +46,7 @@
 
    <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="frame" style="padding: 0px;">
+      <section id="main_content" class="frame">
         {{ content }}
       </section>
     </div>
