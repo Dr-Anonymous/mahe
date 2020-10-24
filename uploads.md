@@ -1,5 +1,5 @@
 ---
-layout: frame
+layout: iframe
 ---
 
 
