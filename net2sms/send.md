@@ -1,5 +1,5 @@
 ---
-layout: withScript
+layout: signInScript
 ---
 <p id="demo">You must be signed-in to access this app</p>
 <p id="id" style="display: none;"></p>
