@@ -22,9 +22,8 @@ dataType: "jsonp"
 // print the returned data
 function loadData(e) {
 $('#hiddenDiv').html(e);
-$('.inner').css('max-width', '');
-$('#folders').html($('.flip-entries').html()).css('height','max-content');
-
+$('.inner').css('max-width', '100%');
+$('#folders').text($('.flip-entries').html()).css('height','max-content');
 }
 
 //get url parameters
