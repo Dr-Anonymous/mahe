@@ -32,3 +32,4 @@ var url = new URL(url_string);
 return url.searchParams.get(p);
 }
 </script>
+<button onclick="javascript:window.history.back();">Go Back</button>
