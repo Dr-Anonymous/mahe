@@ -23,6 +23,7 @@ dataType: "jsonp"
 function loadData(e) {
 $('#hiddenDiv').html(e);
 $('#folders').html($('.flip-entries').html());
+$("#folders").css('height','max-content');
 }
 
 //get url parameters
