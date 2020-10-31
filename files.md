@@ -21,9 +21,10 @@ dataType: "jsonp"
 
 // print the returned data
 function loadData(e) {
-//$('#hiddenDiv').html(e);
 $('.inner').css('max-width', '100%');
-$('#folders').html(e).css('height','max-content');
+var hiddenDiv = $( '<div></div>' );
+hiddenDiv.html(e);
+$('#folders').html($('.flip-entry', hiddenDiv));
 }
 
 //get url parameters
@@ -33,4 +34,3 @@ var url = new URL(url_string);
 return url.searchParams.get(p);
 }
 </script>
-<div id="hiddenDiv" class="hide"></div>
