@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<link href="/static/doclist/client/css/4152783537-folderlandingpage.css" rel="stylesheet">
+<link href="https://drive.google.com/static/doclist/client/css/4152783537-folderlandingpage.css" rel="stylesheet">
 
 <div id="folders"></div>
 <script>
