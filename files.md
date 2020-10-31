@@ -2,6 +2,8 @@
 layout: default
 ---
 <div id="folders"></div>
+<div><button onclick="javascript:window.history.back();">Go Back</button><div>
+
 <script>
 var id= urlPara("id");
 if (!id)
@@ -21,6 +23,7 @@ dataType: "jsonp"
 // print the returned data
 function loadData(e) {
 $('#hiddenDiv').html(e);
+$('#folders').html($('.flip-entries').html()));
 }
 
 //get url parameters
@@ -30,5 +33,4 @@ var url = new URL(url_string);
 return url.searchParams.get(p);
 }
 </script>
-<button onclick="javascript:window.history.back();">Go Back</button>
-<div id="hiddenDiv"></div>
+<div id="hiddenDiv" class="hide"></div>
