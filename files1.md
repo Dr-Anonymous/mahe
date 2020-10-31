@@ -11,7 +11,7 @@ layout: default
      // Make an AJAX call to Google Script
   function changeDest(id) {
   
-    var url = "https://script.google.com/macros/s/AKfycbyd3OPH7qwydqI9BGWn2oSU5uWGjwFwrg4I_nOU90alk7MwjIrQ/exec?callback=loadData&id=" ;
+    var url = "https://script.google.com/macros/s/AKfycbxBlqDMbMUTyWQvWuxznbaXlZiMzVGNMHY7Vdl_lg2R17XdittE/exec?callback=loadData&id=" ;
 
 var request = jQuery.ajax({
       crossDomain: true,
