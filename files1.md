@@ -1,22 +1,21 @@
 ---
 layout: default
 ---
-<iframe src="https://drive.google.com/embeddedfolderview?id=1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri#grid" style="width:100%; height:600px; border:0;" base target="_parent"></iframe>
-<!--
-<body onload="callGoogleScript();">
+<div id="folders"></div>
 <script>
     var id= urlPara("id");
-    if (!id){
-    id="1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri";
-    }    
+    if (!id)
+    id="1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri"; 
     
+    changeDest(id);
      // Make an AJAX call to Google Script
-  function callGoogleScript() {
+  function changeDest(id) {
+  
     var url = "https://script.google.com/macros/s/AKfycbyd3OPH7qwydqI9BGWn2oSU5uWGjwFwrg4I_nOU90alk7MwjIrQ/exec?callback=loadData&id=" ;
 
 var request = jQuery.ajax({
       crossDomain: true,
-      url: url + encodeURIComponent(id),
+      url: url + id,
       method: "GET",
       dataType: "jsonp"
     });
@@ -24,11 +23,10 @@ var request = jQuery.ajax({
   }
   // print the returned data
   function loadData(e) {
-  var div = document.getElementById('main_content');
+  var div = document.getElementById('folders');
        div.innerHTML = e.result1;
              if (e.result2)
              console.log(e.result2);
-
   }
   
  //get url parameters
@@ -37,7 +35,4 @@ var request = jQuery.ajax({
 var url = new URL(url_string);
 return url.searchParams.get(p);
 }
-
 </script>
-</body>
--->
