@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div id="folders"></div>
+<div id="folders">Loading.....</div>
 <div><button onclick="javascript:window.history.back();">Go Back</button><div>
 
 <script>
@@ -23,7 +23,7 @@ dataType: "jsonp"
 // print the returned data
 function loadData(e) {
 $('#hiddenDiv').html(e);
-$('#folders').html($('.flip-entries').html()));
+$('#folders').html($('.flip-entries').html());
 }
 
 //get url parameters
