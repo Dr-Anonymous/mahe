@@ -2,7 +2,7 @@
 layout: default
 ---
 <div id="folders" class="flip-grid-view">Loading.....</div>
-<div><button onclick="javascript:window.history.back();">Go Back</button><div>
+<div><button onclick="javascript:window.history.back();">Go Back</button></div>
 <script>
 var id= urlPara("id");
 if (!id)
