@@ -3,9 +3,9 @@ layout: default
 ---
 <div id="folders"></div>
 <script>
-    var id= urlPara("id");
-    if (!id)
-    id="1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri"; 
+    //var id= urlPara("id");
+    //if (!id)
+    //id="1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri"; 
     
     changeDest(id);
      // Make an AJAX call to Google Script
@@ -15,7 +15,7 @@ layout: default
 
 var request = jQuery.ajax({
       crossDomain: true,
-      url: url + id,
+      url: url,
       method: "GET",
       dataType: "jsonp"
     });
