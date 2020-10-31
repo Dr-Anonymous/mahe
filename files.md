@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-<link href="https://drive.google.com/static/doclist/client/css/4152783537-folderlandingpage.css" rel="stylesheet">
 
 <div id="folders"></div>
 <script>
@@ -23,8 +22,7 @@ var request = jQuery.ajax({
   }
   // print the returned data
   function loadData(e) {
-  var div = document.getElementById('folders');
-       div.innerHTML = e;
+  document.getElementById('folders').innerHTML = e;
   }
   
  //get url parameters
