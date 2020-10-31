@@ -26,7 +26,9 @@ dataType: "jsonp"
 function loadData(e) {
 var hiddenDiv = $( '<div></div>' );
 hiddenDiv.html(e);
-$('#folders').html($('.flip-list-header', hiddenDiv)).append($('.flip-entries', hiddenDiv));
+$('#folders')
+//.html($('.flip-list-header', hiddenDiv))
+.html($('.flip-entry', hiddenDiv));
 }
 
 //get url parameters
