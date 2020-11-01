@@ -4,6 +4,7 @@ layout: default
 <link href="https://drive.google.com/static/doclist/client/css/4152783537-folderlandingpage.css" rel="stylesheet">
 
 <div id="folders" class="row">Loading.....</div>
+<a href="./files/">Back to files home</a>
 <script>
 var id= urlPara("id");
 if (!id)
