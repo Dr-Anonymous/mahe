@@ -29,7 +29,7 @@ hiddenDiv.html(e);
 $('#folders')
 //.html($('.flip-list-header', hiddenDiv))
 .html($('.flip-entry', hiddenDiv));
-$('.flip-entry').addClass("col s4");
+$('.flip-entry').addClass("col s3");
 $('.flip-entry-list-icon').addClass('hide');
 }
 
