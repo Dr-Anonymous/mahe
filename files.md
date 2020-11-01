@@ -4,7 +4,7 @@ layout: default
 <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" rel="stylesheet">
 <link href="https://drive.google.com/static/doclist/client/css/4152783537-folderlandingpage.css" rel="stylesheet">
 
-<div id="folders" class="flip-contents flip-list-view">Loading.....</div>
+<div id="folders" class="row">Loading.....</div>
 <div><button onclick="javascript:window.history.back();">Go Back</button></div>
 <script>
 var id= urlPara("id");
@@ -29,6 +29,8 @@ hiddenDiv.html(e);
 $('#folders')
 //.html($('.flip-list-header', hiddenDiv))
 .html($('.flip-entry', hiddenDiv));
+$('.flip-entry').addClass("col s4");
+$('.flip-entry-list-icon').addClass('hide');
 }
 
 //get url parameters
