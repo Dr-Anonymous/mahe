@@ -31,7 +31,7 @@ $('.inner').css('max-width','100%');
 $('#folders')
 //.html($('.flip-list-header', hiddenDiv))
 .html($('.flip-entry', hiddenDiv));
-$('.flip-entry').addClass("col s6 m3");
+$('.flip-entry').addClass("col s6 m3 l2");
 $('.flip-entry-list-icon').addClass('hide');
 $('h5').html(e.result2);
 }
