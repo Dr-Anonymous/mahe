@@ -6,10 +6,7 @@ layout: default
 <div id="folders" class="row">Loading.....</div>
 
 <script>
-var id= urlPara("id");
-if (!id)
-id="1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri"; 
-changeDest(id);
+changeDest("1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri");
 
 function changeDest(id) {
 $('#folders').html("Loading...");
@@ -34,12 +31,5 @@ $('#folders')
 $('.flip-entry').addClass("col s6 m3 l2");
 $('.flip-entry-list-icon').addClass('hide');
 $('h5').html(e.result2);
-}
-
-//get url parameters
-function urlPara(p){
-var url_string = window.location.href;
-var url = new URL(url_string);
-return url.searchParams.get(p);
 }
 </script>
