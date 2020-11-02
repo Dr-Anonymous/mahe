@@ -12,6 +12,8 @@ id="1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri";
 changeDest(id);
 
 function changeDest(id) {
+$('#folders').html("Loading...");
+
 var url = "https://script.google.com/macros/s/AKfycbxBlqDMbMUTyWQvWuxznbaXlZiMzVGNMHY7Vdl_lg2R17XdittE/exec?callback=loadData&id=" ;
 var request = jQuery.ajax({
 crossDomain: true,
