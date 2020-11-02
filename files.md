@@ -24,7 +24,7 @@ dataType: "jsonp"
 // print the returned data
 function loadData(e) {
 var hiddenDiv = $( '<div></div>' );
-hiddenDiv.html(e);
+hiddenDiv.html(e.result1);
 $('.inner').css('max-width','fit-content');
 $('#folders')
 //.html($('.flip-list-header', hiddenDiv))
