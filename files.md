@@ -2,8 +2,8 @@
 layout: default
 ---
 <link href="https://drive.google.com/static/doclist/client/css/4152783537-folderlandingpage.css" rel="stylesheet">
+<h5></h5>
 <div id="folders" class="row">Loading.....</div>
-<p><a href="/files/">Back to files home</a></p>
 
 <script>
 var id= urlPara("id");
@@ -31,6 +31,7 @@ $('#folders')
 .html($('.flip-entry', hiddenDiv));
 $('.flip-entry').addClass("col s6 m3");
 $('.flip-entry-list-icon').addClass('hide');
+$('h5').html(e.result2);
 }
 
 //get url parameters
