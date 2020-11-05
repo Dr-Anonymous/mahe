@@ -43,8 +43,10 @@ $('h5').html(e.result2);
 function urlParam(){
 var url = new URL(window.location.href);
 var param = url.searchParams.toString().slice(0, -1);
-if (!param)
+if (!param){
 param = "1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri";
+history.pushState({urlPath:'./?'+ param}, "", './?'+ param);
+}
 return param;
 }
 </script>
