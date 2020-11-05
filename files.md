@@ -8,7 +8,8 @@ layout: default
 <script>
 $(document).ready(function() {
     $(window).on("popstate", function (e) {
-        location.reload();
+        //location.reload();
+        history.back();
     });
 });
   
