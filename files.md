@@ -8,7 +8,7 @@ layout: default
 <script>
  window.onpopstate = function(e){
     if(e.state){
-        $('#main_content').(e.state.html);
+        $('#main_content').html(e.state.html);
     }
 };
 
