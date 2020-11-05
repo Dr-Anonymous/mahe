@@ -10,6 +10,7 @@ changeDest(urlParam());
 
 function changeDest(id) {
 $('#folders').html("Loading...");
+history.pushState({urlPath:'./?'+ id}, "", './?'+ id);
 
 var url = "https://script.google.com/macros/s/AKfycbxBlqDMbMUTyWQvWuxznbaXlZiMzVGNMHY7Vdl_lg2R17XdittE/exec?callback=loadData&id=" ;
 var request = jQuery.ajax({
