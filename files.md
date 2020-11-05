@@ -6,11 +6,9 @@ layout: default
 <div id="folders" class="row">Loading.....</div>
 
 <script>
- window.onpopstate = function(e){
-    if(e.state){
-        $('#main_content').html(e.state.html);
-    }
-};
+$(window).on('pushstate', function(event) {
+    alert("push");
+});
 
 changeDest(urlParam());
 
