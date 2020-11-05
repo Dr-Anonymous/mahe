@@ -6,6 +6,12 @@ layout: default
 <div id="folders" class="row">Loading.....</div>
 
 <script>
+$(document).ready(function() {
+    $(window).on("popstate", function (e) {
+        location.reload();
+    });
+});
+  
 changeDest(urlParam());
 
 function changeDest(id) {
