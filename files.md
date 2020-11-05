@@ -6,10 +6,6 @@ layout: default
 <div id="folders" class="row">Loading.....</div>
 
 <script>
-$(window).on('pushstate', function(event) {
-    alert("push");
-});
-
 changeDest(urlParam());
 
 function changeDest(id) {
