@@ -6,13 +6,15 @@ layout: default
 <div id="folders" class="row">Loading.....</div>
 
 <script>
-var id = urlParam();
-changeDest(id);
-history.pushState({urlPath:'./?'+ id}, "", './?'+ id);
+changeDest(urlParam());
 
 function changeDest(id) {
-$('#folders').html("Loading...");
+history.pushState({urlPath:'./?'+ id}, "", './?'+ id);
+jusChange(id);
+}
 
+function jusChange(id){
+$('#folders').html("Loading...");
 var url = "https://script.google.com/macros/s/AKfycbxBlqDMbMUTyWQvWuxznbaXlZiMzVGNMHY7Vdl_lg2R17XdittE/exec?callback=loadData&id=" ;
 var request = jQuery.ajax({
 crossDomain: true,
@@ -21,7 +23,6 @@ method: "GET",
 dataType: "jsonp"
 });
 }
-
 // print the returned data
 function loadData(e) {
 var hiddenDiv = $( '<div></div>' );
@@ -44,7 +45,7 @@ return param;
 
 $(document).ready(function() {
     $(window).on("popstate", function (e) {
-        changeDest(urlParam());
+        jusChange(urlParam());
     });
 });
 </script>
