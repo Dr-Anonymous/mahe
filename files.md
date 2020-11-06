@@ -6,18 +6,12 @@ layout: default
 <div id="folders" class="row">Loading.....</div>
 
 <script>
-$(document).ready(function() {
-    $(window).on("popstate", function (e) {
-        //location.reload();
-        changeDest(urlParam());
-    });
-});
-  
-changeDest(urlParam());
+var id = urlParam();
+changeDest(id);
+history.pushState({urlPath:'./?'+ id}, "", './?'+ id);
 
 function changeDest(id) {
 $('#folders').html("Loading...");
-history.pushState({urlPath:'./?'+ id}, "", './?'+ id);
 
 var url = "https://script.google.com/macros/s/AKfycbxBlqDMbMUTyWQvWuxznbaXlZiMzVGNMHY7Vdl_lg2R17XdittE/exec?callback=loadData&id=" ;
 var request = jQuery.ajax({
@@ -44,9 +38,13 @@ $('h5').html(e.result2);
 function urlParam(){
 var url = new URL(window.location.href);
 var param = url.searchParams.toString().slice(0, -1);
-if (!param){
-param = "1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri";
-}
+if (!param) param = "1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri";
 return param;
 }
+
+$(document).ready(function() {
+    $(window).on("popstate", function (e) {
+        changeDest(urlParam());
+    });
+});
 </script>
