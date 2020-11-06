@@ -6,7 +6,14 @@ layout: default
 <div id="folders" class="row">Loading.....</div>
 
 <script>
-changeDest(urlParam());
+var id = urlParam();
+if (!id){
+    id = "1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri";
+    jusChange(id);
+    history.replaceState({urlPath:'./?'+ id}, "", './?'+ id);
+    }else{
+    changeDest(id);
+    }
 
 function changeDest(id) {
 history.pushState({urlPath:'./?'+ id}, "", './?'+ id);
@@ -39,7 +46,6 @@ $('h5').html(e.result2);
 function urlParam(){
 var url = new URL(window.location.href);
 var param = url.searchParams.toString().slice(0, -1);
-if (!param) param = "1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri";
 return param;
 }
 
