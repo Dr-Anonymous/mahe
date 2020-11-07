@@ -11,8 +11,8 @@ docs:
   class: btn-floating yellow darken-3 waves-effect waves-default
   icon: person
 
-- title: Public files
-  url: https://drive.google.com/drive/folders/1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri
+- title: Files
+  url: /files/
   class: btn-floating orange darken-1 waves-effect waves-default
   icon: insert_drive_file
   
