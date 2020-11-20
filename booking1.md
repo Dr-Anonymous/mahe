@@ -2,7 +2,7 @@
 layout: default
 ---
 
-##Book appointment with Dr Samuel Manoj Ch <small>M.S Orthopaedics(Manipal)</small>
+## Book appointment with Dr Samuel Manoj Ch <small>M.S Orthopaedics(Manipal)</small>
 
 <script>       
        function loadSlots(slots) {
