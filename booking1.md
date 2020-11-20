@@ -2,9 +2,21 @@
 layout: default
 ---
 
-Book appointment with Dr Samuel Manoj Ch <small>M.S Orthopaedics(Manipal)</small>
-
+    <div class="input-field col s12">
+    <p>Book appointment with Dr Samuel Manoj Ch <small>M.S Orthopaedics(Manipal)</small></p>
+      <form id="myForm" action="#">
+            Your Name:<input type="text" id="name" name="name"><br>
+            Phone number:<input type="number" id="phone" name="phone"><br>
+            <div id="showTimeNext">Choose desired date:</div>
+            <input type="date" id= "date">
+            <div id= "btn1"><input class="waves-effect waves-light btn submit-btn" type="button" onclick="toLoadSlots(); return false;" value="Show available slots"></div>
+            <select name="time" id="time"></select>
+            <div id= "btn2" style="display: none;"><input class="waves-effect waves-light btn submit-btn" type="button" onclick="book(document.getElementById('time').value); return false;" value="Book slot"></div>
+     </form>  
+        <div id="output"></div><br>
+        </div>
 <script>       
+       $('#date').attr('min',new Date().toISOString().split('T')[0]);//disable past dates
        function loadSlots(slots) {
        var div = document.getElementById('time');
        document.getElementById('date').style.display = "none";
@@ -44,19 +56,4 @@ Book appointment with Dr Samuel Manoj Ch <small>M.S Orthopaedics(Manipal)</small
           google.script.run.withSuccessHandler(onBooked).bookSlot(document.getElementById("name").value,document.getElementById("phone").value,info);
           return false;
           }
-    </script>
-    
-    <div class="input-field col s12">
-      <form id="myForm" action="#">
-            Your Name:<input type="text" id="name" name="name"><br>
-            Phone number:<input type="number" id="phone" name="phone"><br>
-            <div id="showTimeNext">Choose desired date:</div>
-            <input type="date" id= "date">
-            <div id= "btn1"><input class="waves-effect waves-light btn submit-btn" type="button" onclick="toLoadSlots(); return false;" value="Show available slots"></div>
-            <select name="time" id="time"></select>
-            <div id= "btn2" style="display: none;"><input class="waves-effect waves-light btn submit-btn" type="button" onclick="book(document.getElementById('time').value); return false;" value="Book slot"></div>
-     </form>  
-        <div id="output"></div><br>
-        </div>
-         <script>$('#date').attr('min',new Date().toISOString().split('T')[0]);//disable past dates
     </script>
