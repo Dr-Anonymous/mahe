@@ -2,7 +2,7 @@
 layout: default
 ---
 
-## Book appointment with Dr Samuel Manoj Ch <small>M.S Orthopaedics(Manipal)</small>
+Book appointment with Dr Samuel Manoj Ch <small>M.S Orthopaedics(Manipal)</small>
 
 <script>       
        function loadSlots(slots) {
@@ -57,6 +57,6 @@ layout: default
             <div id= "btn2" style="display: none;"><input class="waves-effect waves-light btn submit-btn" type="button" onclick="book(document.getElementById('time').value); return false;" value="Book slot"></div>
      </form>  
         <div id="output"></div><br>
-        
+        </div>
          <script>$('#date').attr('min',new Date().toISOString().split('T')[0]);//disable past dates
     </script>
