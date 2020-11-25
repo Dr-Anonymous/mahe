@@ -5,6 +5,7 @@ layout: default
 <div id="folders" class="row">Loading.....</div>
 
 <script>
+document.title = 'Orthosam/files';
 var id = urlParam();
 if (!id){
     id = "1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri";
