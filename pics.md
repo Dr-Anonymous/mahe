@@ -6,6 +6,7 @@ layout: default
 <div id="load">Loading....</div>
 
 <script>
+$('#main_content').css("max-width", "100%");
 var url = "https://script.google.com/macros/s/AKfycbxTzetvK_cfyhveGnXhafHlLrIc25smJrpvCdEFNUaCxgkPACeR/exec?callback=loadData";
 jQuery.ajax({
 crossDomain: true,
@@ -13,13 +14,12 @@ url: url,
 method: "GET",
 dataType: "jsonp"
 });
-var i=0,
-	p;
+var i=0, p;
 function loadData(e) {
 p = e;
 var n = i+5;
 while (i< e.length && i< n){
-	$('#pics').append("<div class='col-lg-4 card'><img src='"+e[i]+"'></div>");
+	$('#pics').append("<div class='col s4 card'><img src='"+e[i]+"'></div>");
 	i++;
 	}
 if (i< e.length)
