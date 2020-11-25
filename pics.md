@@ -3,7 +3,7 @@ layout: default
 ---
 ### Engagement
 <div id="pics" class="row"></div>
-<div id="load">Loading....</div>
+<h4><div id="load">Loading....</div></h4>
 
 <script>
 $('#main_content').css("max-width", "100%");
