@@ -13,29 +13,29 @@ url: url,
 method: "GET",
 dataType: "jsonp"
 });
-
-function loadData(e) {
+    
+var i=0;
+var e;
+function loadData(p) {
 $('#load').hide();
-    for (var i=0; i<e.length; i++){
-    $('#pics').append("<img src='"+e[i]+"'>")
-    }
+var e = p;
+loadMore();
 }
-
-$(document).ready(function() {
-    $(this).on("contextmenu", function(e) {
-    e.preventDefault();
-    });
-});
-
+function loadMore(){
+for (i<e.length || (i+5) ; i++){
+    $('#pics').append("<div class='col s6'><img src='"+e[i]+"'></div>")
+    }
+$('#load').hide();
+}
 $(window).scroll(function() {
   if($(window).scrollTop() == $(document).height() - $(window).height()) {
          $('#load').show();
          loadMore();
   }
 });
-function loadMore(){
-
-$('#load').hide();
-}
-
+$(document).ready(function() {
+    $(this).on("contextmenu", function(e) {
+    e.preventDefault();
+    });
+});
 </script>
