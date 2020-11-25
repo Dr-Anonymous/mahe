@@ -27,4 +27,5 @@ $(document).ready(function() {
     e.preventDefault();
     });
 });
+$('.inner').css('max-width', '100%');
 </script>
