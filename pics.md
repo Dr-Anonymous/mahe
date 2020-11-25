@@ -19,8 +19,8 @@ $('#main_content').append("<img src='"+e[i]+"'>")
 }
 }
 $(document).ready(function() {
-    $("img").on("contextmenu",function(){
-       return false;
-    }); 
+$(this).on("contextmenu", function(e) {
+e.preventDefault();
+});
 });
 </script>
