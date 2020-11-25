@@ -5,8 +5,6 @@ layout: default
 ## Hi there
 
 <script>
- myFunct();
-function myFunct(){
 var url = "https://script.google.com/macros/s/AKfycbxTzetvK_cfyhveGnXhafHlLrIc25smJrpvCdEFNUaCxgkPACeR/exec?callback=loadData";
 // Make an AJAX call to Google Script
 jQuery.ajax({
@@ -15,9 +13,10 @@ url: url,
 method: "GET",
 dataType: "jsonp"
 });
+
+function loadData(e) {
+for (var i=0; i<e.length; i++){
+$('#main_content').append("<img src='"+e[i]+"'>")
 }
- // print the returned data from jsonp
-  function loadData(e) {
-  console.log(e);
-  }
+}
 </script>
