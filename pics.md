@@ -3,6 +3,7 @@ layout: default
 ---
 
 ### Engagement
+
 <div id="pics"></div>
 <div id="load">Loading......</div>
 <script>
@@ -14,26 +15,13 @@ method: "GET",
 dataType: "jsonp"
 });
     
-var i=0;
-var e;
-function loadData(p) {
+function loadData(e) {
 $('#load').hide();
-var e = p;
-loadMore();
-}
-function loadMore(){
-var n = i+5;
-for (i<e.length || i<n ; i++){
+for (var i=0; i<e.length; i++){
     $('#pics').append("<div class='col s6'><img src='"+e[i]+"'></div>")
     }
-$('#load').hide();
 }
-$(window).scroll(function() {
-  if($(window).scrollTop() == $(document).height() - $(window).height()) {
-         $('#load').show();
-         loadMore();
-  }
-});
+
 $(document).ready(function() {
     $(this).on("contextmenu", function(e) {
     e.preventDefault();
