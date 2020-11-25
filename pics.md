@@ -4,7 +4,7 @@ layout: default
 
 ### Engagement
 
-<div id="pics"></div>
+<div class="row" id="pics"></div>
 <div id="load">Loading......</div>
 <script>
 var url = "https://script.google.com/macros/s/AKfycbxTzetvK_cfyhveGnXhafHlLrIc25smJrpvCdEFNUaCxgkPACeR/exec?callback=loadData";
@@ -18,7 +18,7 @@ dataType: "jsonp"
 function loadData(e) {
 $('#load').hide();
 for (var i=0; i<e.length; i++){
-    $('#pics').append("<div class='col s6'><img src='"+e[i]+"'></div>")
+    $('#pics').append("<div class='col s4'><img src='"+e[i]+"'></div>")
     }
 }
 
