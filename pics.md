@@ -22,7 +22,7 @@ var e = p;
 loadMore();
 }
 function loadMore(){
-for (i<e.length || (i+5) ; i++){
+for (i<e.length || i+5 ; i++){
     $('#pics').append("<div class='col s6'><img src='"+e[i]+"'></div>")
     }
 $('#load').hide();
