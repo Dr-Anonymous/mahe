@@ -7,12 +7,12 @@ layout: default
 <script>
 var url = "https://script.google.com/macros/s/AKfycbxTzetvK_cfyhveGnXhafHlLrIc25smJrpvCdEFNUaCxgkPACeR/exec?callback=loadData";
 // Make an AJAX call to Google Script
-var request = jQuery.ajax({
-      crossDomain: true,
-      url: url,
-      method: "GET",
-      dataType: "jsonp"
-    });
+jQuery.ajax({
+crossDomain: true,
+url: url,
+method: "GET",
+dataType: "jsonp"
+});
 
  // print the returned data from jsonp
   function loadData(e) {
