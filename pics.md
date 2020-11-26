@@ -5,7 +5,7 @@ layout: default
 <div id="pics" class="row"></div>
 <h4><div id="load">Loading....</div></h4>
 
-<div id="spin" class="preloader-wrapper active">
+<div id="spin" class="preloader-wrapper active" style="display: none;">
 <div class="spinner-layer">
 <div class="circle-clipper left">
 <div class="circle"></div>
