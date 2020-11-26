@@ -19,7 +19,7 @@ layout: default
   
 <script>
 $('#main_content').css("max-width", "100%");
-var albumId = "AH7cjMsGYSbDnBJRC5um4ySfxu1-ya_-2vAlE7_muJ4sAywsOo9XG70bGW0QANwz_NTJBOQsEHiq",
+var albumId = "AH7cjMvUZu6qi79NHsKZxKJMMA6ik4RfOIKBIP-0XyxUOs3fwu05sfaYz1cDx4IK6Oc7dFuW250z",//"AH7cjMsGYSbDnBJRC5um4ySfxu1-ya_-2vAlE7_muJ4sAywsOo9XG70bGW0QANwz_NTJBOQsEHiq",
     pageToken = '';
 
 function myFunction(t){
