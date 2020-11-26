@@ -66,7 +66,7 @@ $('#spin').hide();
 if (albumId == 'albums'){
 e = e["albums"];
 for (var i=0; i< e.length; i++){
-	$('#pics').append("<a href='#' onclick='changeDest(\""+e[i]["id"]+"\"); return false;'><div class='col s4 card'><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p>"+e[i]["title"]+"</p></div></a>");
+	$('#pics').append("<a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); return false;\"><div class='col s4 card'><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p>"+e[i]["title"]+"</p></div></a>");
 	}
 }else{
 e = e["mediaItems"];
