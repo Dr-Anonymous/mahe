@@ -3,7 +3,6 @@ layout: default
 ---
 <div id="pics" class="row"></div>
 <h4><div id="load">Loading....</div></h4>
-
 <div id="spin" class="preloader-wrapper active" style="display: none;">
 <div class="spinner-layer">
 <div class="circle-clipper left">
@@ -22,7 +21,7 @@ $('#project_title').text('Shalima-Manoj');
 $('#project_tagline').text('Engagement pics');
 $('#main_content').css("max-width", "100%");
 	
-var albumId = urlParam(), //"AH7cjMsGYSbDnBJRC5um4ySfxu1-ya_-2vAlE7_muJ4sAywsOo9XG70bGW0QANwz_NTJBOQsEHiq",
+var albumId = urlParam(),
     pageToken = '';
     
 if (!albumId){
@@ -57,18 +56,25 @@ dataType: "jsonp"
 
 function loadData(e) {
 pageToken = e["nextPageToken"] || '';
-e = e["mediaItems"];
-//console.log(e);
-
-for (var i=0; i< e.length; i++){
-	$('#pics').append("<div class='col s4 card'><img src='"+e[i]["baseUrl"]+"'></div>");
-	}
 if (pageToken != ''){
 $('#load').html('<a href="#" onclick="loadMore(\''+ pageToken +'\'); return false;">Load more ...</a>');
 $('#load').show();
 }
 $('#spin').hide();
+
+if (albumId == 'albums'){
+e = e["albums"];
+for (var i=0; i< e.length; i++){
+	$('#pics').append("<a href='./?"+e[i]["id"]+"'><div class='col s4 card'><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p>"+e[i]["title"]+"</p></div></a>");
+	}
+}else{
+e = e["mediaItems"];
+for (var i=0; i< e.length; i++){
+	$('#pics').append("<div class='col s4 card'><img src='"+e[i]["baseUrl"]+"'></div>");
+	}
 }
+}
+
 function loadMore(pageToken){
 $('#load').hide();
 $('#spin').show();
