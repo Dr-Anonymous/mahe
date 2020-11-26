@@ -30,6 +30,11 @@ $('#load').hide();
 function loadMore(){
 loadData(p);
 }
+$(window).scroll(function() {
+    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+           loadMore();
+    }
+});
 /*
 $(document).ready(function() {
 	$(this).on("contextmenu", function(e) {
