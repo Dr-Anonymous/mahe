@@ -34,6 +34,7 @@ if (!albumId){
     
 function changeDest(id) {
 albumId = id;
+$('#pics').html(' ');
 history.pushState({urlPath:'./?'+ albumId}, "", './?'+ albumId);
 myFunction();
 }
@@ -60,7 +61,9 @@ pageToken = e["nextPageToken"] || '';
 if (pageToken != ''){
 $('#load').html('<a href="#" onclick="loadMore(\''+ pageToken +'\'); return false;">Load more ...</a>');
 $('#load').show();
-}
+} else
+$('#load').hide();
+
 $('#spin').hide();
 
 if (albumId == 'albums'){
@@ -74,6 +77,7 @@ for (var i=0; i< e.length; i++){
 	$('#pics').append("<div class='col s4 card'><img src='"+e[i]["baseUrl"]+"'></div>");
 	}
 }
+
 }
 
 function loadMore(pageToken){
