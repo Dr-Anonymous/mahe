@@ -7,7 +7,9 @@ layout: default
 
 <script>
 $('#main_content').css("max-width", "100%");
-var url = "https://script.google.com/macros/s/AKfycbxTzetvK_cfyhveGnXhafHlLrIc25smJrpvCdEFNUaCxgkPACeR/exec?callback=loadData";
+var albumId = "AH7cjMsGYSbDnBJRC5um4ySfxu1-ya_-2vAlE7_muJ4sAywsOo9XG70bGW0QANwz_NTJBOQsEHiq",
+	pageToken = '',
+	url = "https://script.google.com/macros/s/AKfycbxTzetvK_cfyhveGnXhafHlLrIc25smJrpvCdEFNUaCxgkPACeR/exec?callback=loadData&albumId="+albumId+"&pageToken="+pageToken;
 jQuery.ajax({
 crossDomain: true,
 url: url,
@@ -19,7 +21,7 @@ function loadData(e) {
 p = e;
 var n = i+5;
 while (i< e.length && i< n){
-	$('#pics').append("<div class='col s4 card'><img src='"+e[i]+"'></div>");
+	$('#pics').append("<div class='col s4 card'><img src='"+e[i]["baseUrl"]+"'></div>");
 	i++;
 	}
 if (i< e.length)
@@ -30,11 +32,6 @@ $('#load').hide();
 function loadMore(){
 loadData(p);
 }
-$(window).scroll(function() {
-    if($(window).scrollTop() == $(document).height() - $(window).height()) {
-           loadMore();
-    }
-});
 /*
 $(document).ready(function() {
 	$(this).on("contextmenu", function(e) {
