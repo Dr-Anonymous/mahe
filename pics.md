@@ -34,14 +34,14 @@ if (!albumId){
     
 function changeDest(id) {
 albumId = id;
-$('#pics').html('Loading ...');
+$('#pics').html(' ');
 history.pushState({urlPath:'./?'+ albumId}, "", './?'+ albumId);
 myFunction();
 }
 
 $(document).ready(function() {
     $(window).on("popstate", function (e) {
-    	$('#pics').html('Loading ...');
+    	$('#pics').html(' ');
     	albumId = urlParam();
         myFunction();
     });
