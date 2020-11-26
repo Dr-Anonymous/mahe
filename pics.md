@@ -18,7 +18,7 @@ layout: default
 <script>
 document.title = 'Shalima-Manoj | Pics';
 $('#project_title').text('Shalima-Manoj');
-$('#project_tagline').text('Engagement pics');
+$('#project_tagline').text('Pic gallery');
 $('#main_content').css("max-width", "100%");
 	
 var albumId = urlParam(),
@@ -34,17 +34,19 @@ if (!albumId){
     
 function changeDest(id) {
 albumId = id;
-$('#pics').html(' ');
+$('#pics').html('Loading ...');
 history.pushState({urlPath:'./?'+ albumId}, "", './?'+ albumId);
 myFunction();
 }
 
 $(document).ready(function() {
     $(window).on("popstate", function (e) {
+    	$('#pics').html('Loading ...');
     	albumId = urlParam();
         myFunction();
     });
 });
+
 function myFunction(t){
 pageToken = t || ''; 
 var url = "https://script.google.com/macros/s/AKfycbxTzetvK_cfyhveGnXhafHlLrIc25smJrpvCdEFNUaCxgkPACeR/exec?callback=loadData&albumId="+albumId+"&pageToken="+pageToken;
