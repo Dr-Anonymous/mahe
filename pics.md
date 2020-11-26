@@ -27,8 +27,9 @@ myFunction();
 function loadData(e) {
 p = e;
 var n = i+5;
+e = e["mediaItems"];
 while (i< e.length && i< n){
-	$('#pics').append("<div class='col s4 card'><img src='"+e["mediaItems"][i]["baseUrl"]+"'></div>");
+	$('#pics').append("<div class='col s4 card'><img src='"+e[i]["baseUrl"]+"'></div>");
 	i++;
 	}
 if (i< e.length)
