@@ -22,8 +22,21 @@ $('#project_title').text('Shalima-Manoj');
 $('#project_tagline').text('Engagement pics');
 $('#main_content').css("max-width", "100%");
 	
-var albumId = "AH7cjMvUZu6qi79NHsKZxKJMMA6ik4RfOIKBIP-0XyxUOs3fwu05sfaYz1cDx4IK6Oc7dFuW250z", //"AH7cjMsGYSbDnBJRC5um4ySfxu1-ya_-2vAlE7_muJ4sAywsOo9XG70bGW0QANwz_NTJBOQsEHiq",
+var albumId = urlParam(), //"AH7cjMsGYSbDnBJRC5um4ySfxu1-ya_-2vAlE7_muJ4sAywsOo9XG70bGW0QANwz_NTJBOQsEHiq",
     pageToken = '';
+    
+if (!albumId){
+    albumId = "AH7cjMvUZu6qi79NHsKZxKJMMA6ik4RfOIKBIP-0XyxUOs3fwu05sfaYz1cDx4IK6Oc7dFuW250z";
+    myFunction(albumId);
+    history.replaceState({urlPath:'./?'+ albumId}, "", './?'+ albumId);
+    }else{
+    changeDest(albumId);
+    }
+    
+function changeDest(albumId) {
+history.pushState({urlPath:'./?'+ albumId}, "", './?'+ albumId);
+myFunction(albumId);
+}
 
 function myFunction(t){
 pageToken = t || ''; 
@@ -35,8 +48,6 @@ method: "GET",
 dataType: "jsonp"
 });
 }
-
-myFunction();
 
 function loadData(e) {
 pageToken = e["nextPageToken"] || '';
@@ -56,6 +67,11 @@ function loadMore(pageToken){
 $('#load').hide();
 $('#spin').show();
 myFunction(pageToken);
+}
+function urlParam(){
+var url = new URL(window.location.href);
+var param = url.searchParams.toString().slice(0, -1);
+return param;
 }
 /*
 $(document).ready(function() {
