@@ -4,15 +4,25 @@ layout: default
 ### Engagement
 <div id="pics" class="row"></div>
 <h4><div id="load">Loading....</div></h4>
-
+	<div id="spin" class="preloader-wrapper active">
+	    <div class="spinner-layer spinner-red-only">
+	      <div class="circle-clipper left">
+		<div class="circle"></div>
+	      </div><div class="gap-patch">
+		<div class="circle"></div>
+	      </div><div class="circle-clipper right">
+		<div class="circle"></div>
+	      </div>
+	    </div>
+	  </div>
+  
 <script>
 $('#main_content').css("max-width", "100%");
-var i=0,
-    p,
-    albumId = "AH7cjMsGYSbDnBJRC5um4ySfxu1-ya_-2vAlE7_muJ4sAywsOo9XG70bGW0QANwz_NTJBOQsEHiq",
+var albumId = "AH7cjMsGYSbDnBJRC5um4ySfxu1-ya_-2vAlE7_muJ4sAywsOo9XG70bGW0QANwz_NTJBOQsEHiq",
     pageToken = '';
 
-function myFunction(){
+function myFunction(t){
+pageToken = t || ''; 
 var url = "https://script.google.com/macros/s/AKfycbxTzetvK_cfyhveGnXhafHlLrIc25smJrpvCdEFNUaCxgkPACeR/exec?callback=loadData&albumId="+albumId+"&pageToken="+pageToken;
 jQuery.ajax({
 crossDomain: true,
@@ -25,20 +35,23 @@ dataType: "jsonp"
 myFunction();
 
 function loadData(e) {
-p = e;
-var n = i+5;
+pageToken = e["nextPageToken"] || '';
 e = e["mediaItems"];
-while (i< e.length && i< n){
+//console.log(e);
+var i;
+for (i=0; i< e.length; i++){
 	$('#pics').append("<div class='col s4 card'><img src='"+e[i]["baseUrl"]+"'></div>");
-	i++;
 	}
-if (i< e.length)
-$('#load').html('<a href="#" onclick="loadMore(); return false;">Load more..</a>');
-else
-$('#load').hide();
+if (pageToken != ''){
+$('#load').html('<a href="#" onclick="loadMore(\''+ pageToken +'\'); return false;">Load more ...</a>');
+$('#load').show();
 }
-function loadMore(){
-loadData(p);
+$('#spin').hide();
+}
+function loadMore(pageToken){
+$('#load').hide();
+$('#spin').show();
+myFunction(pageToken);
 }
 /*
 $(document).ready(function() {
