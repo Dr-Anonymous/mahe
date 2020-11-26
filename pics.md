@@ -4,17 +4,18 @@ layout: default
 ### Engagement
 <div id="pics" class="row"></div>
 <h4><div id="load">Loading....</div></h4>
-	<div id="spin" class="preloader-wrapper active">
-	    <div class="spinner-layer spinner-red-only">
-	      <div class="circle-clipper left">
-		<div class="circle"></div>
-	      </div><div class="gap-patch">
-		<div class="circle"></div>
-	      </div><div class="circle-clipper right">
-		<div class="circle"></div>
-	      </div>
-	    </div>
-	  </div>
+
+<div id="spin" class="preloader-wrapper active">
+<div class="spinner-layer">
+<div class="circle-clipper left">
+<div class="circle"></div>
+</div><div class="gap-patch">
+<div class="circle"></div>
+</div><div class="circle-clipper right">
+<div class="circle"></div>
+</div>
+</div>
+</div>
   
 <script>
 $('#main_content').css("max-width", "100%");
