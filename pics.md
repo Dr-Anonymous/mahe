@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-### Engagement
 <div id="pics" class="row"></div>
 <h4><div id="load">Loading....</div></h4>
 
@@ -18,8 +17,12 @@ layout: default
 </div>
   
 <script>
+document.title = 'Shalima-Manoj | Pics';
+$('#project_title').text('Shalima-Manoj');
+$('#project_tagline').text('Engagement pics');
 $('#main_content').css("max-width", "100%");
-var albumId = "AH7cjMvUZu6qi79NHsKZxKJMMA6ik4RfOIKBIP-0XyxUOs3fwu05sfaYz1cDx4IK6Oc7dFuW250z",//"AH7cjMsGYSbDnBJRC5um4ySfxu1-ya_-2vAlE7_muJ4sAywsOo9XG70bGW0QANwz_NTJBOQsEHiq",
+	
+var albumId = "AH7cjMvUZu6qi79NHsKZxKJMMA6ik4RfOIKBIP-0XyxUOs3fwu05sfaYz1cDx4IK6Oc7dFuW250z", //"AH7cjMsGYSbDnBJRC5um4ySfxu1-ya_-2vAlE7_muJ4sAywsOo9XG70bGW0QANwz_NTJBOQsEHiq",
     pageToken = '';
 
 function myFunction(t){
@@ -39,8 +42,8 @@ function loadData(e) {
 pageToken = e["nextPageToken"] || '';
 e = e["mediaItems"];
 //console.log(e);
-var i;
-for (i=0; i< e.length; i++){
+
+for (var i=0; i< e.length; i++){
 	$('#pics').append("<div class='col s4 card'><img src='"+e[i]["baseUrl"]+"'></div>");
 	}
 if (pageToken != ''){
