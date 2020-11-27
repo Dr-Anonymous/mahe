@@ -18,7 +18,7 @@ layout: default
 <!--spinner end-->
   
 <script>
-document.title = 'Shalima-Manoj | Pics';
+document.title = 'Pic gallery';
 $('#project_title').text('Pic gallery');
 $('#project_tagline').text('Shalima-Manoj');
 $('#main_content').css("max-width", "100%");
@@ -73,20 +73,23 @@ $('#load').show();
 } else
 $('#load').hide();
 
-if (albumId == 'albums'){
+if (albumId == 'albums'){ // these are albums
 e = e["albums"];
-for (var i=0; i< e.length; i++){
+for (var i=0; i< e.length; i++){ //individual albums
 	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); $('#project_tagline').text('"+e[i]["title"]+"'); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p>"+e[i]["title"]+"</p></a></div>");
 	}
-}else{
+}else{ // these are files
 e = e["mediaItems"];
-for (var i=0; i< e.length; i++){
+for (var i=0; i< e.length; i++){ //individual file
 	var link = e[i]["baseUrl"],
-	    dimen= e[i]["mediaMetadata"];
+	    dimen = e[i]["mediaMetadata"]
+	    mimeType = e[i]["mimeType"];
+	if (mimeType.includes("video"))
+	$('#pics').append("<div class='col s4 modal-trigger'><video poster='"+link+"' preload='none' controls><source src='"+link+"=dv' type='"+mimeType+"'></video></div>");
+	else
 	$('#pics').append("<div class='col s4 modal-trigger'><a href='"+link+"=w"+ dimen["width"]+"-h"+ dimen["height"]+"' target='_blank'><img src='"+link+"'></a></div>");
 		}
 	}
-
 }
 
 function loadMore(pageToken){
