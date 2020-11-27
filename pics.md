@@ -3,7 +3,8 @@ layout: default
 ---
 <div id="pics" class="row"></div>
 <div class="flow-text center" id="load"></div>
-<div id="spin" class="preloader-wrapper active center">
+<!--spinner start-->
+<center><div id="spin" class="preloader-wrapper active">
 <div class="spinner-layer">
 <div class="circle-clipper left">
 <div class="circle"></div>
@@ -13,7 +14,7 @@ layout: default
 <div class="circle"></div>
 </div>
 </div>
-</div>
+</div></center><!--spinner end-->
   
 <script>
 document.title = 'Shalima-Manoj | Pics';
@@ -42,6 +43,8 @@ myFunction();
 
 $(document).ready(function() {
     $(window).on("popstate", function (e) {
+    	$('#load').hide();
+	$('#spin').show();
     	$('#pics').html(' ');
     	albumId = urlParam();
         myFunction();
