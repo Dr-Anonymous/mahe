@@ -76,7 +76,7 @@ $('#load').hide();
 if (albumId == 'albums'){ // these are albums
 e = e["albums"];
 for (var i=0; i< e.length; i++){ //individual albums
-	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); $('#project_tagline').text('"+e[i]["title"]+"'); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p>"+e[i]["title"]+"</p></a></div>");
+	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); $('#project_tagline').text('"+e[i]["title"]+"'); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p class='flow-text'>"+e[i]["title"]+"</p></a></div>");
 	}
 }else{ // these are files
 e = e["mediaItems"];
@@ -86,7 +86,7 @@ for (var i=0; i< e.length; i++){ //individual file
 	    mimeType = e[i]["mimeType"];
 	    
 	if (mimeType.includes("video"))
-	$('#pics').append("<div class='col s4'><video class='responsive-video' width='"+ dimen["width"] +"' height='"+ dimen["height"] +"' poster='"+link+"' preload='none' controls playsinline onclick='play();'><source src='"+link+"=dv' type='"+mimeType+"'></video><p class='flow-text'>"+ e[i]["filename"] +"</p></div>");
+	$('#pics').append("<div class='col s4'><video class='responsive-video' width='"+ dimen["width"] +"' height='"+ dimen["height"] +"' poster='"+link+"' preload='none' controls playsinline onclick='play();'><source src='"+link+"=dv' type='"+mimeType+"'></video><p class='flow-text truncate' style='width:"+ dimen["width"] +"px;'>"+ e[i]["filename"] +"</p></div>");
 	else
 	$('#pics').append("<div class='col s4'><a href='"+link+"=w"+ dimen["width"]+"-h"+ dimen["height"]+"' target='_blank'><img src='"+link+"'></a></div>");
 		}
