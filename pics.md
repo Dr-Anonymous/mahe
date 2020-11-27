@@ -3,7 +3,7 @@ layout: default
 ---
 <div id="pics" class="row"></div>
 <div class="flow-text center" id="load"></div>
-<div id="spin" class="preloader-wrapper active">
+<div id="spin" class="preloader-wrapper active center">
 <div class="spinner-layer">
 <div class="circle-clipper left">
 <div class="circle"></div>
