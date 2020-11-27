@@ -30,6 +30,7 @@ if (!albumId){
     albumId = "AH7cjMvUZu6qi79NHsKZxKJMMA6ik4RfOIKBIP-0XyxUOs3fwu05sfaYz1cDx4IK6Oc7dFuW250z";
     myFunction();
     history.replaceState({urlPath:'./?'+ albumId}, "", './?'+ albumId);
+    $('#project_tagline').text('Shalima-Manoj');
     }else{
     changeDest(albumId);
     }
