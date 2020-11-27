@@ -4,7 +4,7 @@
   </a>
   <ul>
    {% for item in site.data.menu.docs %}
-          <li><a class="btn-large {{ item.class }}" href="{{ item.url }}" alt="{{ item.title }}"><i class="material-icons">{{ item.icon }}</i></a></li>
+          <li><a class="{{ item.class }}" href="{{ item.url }}" alt="{{ item.title }}"><i class="material-icons">{{ item.icon }}</i></a></li>
    {% endfor %}
   </ul>
 </div>
