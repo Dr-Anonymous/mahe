@@ -14,7 +14,8 @@ layout: default
 <div class="circle"></div>
 </div>
 </div>
-</div></center><!--spinner end-->
+</div></center>
+<!--spinner end-->
   
 <script>
 document.title = 'Shalima-Manoj | Pics';
@@ -79,9 +80,11 @@ for (var i=0; i< e.length; i++){
 }else{
 e = e["mediaItems"];
 for (var i=0; i< e.length; i++){
-	$('#pics').append("<div class='col s4'><img src='"+e[i]["baseUrl"]+"'></div>");
+	var link = e[i]["baseUrl"],
+	    dimen= e[i]["mediaMetadata"];
+	$('#pics').append("<div class='col s4 modal-trigger'><a href='"+link+"=w"+ dimen["width"]+"-h"+ dimen["height"]+"' target='_blank'><img src='"+link+"'></a></div>");
+		}
 	}
-}
 
 }
 
