@@ -75,7 +75,7 @@ $('#load').hide();
 if (albumId == 'albums'){
 e = e["albums"];
 for (var i=0; i< e.length; i++){
-	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); $('#project_tagline').text(\""+e[i]["title"]+"\"); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p>"+e[i]["title"]+"</p></a></div>");
+	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); $('#project_tagline').text('"+e[i]["title"]+"'); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p>"+e[i]["title"]+"</p></a></div>");
 	}
 }else{
 e = e["mediaItems"];
