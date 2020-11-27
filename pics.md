@@ -86,7 +86,7 @@ for (var i=0; i< e.length; i++){ //individual file
 	    mimeType = e[i]["mimeType"];
 	    
 	if (mimeType.includes("video"))
-	$('#pics').append("<div class='col s4'><video class='responsive-video' width='"+ dimen["width"] +"' height='"+ dimen["height"] +"' poster='"+link+"' preload='none' controls='true' onclick='play();'><source src='"+link+"=dv' type='"+mimeType+"'></video><p class='flow-text truncate' style='width:"+ dimen["width"]*60/100 +"px;'>"+ e[i]["filename"] +"</p></div>");
+	$('#pics').append("<div class='col s4'><video class='responsive-video' width='"+ dimen["width"] +"' height='"+ dimen["height"] +"' poster='"+link+"' preload='none' controls='true' onclick='play();'><source src='"+link+"=dv' type='"+mimeType+"'></video><p class='flow-text truncate' style='width:"+ 100 +"px;'>"+ e[i]["filename"] +"</p></div>");
 	else
 	$('#pics').append("<div class='col s4'><a href='"+link+"=w"+ dimen["width"]+"-h"+ dimen["height"]+"' target='_blank'><img src='"+link+"'></a></div>");
 		}
