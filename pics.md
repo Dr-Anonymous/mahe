@@ -34,6 +34,7 @@ if (!albumId){
     
 function changeDest(id) {
 albumId = id;
+$('#spin').show();
 $('#pics').html(' ');
 history.pushState({urlPath:'./?'+ albumId}, "", './?'+ albumId);
 myFunction();
@@ -70,7 +71,7 @@ $('#load').hide();
 if (albumId == 'albums'){
 e = e["albums"];
 for (var i=0; i< e.length; i++){
-	$('#pics').append("<a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); return false;\"><div class='col s4'><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p>"+e[i]["title"]+"</p></div></a>");
+	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p>"+e[i]["title"]+"</p></a></div>");
 	}
 }else{
 e = e["mediaItems"];
