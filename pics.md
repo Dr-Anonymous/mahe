@@ -2,8 +2,8 @@
 layout: default
 ---
 <div id="pics" class="row"></div>
-<h4><div id="load">Loading....</div></h4>
-<div id="spin" class="preloader-wrapper active" style="display: none;">
+<div class="flow-text center" id="load"></div>
+<div id="spin" class="preloader-wrapper active">
 <div class="spinner-layer">
 <div class="circle-clipper left">
 <div class="circle"></div>
@@ -60,13 +60,12 @@ dataType: "jsonp"
 
 function loadData(e) {
 pageToken = e["nextPageToken"] || '';
+$('#spin').hide();
 if (pageToken != ''){
 $('#load').html('<a href="#" onclick="loadMore(\''+ pageToken +'\'); return false;">Load more ...</a>');
 $('#load').show();
 } else
 $('#load').hide();
-
-$('#spin').hide();
 
 if (albumId == 'albums'){
 e = e["albums"];
