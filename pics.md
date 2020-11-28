@@ -51,12 +51,12 @@ $(document).ready(function() {
         myFunction();
 	$('#project_tagline').text('Albums');
     });
-    
-    $(window).scroll(function() {
-	    if($(window).scrollTop() == $(document).height() - $(window).height()) {
-		   $('#load a').click();
-	    }
-	});
+});
+
+$(window).scroll(function() {
+if($(window).scrollTop() == $(document).height() - $(window).height()) {
+   $('#load a').click();
+}
 });
 
 function myFunction(t){
