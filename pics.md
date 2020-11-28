@@ -96,7 +96,8 @@ $('#load').html('<p>The End.</p>');
 if (albumId == 'albums'){ // these are albums
 e = e["albums"];
 for (var i=0; i< e.length; i++){ //individual albums
-	$('#pics').append("<div class='col s4'><a href='#' onclick='changeDest(\""+e[i]["id"]+"\"); $(\"#project_tagline\").text(\""+e[i]["title"]+"\"); return false;'><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p class='flow-text'>"+e[i]["title"]+"</p></a><p>Total files: "+ e[i]["mediaItemsCount"] +".</p></div>");
+	var title = encodeURI(e[i]["title"]);
+	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); $('#project_tagline').text('"+ title +"'); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p class='flow-text'>"+ title +"</p></a><p>Total files: "+ e[i]["mediaItemsCount"] +".</p></div>");
 	}
 }else{ // these are files
 e = e["mediaItems"];
