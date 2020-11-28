@@ -59,10 +59,12 @@ $(document).ready(function() {
 var end = $("#footer_wrap").offset().top
     viewEnd = $(window).scrollTop() + $(window).height(),
     distance = end - viewEnd;
-	if (distance < 100) {
+	if (distance < 20) {
 	   $('#load a').click();
+	   $('#load').html('<a href="#" onclick="return false;"></a>');
 	}
     });
+    
     //prevent right click
     /*$(this).on("contextmenu", function(e) {
 	e.preventDefault();
