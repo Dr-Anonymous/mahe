@@ -90,13 +90,13 @@ if (pageToken != ''){
 $('#load').html('<a href="#" onclick="loadMore(\''+ pageToken +'\'); return false;">Load more ...</a>');
 $('#load').show();
 } else{
-$('#load').html('<a href="#" onclick="return false;"></a>');
+$('#load').html('<p>The End.</p>');
 }
 
 if (albumId == 'albums'){ // these are albums
 e = e["albums"];
 for (var i=0; i< e.length; i++){ //individual albums
-	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); $('#project_tagline').text('"+e[i]["title"]+"'); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p class='flow-text'>"+e[i]["title"]+"</p></a></div>");
+	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); $('#project_tagline').text('"+e[i]["title"]+"'); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p class='flow-text'>"+e[i]["title"]+"</p></a><p>Total files: "+ e[i]["mediaItemsCount"] +".</p></div>");
 	}
 }else{ // these are files
 e = e["mediaItems"];
@@ -106,9 +106,9 @@ for (var i=0; i< e.length; i++){ //individual file
 	    mimeType = e[i]["mimeType"];
 	    
 	if (mimeType.includes("video"))
-	$('#pics').append("<div class='col s4'><video class='responsive-video' width='"+ dimen["width"] +"' height='"+ dimen["height"] +"' poster='"+link+"' preload='none' controls onclick='play();'><source src='"+link+"=dv' type='"+mimeType+"'></video><p class='flow-text truncate' style='max-width:"+screen.width *80/100+"px;width:"+ dimen["width"] +"px'>"+ e[i]["filename"] +"</p></div>");
+	$('#pics').append("<div class='col s4'><video class='responsive-video' width='"+ dimen["width"] +"' height='"+ dimen["height"] +"' poster='"+link+"' preload='none' controls onclick='play();'><source src='"+link+"=dv' type='"+mimeType+"'></video><p class='flow-text truncate' style='max-width:"+screen.width *80/100+"px;width:"+ dimen["width"] +"px'>"+ e[i]["filename"] +"</p><p><a href='"+ link +"=dv' target='_blank'>Download video</a></p></div>");
 	else
-	$('#pics').append("<div class='col s4'><a href='"+link+"=w"+ dimen["width"]+"-h"+ dimen["height"]+"' target='_blank'><img src='"+link+"'></a></div>");
+	$('#pics').append("<div class='col s4'><img src='"+link+"'><p><a href='"+link+"=w"+ dimen["width"]+"-h"+ dimen["height"]+"' target='_blank'>View full size.</a></p><p>Creation Time: "+ new Date(e[i]["creationTime"]).toLocaleString +"</p></div>");
 		}
 	}
 }
