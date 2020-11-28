@@ -105,7 +105,7 @@ for (var i=0; i< e.length; i++){ //individual file
 	    dimen = e[i]["mediaMetadata"],
 	    mimeType = e[i]["mimeType"],
 	    crTime = new Date(e[i]["creationTime"]).toLocaleString();
-	    console.log(e[i]["mimeType"], crTime);
+	    console.log(e[i]["creationTime"], crTime);
 	    
 	if (mimeType.includes("video"))
 	$('#pics').append("<div class='col s4'><video class='responsive-video' width='"+ dimen["width"] +"' height='"+ dimen["height"] +"' poster='"+link+"' preload='none' controls onclick='play();'><source src='"+link+"=dv' type='"+mimeType+"'></video><p class='flow-text truncate' style='max-width:"+screen.width *80/100+"px;width:"+ dimen["width"] +"px'>"+ e[i]["filename"] +"</p><p><a href='"+ link +"=dv' target='_blank'>Download video</a></p></div>");
