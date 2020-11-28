@@ -20,18 +20,19 @@ layout: default
 <script>
 document.title = 'Pic gallery';
 $('#project_title').text('Pic gallery');
-$('#project_tagline').text('Shalima-Manoj');
 $('#main_content').css("max-width", "100%");
 	
 var albumId = urlParam(),
     pageToken = '';
-    
+
 if (!albumId){
     albumId = "AH7cjMvUZu6qi79NHsKZxKJMMA6ik4RfOIKBIP-0XyxUOs3fwu05sfaYz1cDx4IK6Oc7dFuW250z";
+    $('#project_tagline').text('Shalima-Manoj');
     myFunction();
     history.replaceState({urlPath:'./?'+ albumId}, "", './?'+ albumId);
     }else{
     changeDest(albumId);
+    $('#project_tagline').text('Albums');
     }
     
 function changeDest(id) {
@@ -43,6 +44,7 @@ myFunction();
 }
 
 $(document).ready(function() {
+    //on pressing back on history
     $(window).on("popstate", function (e) {
     	$('#load').hide();
 	$('#spin').show();
@@ -51,16 +53,22 @@ $(document).ready(function() {
         myFunction();
 	$('#project_tagline').text('Albums');
     });
-});
-
-$(window).scroll(function() {
+    
+    //infinite scrool
+   $(window).scroll(function() {
 var end = $("#footer_wrap").offset().top
     viewEnd = $(window).scrollTop() + $(window).height(),
     distance = end - viewEnd;
-if (distance < 300) {
-   $('#load a').click();
-}
+	if (distance < 100) {
+	   $('#load a').click();
+	}
+    });
+    //prevent right click
+    /*$(this).on("contextmenu", function(e) {
+	e.preventDefault();
+	});*/
 });
+
 
 function myFunction(t){
 pageToken = t || ''; 
@@ -79,8 +87,9 @@ $('#spin').hide();
 if (pageToken != ''){
 $('#load').html('<a href="#" onclick="loadMore(\''+ pageToken +'\'); return false;">Load more ...</a>');
 $('#load').show();
-} else
-$('#load').hide();
+} else{
+$('#load').html('<a href="#" onclick="return false;"></a>');
+}
 
 if (albumId == 'albums'){ // these are albums
 e = e["albums"];
@@ -107,17 +116,10 @@ $('#load').hide();
 $('#spin').show();
 myFunction(pageToken);
 }
+
 function urlParam(){
 var url = new URL(window.location.href);
 var param = url.searchParams.toString().slice(0, -1);
 return param;
 }
-
-/*
-
-$(document).ready(function() {
-	$(this).on("contextmenu", function(e) {
-	e.preventDefault();
-	});
-});*/
 </script>
