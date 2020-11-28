@@ -96,7 +96,7 @@ $('#load').html('<p>The End.</p>');
 if (albumId == 'albums'){ // these are albums
 e = e["albums"];
 for (var i=0; i< e.length; i++){ //individual albums
-	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); $('#project_tagline').text('"+e[i]["title"]+"'); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p class='flow-text'>"+e[i]["title"]+"</p></a><p>Total files: "+ e[i]["mediaItemsCount"] +".</p></div>");
+	$('#pics').append("<div class='col s4'><a href='#' onclick=\"changeDest('"+e[i]["id"]+"'); $('#project_tagline').text(\""+e[i]["title"]+"\"); return false;\"><img src='"+e[i]["coverPhotoBaseUrl"]+"'><p class='flow-text'>"+e[i]["title"]+"</p></a><p>Total files: "+ e[i]["mediaItemsCount"] +".</p></div>");
 	}
 }else{ // these are files
 e = e["mediaItems"];
@@ -104,8 +104,7 @@ for (var i=0; i< e.length; i++){ //individual file
 	var link = e[i]["baseUrl"],
 	    dimen = e[i]["mediaMetadata"],
 	    mimeType = e[i]["mimeType"],
-	    crTime = new Date(e[i]["creationTime"]).toLocaleString();
-	    console.log(e[i]["creationTime"], crTime);
+	    crTime = new Date(e[i]["mediaMetadata"]["creationTime"]).toLocaleString();
 	    
 	if (mimeType.includes("video"))
 	$('#pics').append("<div class='col s4'><video class='responsive-video' width='"+ dimen["width"] +"' height='"+ dimen["height"] +"' poster='"+link+"' preload='none' controls onclick='play();'><source src='"+link+"=dv' type='"+mimeType+"'></video><p class='flow-text truncate' style='max-width:"+screen.width *80/100+"px;width:"+ dimen["width"] +"px'>"+ e[i]["filename"] +"</p><p><a href='"+ link +"=dv' target='_blank'>Download video</a></p></div>");
