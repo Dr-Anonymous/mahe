@@ -54,9 +54,12 @@ $(document).ready(function() {
 });
 
 $(window).scroll(function() {
-if($(window).scrollTop() == $(document).height() - $(window).height()) {
+var end = $("#load").offset().top
+    viewEnd = $(window).scrollTop() + $(window).height(),
+    distance = end - viewEnd;
+if (distance < 300) {
    $('#load a').click();
-   $(window).scrollTop($(window).scrollTop()-1);
+   //$(window).scrollTop($(window).scrollTop()-1);
 }
 });
 
