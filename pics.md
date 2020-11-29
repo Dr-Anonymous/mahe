@@ -56,10 +56,10 @@ $(document).ready(function() {
     
     //infinite scrool
    $(window).scroll(function() {
-var end = $("#footer_wrap").offset().top
+var end = $("#load").offset().top
     viewEnd = $(window).scrollTop() + $(window).height(),
     distance = end - viewEnd;
-	if (distance < 20) {
+	if (distance < 100) {
 	   $('#load a').click();
 	   $('#load').html('<a href="#" onclick="return false;"></a>');
 	}
