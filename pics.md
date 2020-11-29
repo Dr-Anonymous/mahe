@@ -59,7 +59,7 @@ $(document).ready(function() {
 var end = $("#load").offset().top
     viewEnd = $(window).scrollTop() + $(window).height(),
     distance = end - viewEnd;
-	if (distance < 100) {
+	if (distance < 300) {
 	   $('#load a').click();
 	   $('#load').html('<a href="#" onclick="return false;"></a>');
 	}
