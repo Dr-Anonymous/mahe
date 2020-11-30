@@ -1,8 +1,7 @@
 (function($){
    $(function(){
 
-     $('.button-collapse').sidenav();
-     $('.click-to-toggle').sidenav();
+     $('.sidenav').sidenav();
      $('.parallax').parallax();
      $('.collapsible').collapsible();
      $('.carousel.carousel-slider').carousel({fullWidth: true});
