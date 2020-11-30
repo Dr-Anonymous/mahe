@@ -3,53 +3,105 @@ layout: default
 ---
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
 
-## digiRx demo
+### digiRx demo
 
 <div class="row">
 <form class="col s12">
 
-<h5>Patient details</h5>
   <div class="row">
-    <div class="input-field col s4">
+    <h5>Patient details</h5>
+    <div class="input-field col s6">
       <i class="material-icons prefix">account_circle</i>
       <input id="icon_prefix" type="text" class="validate">
       <label for="icon_prefix">Name</label>
     </div>
-    <div class="input-field col s4">
+    <div class="input-field col s6">
       <input id="age" type="number" class="validate">
       <label for="age">Age</label>
     </div>
-    <div class="input-field col s4">
+    <div class="input-field col s6">
       <a class='dropdown-trigger btn' href='#' data-target='sex'>Sex</a>
       <ul id='sex' class='dropdown-content'>
         <li><a href="#!">Male</a></li>
         <li><a href="#!">Feale</a></li>
       </ul>
     </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s4">
+    <div class="input-field col s6>
       <input id="dob" type="date" class="validate">
       <label for="dob">DOB</label>
     </div>
-    <div class="input-field col s4">
+    <div class="input-field col s6">
       <i class="material-icons prefix">phone</i>
       <input id="icon_telephone" type="tel" class="validate">
       <label for="icon_telephone">Phone</label>
     </div>
-    <div class="input-field col s4">
+    <div class="input-field col s6">
       <textarea id="address" class="materialize-textarea"></textarea>
       <label for="address">Address</label>
     </div>
   </div>
-
-
+                          
+  <div class="row">
+    <h5>Vitals</h5>
+    <div class="input-field col s3">
+      <input value="170" id="height" type="number" class="validate">
+      <label class="active" for="height">Height (cms)</label>
+    </div>
+    <div class="input-field col s3">
+      <input value="70" id="weight" type="number" class="validate">
+      <label class="active" for="weight">Weight (Kgs)</label>
+    </div>
+    <div class="input-field col s3">
+      <input value="98.6" id="temp" type="number" class="validate">
+      <label class="active" for="temp">Temp (F)</label>
+    </div>
+    <div class="input-field col s3">
+      <input value="120/80" id="bp" type="text">
+      <label class="active" for="bp">BP (mm.Hg)</label>
+    </div>
+    <div class="input-field col s3">
+      <input value="80" id="pulse" type="number" class="validate">
+      <label class="active" for="pulse">Pulse (b.p.m)</label>
+    </div>
+    <div class="input-field col s3">
+      <input value="16" id="rr" type="number" class="validate">
+      <label class="active" for="rr">Resp. rate</label>
+    </div>
+    <div class="input-field col s3">
+      <input value="96" id="sat" type="number" class="validate">
+      <label class="active" for="sat">Spo2 (%)</label>
+    </div>
+  </div>
+  <div class="row">
+    <h5>Vitals</h5>
+    <div class="input-field col s12">
+      <textarea id="complaints" class="materialize-textarea"></textarea>
+      <label for="complaints">Complaints</label>
+    </div>
+    <div class="input-field col s12">
+      <textarea id="findings" class="materialize-textarea"></textarea>
+      <label for="findings">Findings</label>
+    </div>
+    <div class="input-field col s12">
+      <textarea id="diagnosis" class="materialize-textarea"></textarea>
+      <label for="diagnosis">Diagnosis</label>
+    </div>
+  </div>
+  <div class="row">
+   <h5>Advise and followup</h5> 
+   <div class="input-field col s12">
+    <textarea id="" class="materialize-textarea"></textarea>
+    <label for="findings">Findings</label>
+  </div>
+  </div>
 </form>
 </div>
 
 <a class="waves-effect waves-light btn" onclick="doc.save('digiRx.pdf'); return false;"><i class="material-icons left">file_download</i>View sample</a>
 
 <script>
+$('.dropdown-trigger').dropdown();
+  
 var jsPDF = window.jspdf.jsPDF,
     doc = new jsPDF(),
     //font sixes
