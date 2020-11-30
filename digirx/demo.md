@@ -104,7 +104,7 @@ layout: default
 </form>
 </div>
 
-<a class="waves-effect waves-light btn" onclick="doc.save('digiRx.pdf'); return false;"><i class="material-icons left">file_download</i>Create prescription</a>
+<a class="waves-effect waves-light btn" onclick="doc.save('digiRx.pdf'); return false;"><i class="material-icons left">bubble_chart</i>Create prescription</a>
 
 <script>
 $(document).ready(function(){
