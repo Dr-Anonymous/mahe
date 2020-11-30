@@ -20,11 +20,13 @@ layout: default
       <label for="age">Age</label>
     </div>
     <div class="input-field col s6">
-      <a class='dropdown-trigger btn' href='#' data-target='sex'>Sex</a>
-      <ul id='sex' class='dropdown-content'>
-        <li><a href="#!">Male</a></li>
-        <li><a href="#!">Feale</a></li>
-      </ul>
+      <select>
+      <option value="" disabled selected>Sex</option>
+      <option value="male">Male</option>
+      <option value="female">female</option>
+      <option value="other">Other</option>
+      </select>
+    <label>Select sex</label>
     </div>
     <div class="input-field col s6">
       <input id="dob" type="date" class="validate">
@@ -104,11 +106,9 @@ layout: default
 </form>
 </div>
 
-<a class="waves-effect waves-light btn" onclick="doc.save('digiRx.pdf'); return false;"><i class="material-icons left">file_download</i>View sample</a>
+<a class="waves-effect waves-light btn" onclick="doc.save('digiRx.pdf'); return false;"><i class="material-icons left">file_download</i>Create prescription</a>
 
-<script>
-$('.dropdown-trigger').dropdown();
-  
+<script>  
 var jsPDF = window.jspdf.jsPDF,
     doc = new jsPDF(),
     //font sixes
