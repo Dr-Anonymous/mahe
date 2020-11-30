@@ -3,25 +3,20 @@ docs:
 
 - title: Home
   url: /
-  class: btn-floating blue darken-2 waves-effect waves-default
   icon: home
 
 - title: About
   url: /about/
-  class: btn-floating yellow darken-3 waves-effect waves-default
   icon: person
 
 - title: Files
   url: /files/
-  class: btn-floating orange darken-1 waves-effect waves-default
   icon: insert_drive_file
   
 - title: Upload
   url: /upload
-  class: btn-floating green darken-2 waves-effect waves-default
   icon: cloud_upload
   
 - title: Contact
   url: /contact/
-  class: btn-floating red darken-1 waves-effect waves-default
   icon: contact_phone
