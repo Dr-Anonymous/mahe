@@ -6,46 +6,46 @@ layout: default
 ## digiRx demo
 
 <div class="row">
-    <form class="col s12">
-    
-    <h5>Patient details</h5>
-      <div class="row">
-        <div class="input-field col s4">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Name</label>
-        </div>
-        <div class="input-field col s4">
-          <input id="age" type="number" class="validate">
-          <label for="age">Age</label>
-        </div>
-        <div class="input-field col s4">
-          <a class='dropdown-trigger btn' href='#' data-target='sex'>Sex</a>
-          <ul id='sex' class='dropdown-content'>
-            <li><a href="#!">Male</a></li>
-            <li><a href="#!">Feale</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s4">
-          <input id="dob" type="date" class="validate">
-          <label for="dob">DOB</label>
-        </div>
-        <div class="input-field col s4">
-          <i class="material-icons prefix">phone</i>
-          <input id="icon_telephone" type="tel" class="validate">
-          <label for="icon_telephone">Phone</label>
-        </div>
-        <div class="input-field col s4">
-          <textarea id="address" class="materialize-textarea"></textarea>
-          <label for="address">Address</label>
-        </div>
-      </div>
-      
-      
-    </form>
+<form class="col s12">
+
+<h5>Patient details</h5>
+  <div class="row">
+    <div class="input-field col s4">
+      <i class="material-icons prefix">account_circle</i>
+      <input id="icon_prefix" type="text" class="validate">
+      <label for="icon_prefix">Name</label>
+    </div>
+    <div class="input-field col s4">
+      <input id="age" type="number" class="validate">
+      <label for="age">Age</label>
+    </div>
+    <div class="input-field col s4">
+      <a class='dropdown-trigger btn' href='#' data-target='sex'>Sex</a>
+      <ul id='sex' class='dropdown-content'>
+        <li><a href="#!">Male</a></li>
+        <li><a href="#!">Feale</a></li>
+      </ul>
+    </div>
   </div>
+  <div class="row">
+    <div class="input-field col s4">
+      <input id="dob" type="date" class="validate">
+      <label for="dob">DOB</label>
+    </div>
+    <div class="input-field col s4">
+      <i class="material-icons prefix">phone</i>
+      <input id="icon_telephone" type="tel" class="validate">
+      <label for="icon_telephone">Phone</label>
+    </div>
+    <div class="input-field col s4">
+      <textarea id="address" class="materialize-textarea"></textarea>
+      <label for="address">Address</label>
+    </div>
+  </div>
+
+
+</form>
+</div>
 
 <a class="waves-effect waves-light btn" onclick="doc.save('digiRx.pdf'); return false;"><i class="material-icons left">file_download</i>View sample</a>
 
