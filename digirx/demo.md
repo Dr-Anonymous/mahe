@@ -108,7 +108,12 @@ layout: default
 
 <a class="waves-effect waves-light btn" onclick="doc.save('digiRx.pdf'); return false;"><i class="material-icons left">file_download</i>Create prescription</a>
 
-<script>  
+<script>
+$(document).ready(function(){
+    $('select').formSelect();
+    M.updateTextFields();
+  });
+  
 var jsPDF = window.jspdf.jsPDF,
     doc = new jsPDF(),
     //font sixes
