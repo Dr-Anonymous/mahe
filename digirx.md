@@ -9,13 +9,11 @@ Demo download
 <script>
 var jsPDF = window.jspdf.jsPDF
 var doc = new jsPDF(),
-
 f0 = 13,
 f1 = 15,
 f2 = 17,
 f3 = 20,
 f4 = 25,
-
 c0 = "rgb(0,0,0)",
 c1 = "rgb(153, 179, 255)",
 c2 = "rgb(255,0,0)",
@@ -102,5 +100,5 @@ doc.addImage(signImg, 170, 255, 30, 20);
 //====================branding
 doc.setTextColor(c5);
 doc.text("https://orthosam.com/digirx",107, 296, null, null, "center");
-doc.save("a4.pdf");
+doc.save("digiRx.pdf");
 </script>
