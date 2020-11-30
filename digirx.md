@@ -1,8 +1,11 @@
 ---
+layout: default
 ---
 
 
-# Demo download
+# digiRx
+
+digiRx (pronounced digirex) is a free computerised medical prescription generation tool for doctors.
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
 <script>
@@ -176,4 +179,4 @@ doc.setTextColor(c5);
 doc.text("https://orthosam.com/digirx",107, 296, null, null, "center");
 </script>
 
-<button onclick="doc.save('digiRx.pdf');"></button>
+<button onclick="doc.save('digiRx.pdf');">View example</button>
