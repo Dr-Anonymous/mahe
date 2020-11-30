@@ -26,7 +26,7 @@ layout: default
         <li><a href="#!">Feale</a></li>
       </ul>
     </div>
-    <div class="input-field col s6>
+    <div class="input-field col s6">
       <input id="dob" type="date" class="validate">
       <label for="dob">DOB</label>
     </div>
@@ -73,7 +73,7 @@ layout: default
     </div>
   </div>
   <div class="row">
-    <h5>Vitals</h5>
+    <h5>Notes</h5>
     <div class="input-field col s12">
       <textarea id="complaints" class="materialize-textarea"></textarea>
       <label for="complaints">Complaints</label>
@@ -88,11 +88,18 @@ layout: default
     </div>
   </div>
   <div class="row">
-   <h5>Advise and followup</h5> 
-   <div class="input-field col s12">
-    <textarea id="" class="materialize-textarea"></textarea>
-    <label for="findings">Findings</label>
+    <h5>Rx</h5>
   </div>
+  <div class="row">
+   <h5>Advise and followup</h5> 
+    <div class="input-field col s12">
+      <textarea id="advise" class="materialize-textarea"></textarea>
+      <label for="advise">Advise</label>
+    </div>
+    <div class="input-field col s12">
+      <input id="followup" type="date" class="validate">
+      <label for="followup">Followup</label>
+    </div>
   </div>
 </form>
 </div>
