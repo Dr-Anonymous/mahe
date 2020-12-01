@@ -20,12 +20,11 @@ layout: default
     </div>
     <div class="input-field col s6">
       <select id="sex" class="browser-default">
-      <option value="" disabled selected>Sex</option>
+      <option value="" disabled selected>Select sex</option>
       <option value="male">Male</option>
       <option value="female">female</option>
       <option value="other">Other</option>
       </select>
-    <label>Select sex</label>
     </div>
     <div class="input-field col s6">
       <input id="dob" type="date" class="validate">
