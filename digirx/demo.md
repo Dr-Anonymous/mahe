@@ -163,12 +163,10 @@ doc.setTextColor(c3);
 doc.text("Rx", 8, 154);
 //Advise-followup
 doc.setFontSize(f1);
-doc.setTextColor(c4);
 doc.text("Followup with investigations:", 8, 255);
 doc.text("Advise:", 8, 271);
 
 //==============body prefill data
-doc.setTextColor(c0);
 doc.setFont("times", "normal");
 //pt details
 doc.text("Name:", 8, 62);
@@ -189,6 +187,7 @@ doc.text("Spo2:", 185, 90);
 doc.text("Complaints:", 8, 110);
 doc.text("Findings:", 8, 125);
 doc.text("Diagnosis:", 8, 137);
+doc.setTextColor(c0);
 
 //============body user entered data
 function makePdf(){
@@ -201,9 +200,9 @@ doc.text($('#dob').val(), 170, 62);
 doc.text($('#phone').val(), 25, 70);
 doc.text($('#address').val(), 110, 70);
 //vitals
-doc.text($('#height').val()+"cms", 8, 97);
-doc.text($('#weight').val()+"kgs", 35, 97);
-doc.text($('#temp').val()+"F", 65, 97);
+doc.text($('#height').val()+" cms", 8, 97);
+doc.text($('#weight').val()+" kgs", 35, 97);
+doc.text($('#temp').val()+" F", 65, 97);
 doc.text($('#bp').val()+" mmHg", 98, 97, null, null, "center");
 doc.text($('#pulse').val()+" bpm", 123, 97);
 doc.text($('#rr').val()+"/min", 150, 97);
@@ -255,7 +254,7 @@ var headers = createHeaders([
   "Duration",
   "Instructions"
 ]);
-doc.table(30, 144, generateData(7),headers ,{ headerBackgroundColor: c1});
+doc.table(30, 144, generateData(6),headers ,{ headerBackgroundColor: c1});
 
 //====================footer
 doc.text(new Date().toLocaleString([],{hour12:true}),203, 280, null, null, "right");
