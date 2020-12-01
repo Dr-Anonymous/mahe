@@ -87,6 +87,26 @@ layout: default
   </div>
   <div class="row">
     <h5>Rx</h5>
+     <table class="col s12 centered responsive-table">
+        <thead>
+          <tr>
+              <th>Drug</th>
+              <th>Dose&freq.</th>
+              <th>Duration</th>
+              <th>Instructions</th>
+              <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dolo</td>
+            <td>650mg=TID</td>
+            <td>10 days</td>
+            <td>If fever >100f</td>
+            <td><a href="#edit=1" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a><a href="#delete=1" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a><a href="#add=1" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a></td>
+          </tr>
+        </tbody>
+      </table>
   </div>
   <div class="row">
    <h5>Followup and advise</h5>
