@@ -1,6 +1,6 @@
 (function($){
    $(function(){
-
+     $('.datepicker').datepicker();
      $('.sidenav').sidenav({edge: 'right'});
      $('.parallax').parallax();
      $('.collapsible').collapsible();
