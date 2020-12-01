@@ -2,7 +2,9 @@
 layout: default
 ---
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
-
+<style>
+.col s1{width: 10px 10px 10px 10px;}
+</style>
 ### digiRx demo
 
 <div class="row">
