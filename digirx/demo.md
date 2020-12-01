@@ -104,8 +104,6 @@ layout: default
 </form>
 </div>
 
-<a class="waves-effect waves-light btn" onclick="doc.save('digiRx.pdf'); return false;"><i class="material-icons left">bubble_chart</i>Create prescription</a>
-
 <script>
 $(document).ready(function(){
     $('select').formSelect();
@@ -195,7 +193,7 @@ doc.text("Diagnosis:", 190, 110, null, null, "right");
 
 //============body user entered data
 //pt details
-doc.text($('#name'), 25, 62);
+doc.text($('#name').val() , 25, 62);
 doc.text("40/M", 110, 62);
 doc.text("01/07/1992", 170, 62);
 doc.text("9866812555", 25, 70);
@@ -287,3 +285,6 @@ doc.addImage(signImg, 170, 255, 30, 20);
 doc.setTextColor(c5);
 doc.text("https://orthosam.com/digirx",107, 296, null, null, "center");
 </script>
+
+<a class="waves-effect waves-light btn" onclick="doc.save('digiRx.pdf');"><i class="material-icons left">bubble_chart</i>Create prescription</a>
+
