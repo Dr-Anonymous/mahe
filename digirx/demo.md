@@ -19,7 +19,7 @@ layout: default
       <label for="age">Age</label>
     </div>
     <div class="input-field col s6">
-      <select>
+      <select id="sex">
       <option value="" disabled selected>Sex</option>
       <option value="male">Male</option>
       <option value="female">female</option>
@@ -197,7 +197,7 @@ doc.setTextColor(c0);
 doc.setFontSize(f1);
 doc.text($('#name').val() , 25, 62);
 //pt details
-//doc.text($('#age').val()+'/'+M.FormSelect.getInstance(elem).getSelectedValues()[0], 110, 62);
+doc.text($('#age').val()+'/'+$('#sex').val(), 110, 62);
 doc.text($('#dob').val(), 170, 62);
 doc.text($('#phone').val(), 25, 70);
 doc.text($('#address').val(), 110, 70);
