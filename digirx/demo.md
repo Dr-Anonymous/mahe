@@ -81,17 +81,21 @@ layout: default
       <label for="findings">Findings</label>
     </div>
     <div class="input-field col s12">
+      <textarea id="investigations" class="materialize-textarea"></textarea>
+      <label for="investigations">Investigations</label>
+    </div>
+    <div class="input-field col s12">
       <textarea id="diagnosis" class="materialize-textarea"></textarea>
       <label for="diagnosis">Diagnosis</label>
     </div>
   </div>
   <div class="row">
     <h5>Rx</h5>
-     <table class="col s12 centered responsive-table">
+     <table class="col s12 striped centered responsive-table">
         <thead>
           <tr>
               <th>Drug</th>
-              <th>Dose&freq.</th>
+              <th>Dose & freq.</th>
               <th>Duration</th>
               <th>Instructions</th>
               <th>Actions</th>
@@ -100,7 +104,7 @@ layout: default
         <tbody>
           <tr>
             <td>Dolo</td>
-            <td>650mg=TID</td>
+            <td>650mg TID</td>
             <td>10 days</td>
             <td>If fever >100f</td>
             <td>
@@ -126,10 +130,6 @@ layout: default
   <div class="row">
    <h5>Followup and advise</h5>
     <div class="input-field col s12">
-      <textarea id="investigations" class="materialize-textarea"></textarea>
-      <label for="investigations">Followup with investigations</label>
-    </div>
-    <div class="input-field col s12">
       <textarea id="advise" class="materialize-textarea"></textarea>
       <label for="advise">Advise</label>
     </div>
@@ -140,32 +140,36 @@ layout: default
   </div>
 </form>
 </div>
-<div id="modal1" class="modal modal-fixed-footer">
+<div id="modal1" class="modal bottom-sheet modal-fixed-footer">
   <div class="modal-content">
-    <h4>Edit Record</h4>
+    <h4>Edit prescription</h4>
     <div class="row">
       <form class="col s12">
         <div class="row">
-          <div class="input-field col s6">
-            <i class="material-icons prefix">account_circle</i>
-            <input placeholder="Placeholder" id="mname" type="text" class="validate">
-            <label for="name">Name</label>
+          <div class="input-field col s12">
+            <input id="drug" placeholder="Drug" type="text">
+            <label for="drug">Drug</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <i class="material-icons prefix">phone</i>
-            <input id="mphone" placeholder="Placeholder" type="tel" class="validate">
-            <label for="phone">Phone</label>
+            <input id="dose" placeholder="Dose&Freq." type="text">
+            <label for="dose">Dose&Freq.</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <i class="material-icons prefix">signal_cellular_4_bar</i>
-            <input id="dtmf" placeholder="Placeholder" type="number" class="validate">
-            <label for="dtmf">DTFM</label>
+            <input id="duration" placeholder="Duration" type="text">
+            <label for="duration">Duration</label>
           </div>
         </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="instrctions" placeholder="Instrctions" type="text">
+            <label for="instrctions">Instrctions</label>
+          </div>
+        </div>
+        
       </form>
     </div>
   </div>
@@ -190,12 +194,13 @@ $('.btn-floating.blue').on('click', function(){
 $('.btn-floating.orange').on('click', function(){
   $('#modal1').modal('open');
   // Get all TD from the cliked Button
-  var td = $(this).parents('tr').find('td:lt(3)');
+  var td = $(this).parents('tr').find('td:lt(4)'); //index numbers start at 0
   // $td.each(function(i){
   // Only the $() makes this td Object of DOM
-    $('#mname').val($(td[0]).text());
-    $('#mphone').val($(td[1]).text());
-    $('#dtmf').val($(td[2]).text());
+    $('#drug').val($(td[0]).text());
+    $('#dose').val($(td[1]).text());
+    $('#duration').val($(td[2]).text());
+    $('#instructions').val($(td[3]).text());
   // })
 });
 var jsPDF = window.jspdf.jsPDF,
@@ -248,7 +253,7 @@ doc.setFontSize(f4+20);
 doc.text("Rx", 8, 164);
 //Advise-followup
 doc.setFontSize(f1);
-doc.text("Advise:", 8, 268);
+doc.text("Advise:", 8, 265);
 
 //==============body prefill data
 doc.setFont("times", "normal");
@@ -299,7 +304,7 @@ doc.text($('#findings').val(), 30, 125);
 doc.text($('#investigations').val(), 43, 137);
 doc.text($('#diagnosis').val(), 33, 147);
 //advise
-doc.text($('#advise').val(), 25, 268);
+doc.text($('#advise').val(), 25, 265);
 doc.setTextColor(c2);
 doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 203, 265, null, null, "right");
 doc.setTextColor(c0);
@@ -340,7 +345,7 @@ var headers = createHeaders([
   "Duration",
   "Instructions"
 ]);
-doc.table(30, 154, generateData(8),headers ,{ headerBackgroundColor: c1});
+doc.table(28, 152, generateData(8),headers ,{ headerBackgroundColor: c1});
 
 //====================footer
 doc.text(new Date().toLocaleString([],{hour12:true}),203, 280, null, null, "right");
