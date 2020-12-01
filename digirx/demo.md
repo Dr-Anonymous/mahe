@@ -103,7 +103,22 @@ layout: default
             <td>650mg=TID</td>
             <td>10 days</td>
             <td>If fever >100f</td>
-            <td><a href="#edit=1" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a><a href="#delete=1" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a><a href="#add=1" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a></td>
+            <td>
+              <a href="#delete=1" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
+              <a href="#edit=1" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
+              <a href="#add=1" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <a href="#delete=2" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
+              <a href="#edit=2" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
+              <a href="#add=2" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -125,13 +140,64 @@ layout: default
   </div>
 </form>
 </div>
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Edit Record</h4>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input placeholder="Placeholder" id="mname" type="text" class="validate">
+            <label for="name">Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">phone</i>
+            <input id="mphone" placeholder="Placeholder" type="tel" class="validate">
+            <label for="phone">Phone</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">signal_cellular_4_bar</i>
+            <input id="dtmf" placeholder="Placeholder" type="number" class="validate">
+            <label for="dtmf">DTFM</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Update</a>
+  </div>
+</div>
 
 <script>
 $(document).ready(function(){
     $('select').formSelect();
+    $('.modal').modal();
     M.updateTextFields();
   });
   
+$('.btn-floating.red').on('click', function(){
+  $(this).parents('tr').remove();
+})
+$('.btn-floating.blue').on('click', function(){
+  $(this).parents('tr').after($(this).parents('tr').clone())
+})
+$('.btn-floating.orange').on('click', function(){
+  $('#modal1').modal('open');
+  // Get all TD from the cliked Button
+  var td = $(this).parents('tr').find('td:lt(3)');
+  // $td.each(function(i){
+  // Only the $() makes this td Object of DOM
+    $('#mname').val($(td[0]).text());
+    $('#mphone').val($(td[1]).text());
+    $('#dtmf').val($(td[2]).text());
+  // })
+});
 var jsPDF = window.jspdf.jsPDF,
     doc = new jsPDF(),
     //font sixes
