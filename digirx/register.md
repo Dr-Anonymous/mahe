@@ -5,12 +5,12 @@
 
 <table class="table striped">
 <thead>
-  <tr>
-    <th>Name</th>
-    <th>Phone</th>
-    <th>DTFM</th>
-    <th>Actions</th>
-  </tr>
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>DTFM</th>
+<th>Actions</th>
+</tr>
 </thead>
 
 <tbody>
@@ -20,35 +20,35 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
 <div class="modal-content">
-  <h4>Edit Record</h4>
-  <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input placeholder="Placeholder" id="name" type="text" class="validate">
-          <label for="name">Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">phone</i>
-          <input id="phone" placeholder="Placeholder" type="tel" class="validate">
-          <label for="phone">Phone</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">signal_cellular_4_bar</i>
-          <input id="dtmf" placeholder="Placeholder" type="number" class="validate">
-          <label for="dtmf">DTFM</label>
-        </div>
-      </div>
-    </form>
-  </div>
+<h4>Edit Record</h4>
+<div class="row">
+<form class="col s12">
+<div class="row">
+<div class="input-field col s6">
+<i class="material-icons prefix">account_circle</i>
+<input placeholder="Placeholder" id="name" type="text" class="validate">
+<label for="name">Name</label>
+</div>
+</div>
+<div class="row">
+<div class="input-field col s12">
+<i class="material-icons prefix">phone</i>
+<input id="phone" placeholder="Placeholder" type="tel" class="validate">
+<label for="phone">Phone</label>
+</div>
+</div>
+<div class="row">
+<div class="input-field col s12">
+<i class="material-icons prefix">signal_cellular_4_bar</i>
+<input id="dtmf" placeholder="Placeholder" type="number" class="validate">
+<label for="dtmf">DTFM</label>
+</div>
+</div>
+</form>
+</div>
 </div>
 <div class="modal-footer">
-  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Update</a>
+<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Update</a>
 </div>
 </div>
 
@@ -105,10 +105,10 @@ var data = [{
 "DTMF": 859
 }];
 $(document).ready(function(){
-  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-  $('.modal').modal();
+// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+$('.modal').modal();
 
-  Materialize.updateTextFields();
+Materialize.updateTextFields();
 });
 /* 
 Dynamic creation of table is not the best practice...
@@ -116,14 +116,14 @@ Better way to clone existing table and fill it with data.
 */
 $(data).each(function(i, elem) {
 $('.table').append('<tr><td>' + elem['Name'] +
-  '</td><td>' + elem['Phone'] + '</td><td>' +
-  elem['DTMF'] + '</td><td>' +
-  '\
+'</td><td>' + elem['Phone'] + '</td><td>' +
+elem['DTMF'] + '</td><td>' +
+'\
 <a href="#edit=' + elem['id'] + '"data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i>\
-  </a> \
+</a> \
 <a href="#delete=' + elem['id'] + '" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i>\
-  </a> \
-                   </td></tr>')
+</a> \
+         </td></tr>')
 });
 
 $('.btn-floating.orange').on('click', function(){
@@ -133,9 +133,9 @@ $('#modal1').modal('open');
 var td = $(this).parents('tr').find('td:lt(3)');
 // $td.each(function(i){
 // Only the $() makes this td Object of DOM
-  $('#name').val($(td[0]).text());
-  $('#phone').val($(td[1]).text());
-  $('#dtmf').val($(td[2]).text());
+$('#name').val($(td[0]).text());
+$('#phone').val($(td[1]).text());
+$('#dtmf').val($(td[2]).text());
 // })
 });
 
