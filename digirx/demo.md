@@ -19,7 +19,7 @@ layout: default
       <label for="age">Age</label>
     </div>
     <div class="input-field col s6">
-      <select id="sex">
+      <select id="sex" class="browser-default">
       <option value="" disabled selected>Sex</option>
       <option value="male">Male</option>
       <option value="female">female</option>
