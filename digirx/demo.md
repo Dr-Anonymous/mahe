@@ -163,10 +163,6 @@ doc.text("Rx", 8, 154);
 doc.setFontSize(f1);
 doc.setTextColor(c4);
 doc.text("Advise:", 8, 255);
-var nexDate = new Date();
-nexDate.setDate(nexDate.getDate() + 10);
-doc.setTextColor(c2);
-doc.text("Followup date: "+ nexDate.toLocaleDateString([],{hour12:true}), 203, 255, null, null, "right")
 
 //==============body prefill data
 doc.setTextColor(c0);
@@ -202,19 +198,22 @@ doc.text($('#dob').val(), 170, 62);
 doc.text($('#phone').val(), 25, 70);
 doc.text($('#address').val(), 110, 70);
 //vitals
-doc.text("175cms", 8, 97);
-doc.text("70kgs", 35, 97);
-doc.text("98F", 65, 97);
-doc.text("120/80 mmHg", 98, 97, null, null, "center");
-doc.text("80 bpm", 123, 97);
-doc.text("16/min", 150, 97);
-doc.text("96%", 185, 97);
+doc.text($('#height').val()+"cms", 8, 97);
+doc.text($('#weight').val()+"kgs", 35, 97);
+doc.text($('#temp').val()+"F", 65, 97);
+doc.text($('#bp').val()+" mmHg", 98, 97, null, null, "center");
+doc.text($('#pulse').val()+" bpm", 123, 97);
+doc.text($('#rr').val()+"/min", 150, 97);
+doc.text($('#sat').val()+" %", 185, 97);
 //notes
-doc.text("Fever since 4 days", 8, 118, null, null, "left");
-doc.text("Pallor ++", 110, 118, null, null, "center");
-doc.text("PUO", 203, 118, null, null, "right");
+doc.text($('#complaints').val(), 8, 118, null, null, "left");
+doc.text($('#findings').val(), 110, 118, null, null, "center");
+doc.text($('#diagnosis').val(), 203, 118, null, null, "right");
 //advise
-doc.text("Review SOS if fever > 101F", 25, 259);
+doc.text($('#advise').val(), 25, 259);
+doc.setTextColor(c2);
+doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 203, 255, null, null, "right");
+doc.setTextColor(c0);
 doc.save('digiRx.pdf');
 }
 //==================table
@@ -285,8 +284,5 @@ doc.addImage(logoImg, 10, 10, 35, 35);
 //====================branding
 doc.setTextColor(c5);
 doc.text("https://orthosam.com/digirx",107, 296, null, null, "center");
-
 </script>
-
 <a class="waves-effect waves-light btn" onclick="makePdf();"><i class="material-icons left">bubble_chart</i>Create prescription</a>
-
