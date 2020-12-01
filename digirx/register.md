@@ -52,7 +52,7 @@
 </div>
 </div>
 
-<script
+<script>
 var data = [{
 "id": 1,
 "Name": "Kamba",
