@@ -11,8 +11,8 @@ layout: default
   <div class="row">
     <h5>Patient details</h5>
     <div class="input-field col s6">
-      <input id="icon_prefix" type="text" class="validate">
-      <label for="icon_prefix">Name</label>
+      <input id="name" type="text" class="validate">
+      <label for="name">Name</label>
     </div>
     <div class="input-field col s6">
       <input id="age" type="number" class="validate">
@@ -195,7 +195,7 @@ doc.text("Diagnosis:", 190, 110, null, null, "right");
 
 //============body user entered data
 //pt details
-doc.text("Samuel Manoj ch", 25, 62);
+doc.text($('#name'), 25, 62);
 doc.text("40/M", 110, 62);
 doc.text("01/07/1992", 170, 62);
 doc.text("9866812555", 25, 70);
