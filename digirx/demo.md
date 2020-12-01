@@ -19,7 +19,7 @@ layout: default
     </div>
     <div class="input-field col s6">
       <select id="sex" class="browser-default">
-      <option value="" disabled selected>Select sex</option>
+      <option value=" " disabled selected>Select sex</option>
       <option value="male">Male</option>
       <option value="female">female</option>
       <option value="other">Other</option>
@@ -103,10 +103,10 @@ layout: default
         </thead>
         <tbody>
           <tr>
-            <td>Dolo</td>
+            <td>Tab. DOLO</td>
             <td>650mg TID</td>
             <td>10 days</td>
-            <td>If fever >100f</td>
+            <td>If fever >100 F</td>
             <td>
               <a href="#delete=1" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
               <a href="#edit=1" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
@@ -119,9 +119,9 @@ layout: default
             <td></td>
             <td></td>
             <td>
-              <a href="#delete=2" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
-              <a href="#edit=2" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
-              <a href="#add=2" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
+              <a class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
+              <a data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
+              <a class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
             </td>
           </tr>
         </tbody>
@@ -140,6 +140,7 @@ layout: default
   </div>
 </form>
 </div>
+<!--modal start-->
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
     <h4>Edit prescription</h4>
@@ -174,10 +175,10 @@ layout: default
     </div>
   </div>
   <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Update</a>
+    <a onclick="updateDrug();" class="modal-action modal-close waves-effect waves-green btn-flat ">Update</a>
   </div>
 </div>
-
+<!--modal end-->
 <script>
 $(document).ready(function(){
     $('select').formSelect();
@@ -203,6 +204,13 @@ $('.btn-floating.orange').on('click', function(){ //edit
     $('#instructions').val($(td[3]).text());
   // })
 });
+
+function updateDrug(){
+$('td').click(function(){
+   var row_index = $(this).parent().index();
+   var col_index = $(this).index();
+});
+}
 var jsPDF = window.jspdf.jsPDF,
 doc = new jsPDF(),
     //font sixes
