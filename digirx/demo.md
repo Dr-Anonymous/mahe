@@ -134,13 +134,13 @@ layout: default
       <label for="advise">Advise</label>
     </div>
     <div class="input-field col s12">
-      <input id="followup" type="date" class="validate">
+      <input id="followup" type="date">
       <label for="followup">Followup date</label>
     </div>
   </div>
 </form>
 </div>
-<div id="modal1" class="modal bottom-sheet modal-fixed-footer">
+<div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
     <h4>Edit prescription</h4>
     <div class="row">
@@ -165,8 +165,8 @@ layout: default
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="instrctions" placeholder="Instrctions" type="text">
-            <label for="instrctions">Instrctions</label>
+            <input id="instructions" placeholder="Instructions" type="text">
+            <label for="instructions">Instructions</label>
           </div>
         </div>
         
@@ -185,13 +185,13 @@ $(document).ready(function(){
     M.updateTextFields();
   });
   
-$('.btn-floating.red').on('click', function(){
+$('.btn-floating.red').on('click', function(){ //delete
   $(this).parents('tr').remove();
 })
-$('.btn-floating.blue').on('click', function(){
+$('.btn-floating.blue').on('click', function(){ //add
   $(this).parents('tr').after($(this).parents('tr').clone())
 })
-$('.btn-floating.orange').on('click', function(){
+$('.btn-floating.orange').on('click', function(){ //edit
   $('#modal1').modal('open');
   // Get all TD from the cliked Button
   var td = $(this).parents('tr').find('td:lt(4)'); //index numbers start at 0
@@ -306,7 +306,7 @@ doc.text($('#diagnosis').val(), 33, 147);
 //advise
 doc.text($('#advise').val(), 25, 265);
 doc.setTextColor(c2);
-doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 203, 265, null, null, "right");
+doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 8, 290);
 doc.setTextColor(c0);
 doc.save($('#name').val()+'-digiRx.pdf');
 }
