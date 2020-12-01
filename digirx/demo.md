@@ -192,9 +192,7 @@ doc.text("Findings:", 110, 110, null, null, "center");
 doc.text("Diagnosis:", 190, 110, null, null, "right");
 
 //============body user entered data
-function makePdf(){
 //pt details
-doc.text($('#name').val() , 25, 62);
 doc.text("40/M", 110, 62);
 doc.text("01/07/1992", 170, 62);
 doc.text("9866812555", 25, 70);
@@ -213,8 +211,6 @@ doc.text("Pallor ++", 110, 118, null, null, "center");
 doc.text("PUO", 203, 118, null, null, "right");
 //advise
 doc.text("Review SOS if fever > 101F", 25, 259);
-doc.save('digiRx.pdf')
-}
 
 //==================table
 var generateData = function(amount) {
@@ -286,6 +282,10 @@ doc.addImage(signImg, 170, 255, 30, 20);
 //====================branding
 doc.setTextColor(c5);
 doc.text("https://orthosam.com/digirx",107, 296, null, null, "center");
+function makePdf(){
+doc.text($('#name').val() , 25, 62);
+doc.save('digiRx.pdf');
+}
 </script>
 
 <a class="waves-effect waves-light btn" onclick="makePdf();"><i class="material-icons left">bubble_chart</i>Create prescription</a>
