@@ -89,14 +89,18 @@ layout: default
     <h5>Rx</h5>
   </div>
   <div class="row">
-   <h5>Advise and followup</h5> 
+   <h5>Followup and advise</h5>
+    <div class="input-field col s12">
+      <textarea id="investigations" class="materialize-textarea"></textarea>
+      <label for="investigations">Followup with investigations</label>
+    </div>
     <div class="input-field col s12">
       <textarea id="advise" class="materialize-textarea"></textarea>
       <label for="advise">Advise</label>
     </div>
     <div class="input-field col s12">
       <input id="followup" type="date" class="validate">
-      <label for="followup">Followup</label>
+      <label for="followup">Followup date</label>
     </div>
   </div>
 </form>
@@ -160,7 +164,8 @@ doc.text("Rx", 8, 154);
 //Advise-followup
 doc.setFontSize(f1);
 doc.setTextColor(c4);
-doc.text("Advise:", 8, 255);
+doc.text("Followup with investigations:", 8, 255);
+doc.text("Advise:", 8, 271);
 
 //==============body prefill data
 doc.setTextColor(c0);
@@ -181,9 +186,9 @@ doc.text("Pulse:", 123, 90);
 doc.text("RR:", 150, 90);
 doc.text("Spo2:", 185, 90);
 //notes
-doc.text("Complaints:", 8, 110, null, null, "left");
-doc.text("Findings:", 110, 110, null, null, "center");
-doc.text("Diagnosis:", 190, 110, null, null, "right");
+doc.text("Complaints:", 8, 110);
+doc.text("Findings:", 8, 125);
+doc.text("Diagnosis:", 8, 137);
 
 //============body user entered data
 function makePdf(){
@@ -204,11 +209,12 @@ doc.text($('#pulse').val()+" bpm", 123, 97);
 doc.text($('#rr').val()+"/min", 150, 97);
 doc.text($('#sat').val()+" %", 185, 97);
 //notes
-doc.text($('#complaints').val(), 8, 118, null, null, "left");
-doc.text($('#findings').val(), 110, 118, null, null, "center");
-doc.text($('#diagnosis').val(), 203, 118, null, null, "right");
-//advise
-doc.text($('#advise').val(), 25, 259);
+doc.text($('#complaints').val(), 36, 110);
+doc.text($('#findings').val(), 30, 125);
+doc.text($('#diagnosis').val(), 33, 137);
+//investig and advise
+doc.text($('#investigations').val(), 8, 262);
+doc.text($('#advise').val(), 25, 271);
 doc.setTextColor(c2);
 doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 203, 255, null, null, "right");
 doc.setTextColor(c0);
