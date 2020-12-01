@@ -32,8 +32,8 @@ layout: default
       <label for="dob">DOB</label>
     </div>
     <div class="input-field col s6">
-      <input id="icon_telephone" type="tel" class="validate">
-      <label for="icon_telephone">Phone</label>
+      <input id="phone" type="tel" class="validate">
+      <label for="phone">Phone</label>
     </div>
     <div class="input-field col s6">
       <textarea id="address" class="materialize-textarea"></textarea>
@@ -192,11 +192,15 @@ doc.text("Findings:", 110, 110, null, null, "center");
 doc.text("Diagnosis:", 190, 110, null, null, "right");
 
 //============body user entered data
+function makePdf(){
+doc.setTextColor(c0);
+doc.setFontSize(f1);
+doc.text($('#name').val() , 25, 62);
 //pt details
-doc.text("40/M", 110, 62);
-doc.text("01/07/1992", 170, 62);
-doc.text("9866812555", 25, 70);
-doc.text("70-17-18/2B, Kakinada\nIndia-533003", 110, 70);
+doc.text($('#age').val()+'/'+M.FormSelect.getInstance(elem).getSelectedValues()[0], 110, 62);
+doc.text($('#dob').val(), 170, 62);
+doc.text($('#phone').val(), 25, 70);
+doc.text($('#address').val(), 110, 70);
 //vitals
 doc.text("175cms", 8, 97);
 doc.text("70kgs", 35, 97);
@@ -211,7 +215,8 @@ doc.text("Pallor ++", 110, 118, null, null, "center");
 doc.text("PUO", 203, 118, null, null, "right");
 //advise
 doc.text("Review SOS if fever > 101F", 25, 259);
-
+doc.save('digiRx.pdf');
+}
 //==================table
 var generateData = function(amount) {
   var result = [];
@@ -280,11 +285,7 @@ doc.addImage(logoImg, 10, 10, 35, 35);
 //====================branding
 doc.setTextColor(c5);
 doc.text("https://orthosam.com/digirx",107, 296, null, null, "center");
-function makePdf(){
-doc.text($('#name').val() , 25, 62);
-console.log("the value", $('#name').val())
-doc.save('digiRx.pdf');
-}
+
 </script>
 
 <a class="waves-effect waves-light btn" onclick="makePdf();"><i class="material-icons left">bubble_chart</i>Create prescription</a>
