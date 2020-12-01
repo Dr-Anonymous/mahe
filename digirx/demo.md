@@ -213,8 +213,8 @@ doc.text("Pallor ++", 110, 118, null, null, "center");
 doc.text("PUO", 203, 118, null, null, "right");
 //advise
 doc.text("Review SOS if fever > 101F", 25, 259);
+doc.save('digiRx.pdf')
 }
-doc.table(30, 144, generateData(7),headers ,{ headerBackgroundColor: c1});
 
 //==================table
 var generateData = function(amount) {
@@ -251,7 +251,7 @@ var headers = createHeaders([
   "Duration",
   "Instructions"
 ]);
-
+doc.table(30, 144, generateData(7),headers ,{ headerBackgroundColor: c1});
 
 //====================footer
 doc.text(new Date().toLocaleString([],{hour12:true}),203, 280, null, null, "right");
