@@ -197,7 +197,7 @@ doc.setTextColor(c0);
 doc.setFontSize(f1);
 doc.text($('#name').val() , 25, 62);
 //pt details
-doc.text($('#age').val()+'/'+M.FormSelect.getInstance(elem).getSelectedValues()[0], 110, 62);
+//doc.text($('#age').val()+'/'+M.FormSelect.getInstance(elem).getSelectedValues()[0], 110, 62);
 doc.text($('#dob').val(), 170, 62);
 doc.text($('#phone').val(), 25, 70);
 doc.text($('#address').val(), 110, 70);
