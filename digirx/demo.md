@@ -2,7 +2,7 @@
 layout: default
 ---
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
-### digiRx demo
+### digi&#8478; demo
 
 <div class="row">
 <form class="col s12">
@@ -108,9 +108,9 @@ layout: default
             <td>10 days</td>
             <td>If fever >100 F</td>
             <td>
-              <a href="#delete=1" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
-              <a href="#edit=1" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
-              <a href="#add=1" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
+              <a onclick="btnClick();" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
+              <a onClick="btClick();" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
+              <a onClick="btClick();" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
             </td>
           </tr>
           <tr>
@@ -119,9 +119,9 @@ layout: default
             <td></td>
             <td></td>
             <td>
-              <a class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
-              <a data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
-              <a class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
+              <a onClick="btClick();" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
+              <a onClick="btClick();" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
+              <a onClick="btClick();" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
             </td>
           </tr>
         </tbody>
@@ -185,7 +185,8 @@ $(document).ready(function(){
     $('.modal').modal();
     M.updateTextFields();
   });
-  
+//all btns function
+function btnClick(){
 $('.btn-floating.red').on('click', function(){ //delete
   $(this).parents('tr').remove();
 })
@@ -204,8 +205,10 @@ $('.btn-floating.orange').on('click', function(){ //edit
     $('#instructions').val($(td[3]).text());
   // })
 });
-
+}
+  
 function updateDrug(){
+console.log("updated");
 $('td').click(function(){
    var row_index = $(this).parent().index();
    var col_index = $(this).index();
