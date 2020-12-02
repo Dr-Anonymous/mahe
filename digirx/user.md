@@ -2,7 +2,8 @@
 layout: default
 ---
 
-### Coming soon.....
+### digi&#8478;
+{% include_relative ./form.html %}
 
 <script>
 function otherSignedInStuff(googleUser){
