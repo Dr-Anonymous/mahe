@@ -319,7 +319,7 @@ doc.table(28, 152, generateData(), headers, { headerBackgroundColor: c1});
 doc.save($('#name').val()+'-digiRx.pdf');
 }
 //==================table
-generateData() {
+function generateData() {
 var data = [];
 var table = document.getElementById("myTable");
   for (let i in table.rows) {
@@ -329,7 +329,8 @@ var table = document.getElementById("myTable");
     }
   }
   return data;
-};
+}
+
 var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 50, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 35, align: "center"},{name: "Instructions", width: 50, align: "left"}];
 
 //====================footer
