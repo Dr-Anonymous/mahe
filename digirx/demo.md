@@ -109,7 +109,7 @@ layout: default
             <td>If fever >100 F</td>
             <td>
               <a onclick="deleteRow($(this));" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
-              <a data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
+              <a onclick="editRow($(this));" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
               <a onclick="addRow($(this));" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
             </td>
           </tr>
@@ -120,7 +120,7 @@ layout: default
             <td>Before breakfast</td>
             <td>
               <a onclick="deleteRow($(this));" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
-              <a data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
+              <a onclick="editRow($(this));" data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
               <a onclick="addRow($(this));" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
             </td>
           </tr>
