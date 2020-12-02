@@ -9,15 +9,15 @@ layout: signInScript
 <br><br>
 <button id= "btn" onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value);">Send</button>
 </div>
-<div id="my-signin2"></div>
-<a href="javascript:;" id="signout" onclick="signOut();" style="display: none;">Sign out</a>
+<div class="my-signin"></div>
+<a class="signout" onclick="signOut();" style="display: none;">Sign out</a>
 
 <script>
 //code for google sign-in
 function onSuccess(googleUser) {
-    document.getElementById("my-signin2").style.display = "none";
+    //document.getElementById("my-signin2").style.display = "none";
     document.getElementById("form").style.display = "initial";
-    document.getElementById("signout").style.display = "initial";
+    //document.getElementById("signout").style.display = "initial";
      //display user details
      var profile = googleUser.getBasicProfile();
      document.getElementById("demo").innerText = "Welcome "+ profile.getName()+ " ("+profile.getEmail()+")";
