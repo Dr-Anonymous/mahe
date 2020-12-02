@@ -18,20 +18,19 @@
     <li><a class="waves-effect" href="/digirx">digi&#8478;</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">Account</a></li>
-    <li><div id="my-signin" class="my-signin"></div><li>
+    <li><div id="my-signin" class="my-signin waves-effect waves-light btn"></div><li>
     <li><a class="signout" onclick="signOut();" style="display: none;"><i class="material-icons">account_circle</i>Sign out</a></li>
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger fixed-action-btn btn-floating btn-large"><i class="material-icons">menu</i></a>
 <script>
 //code for google sign-in
 function onSuccess(googleUser) {
-M.toast({html: 'Signin successful!'});
 $(".my-signin").hide();
 $(".signout").show();
 //display user details
 var profile = googleUser.getBasicProfile();
 $("#userName").text(profile.getName());
-$('#userMail').text(profile.getName());
+$('#userMail').text(profile.getEmail());
 $('#userImage').attr('src', profile.getImageUrl());
 otherSignedInStuff(googleUser);
 }
