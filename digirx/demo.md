@@ -108,9 +108,9 @@ layout: default
             <td>10 days</td>
             <td>If fever >100 F</td>
             <td>
-              <a onclick="deleteRow();" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
+              <a onclick="deleteRow($(this));" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
               <a data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
-              <a onclick="addRow();" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
+              <a onclick="addRow($(this));" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
             </td>
           </tr>
           <tr>
@@ -119,9 +119,9 @@ layout: default
             <td>10 days</td>
             <td>Before breakfast</td>
             <td>
-              <a onclick="deleteRow();" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
+              <a onclick="deleteRow($(this));" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
               <a data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
-              <a onclick="addRow();" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
+              <a onclick="addRow($(this));" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
             </td>
           </tr>
         </tbody>
@@ -186,22 +186,19 @@ $(document).ready(function(){
   });
   
 //all btns function
-function deleteRow(){
-$(document).on('click','.btn-floating.red', function(){ //delete
-  $(this).parents('tr').remove();
-})
+function deleteRow(elem){
+//$(document).on('click','.btn-floating.red', function(){ //delete
+  elem.parents('tr').remove();
+//})
 }
 
-function addRow(){
-$(document).on('click', '.btn-floating.blue', function(){ //add
-  $(this).parents('tr').after("<tr><td></td><td></td><td></td><td></td><td><a onclick=\"deleteRow();\" class=\"btn-floating waves-effect waves-light red hoverable\"><i class=\"material-icons\">delete</i></a><a data-target=\"modal1\" class=\"btn-floating waves-effect waves-light orange btn modal-trigger hoverable\"><i class=\"material-icons\">edit</i></a><a onclick=\"addRow();\" class=\"btn-floating waves-effect waves-light blue hoverable\"><i class=\"material-icons\">add</i></a></td></tr>")
-})
+function addRow(elem){
+//$(document).on('click', '.btn-floating.blue', function(){ //add
+  elem.parents('tr').after("<tr><td></td><td></td><td></td><td></td><td><a onclick=\"deleteRow($(this));\" class=\"btn-floating waves-effect waves-light red hoverable\"><i class=\"material-icons\">delete</i></a><a data-target=\"modal1\" class=\"btn-floating waves-effect waves-light orange btn modal-trigger hoverable\"><i class=\"material-icons\">edit</i></a><a onclick=\"addRow($(this));\" class=\"btn-floating waves-effect waves-light blue hoverable\"><i class=\"material-icons\">add</i></a></td></tr>")
+//})
 }
 
 $('.btn-floating.orange').on('click', function(){ //edit
- $('#modal1').modal({
-   reset();
-  });
   $('#modal1').modal('open');
   $('#modal1').attr("value", $(this).parents('tr').index()+1);
 
