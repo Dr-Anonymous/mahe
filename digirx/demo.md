@@ -130,7 +130,7 @@ layout: default
 </form>
 </div>
 <!--modal start-->
-<div id="modal1" class="modal modal-fixed-footer" value"nothing">
+<div id="modal1" class="modal modal-fixed-footer" value="nothing">
   <div class="modal-content">
     <h4>Edit prescription</h4>
     <div class="row">
