@@ -37,7 +37,7 @@ function onSuccess(googleUser) {
       console.log(error);
     }
     function renderButton() {
-      gapi.signin2.render('my-signin2', {
+      gapi.signin2.render('my-signin', {
         'scope': 'profile email',
         'width': 240,
         'height': 50,
