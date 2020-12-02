@@ -3,12 +3,10 @@
       <div class="background">
         <img src="/assets/images/bg.jpg">
       </div>
-      <img class="circle" src="">
-      <span class="name">Weloe</span></a>
-      <a href="#email"><span class="email">jdandturk@gmail.com</span></a>
-    
-      <h4 id="userName">Menu</h4>
-    </div></li>
+      <img id="userImage" class="circle" src="">
+      <span id="userName" class="name">Menu</span></a>
+      <span id="userMail" class="email"></span>
+      </div></li>
   {% for item in site.data.menu.docs %}
           <li><a href="{{ item.url }}" alt="{{ item.title }}"><i class="material-icons">{{ item.icon }}</i>{{ item.title }}</a></li>
    {% endfor %}
@@ -27,15 +25,18 @@
 <script>
 //code for google sign-in
 function onSuccess(googleUser) {
+M.toast({html: 'Signin successful!'});
 $(".my-signin").hide();
 $(".signout").show();
 //display user details
 var profile = googleUser.getBasicProfile();
-$("#userName").text("Welcome "+ profile.getName());
+$("#userName").text(profile.getName());
+$('#userMail').text(profile.getName());
+$('#userImage').attr('src':profile.getImageUrl());
 otherSignedInStuff(googleUser);
 }
 function onFailure(error) {
-console.log(error);
+M.toast({html: error});
 }
 function renderButton() {
   gapi.signin2.render('my-signin', {
@@ -52,6 +53,7 @@ function renderButton() {
 function signOut() {
 var auth2 = gapi.auth2.getAuthInstance();
 auth2.signOut().then(function () {
+M.toast({html: 'Signed Out'})
 location.reload();
 });
 }
