@@ -9,7 +9,7 @@ Net2SMS is a free service to send SMS from the net (web) without having your pho
 You need to initially [install](https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf&export=download) the Net2SMS ANDROID app and register yourself with google id. After that, you can send messages from [this web page](./send) seamlessly from anywhere without accessing your phone.(To use this service your phone needs to be ON and have valid data/SMS pack.)
 <script>
 function otherSignedInStuff(){
- window.location.replace("./send"); 
+ window.location.href = "./send" ; 
 }
 </script>
   
