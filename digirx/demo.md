@@ -169,8 +169,7 @@ layout: default
             <input id="instructions" placeholder="Instructions" type="text">
             <label for="instructions">Instructions</label>
           </div>
-        </div>
-        
+        </div> 
       </form>
     </div>
   </div>
@@ -187,19 +186,14 @@ $(document).ready(function(){
   
 //all btns function
 function deleteRow(elem){
-//$(document).on('click','.btn-floating.red', function(){ //delete
   elem.parents('tr').remove();
-//})
 }
 
 function addRow(elem){
-//$(document).on('click', '.btn-floating.blue', function(){ //add
   elem.parents('tr').after("<tr><td></td><td></td><td></td><td></td><td><a onclick=\"deleteRow($(this));\" class=\"btn-floating waves-effect waves-light red hoverable\"><i class=\"material-icons\">delete</i></a><a onclick=\"editRow($(this));\" data-target=\"modal1\" class=\"btn-floating waves-effect waves-light orange btn modal-trigger hoverable\"><i class=\"material-icons\">edit</i></a><a onclick=\"addRow($(this));\" class=\"btn-floating waves-effect waves-light blue hoverable\"><i class=\"material-icons\">add</i></a></td></tr>")
-//})
 }
 
 function editRow(elem){
-//$('.btn-floating.orange').on('click', function(){ //edit
   $('#modal1').modal('open');
   $('#modal1').attr("value", elem.parents('tr').index()+1);
   var td = $(elem).parents('tr').find('td:lt(4)'); //index numbers start at 0
@@ -207,17 +201,15 @@ function editRow(elem){
   $('#dose').val($(td[1]).text());
   $('#duration').val($(td[2]).text());
   $('#instructions').val($(td[3]).text());
-//});
 }
 //modal function
 function updateDrug(id, drug, dose, duration, instructions){
-   //var col_index = $(this).index();
-   console.log(id, drug, dose, duration, instructions);
    $('#myTable tr').eq(id).find('td').eq(0).text(drug);
    $('#myTable tr').eq(id).find('td').eq(1).text(dose);
    $('#myTable tr').eq(id).find('td').eq(2).text(duration);
    $('#myTable tr').eq(id).find('td').eq(3).text(instructions);
 }
+
 var jsPDF = window.jspdf.jsPDF,
 doc = new jsPDF(),
     //font sixes
