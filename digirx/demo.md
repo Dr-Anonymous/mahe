@@ -315,44 +315,30 @@ doc.text($('#advise').val(), 25, 265);
 doc.setTextColor(c2);
 doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 8, 290);
 doc.setTextColor(c0);
+doc.table(28, 152, generateData(3),headers ,{ headerBackgroundColor: c1});
 doc.save($('#name').val()+'-digiRx.pdf');
 }
 //==================table
-var generateData = function(amount) {
-  var result = [];
-  var data = {
-    Drug: "Dolo",
-    'Dose and Freq' : "650-TID",
-    Duration: "10 days",
-    Instructions: "if fever>100"
-  };
-  for (var i = 0; i < amount; i++) {
-    data['No.'] = (i + 1).toString();
-    result.push(Object.assign({}, data));
+var generateData = function() {
+var data[];
+var table = document.getElementById("myTable");
+  for (let i in table.rows) {
+    let row = table.rows[i]
+    if (i>0){
+      var dataIn = [];
+      dataIn.push('No.': i);
+      for (let j in row.cells) {
+        if (j<4){
+          let cell = row.cells[j]
+          dataIn.push(table.rows[0].cells[j].innerText :cell.innerText);
+        }
+      }
+      data.push(dataIn);  
+    }
   }
-  return result;
+  return data;
 };
-
-function createHeaders(keys) {
-  var result = [];
-  for (var i = 0; i < keys.length; i++) {
-    result.push({
-      name: keys[i],
-      width: 45,
-      align: "center"
-      });
-  }
-  return result;
-}
-
-var headers = createHeaders([
-  "No.",
-  "Drug",
-  "Dose and Freq",
-  "Duration",
-  "Instructions"
-]);
-doc.table(28, 152, generateData(8),headers ,{ headerBackgroundColor: c1});
+var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 50, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 35, align: "center"},{name: "Instructions", width: 50, align: "left"}];
 
 //====================footer
 doc.text(new Date().toLocaleString([],{hour12:true}),203, 280, null, null, "right");
