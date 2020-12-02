@@ -113,6 +113,17 @@ layout: default
               <a onclick="addRow();" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
             </td>
           </tr>
+          <tr>
+            <td>Tab. PAN</td>
+            <td>40mg OD</td>
+            <td>10 days</td>
+            <td>Before breakfast</td>
+            <td>
+              <a onclick="deleteRow();" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
+              <a data-target="modal1" class="btn-floating waves-effect waves-light orange btn modal-trigger hoverable"><i class="material-icons">edit</i></a>
+              <a onclick="addRow();" class="btn-floating waves-effect waves-light blue hoverable"><i class="material-icons">add</i></a>
+            </td>
+          </tr>
         </tbody>
       </table>
   </div>
