@@ -10,51 +10,26 @@ layout: default
 <button id= "btn" onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value);">Send</button>
 </div>
 <div data-target="slide-out" class="sidenav-trigger my-signin"><i class="material-icons">account_circle</i>Sign-in</div>
-<a class="signout" onclick="signOut();" style="display: none;">Sign out</a>
 
 <script>
 //code for google sign-in
-function onSuccess(googleUser) {
-    $(".my-signin").hide();
-    document.getElementById("form").style.display = "initial";
-    $(".signout").show();
-     //display user details
-     var profile = googleUser.getBasicProfile();
-     $("#demo").text("Welcome "+ profile.getName()+ " ("+profile.getEmail()+")");
-     console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
-    //get firebase token using email id
-    var url= "https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail="+profile.getEmail();
- var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-           $("#id").text(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", url, true); // true for asynchronous 
-    xmlHttp.send(null);
-    //end firebase token retrieval
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
- //google signout
- function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-    console.log('User signed out.');
-    location.reload();
-    });
-  }
+function otherSignedInStuff(googleUser){
+$("#form").show();
+var profile = googleUser.getBasicProfile();
+$("#demo").text("Welcome "+ profile.getName()+ " ("+profile.getEmail()+")");
+console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
+//get firebase token using email id
+var url= "https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail="+profile.getEmail();
+var xmlHttp = new XMLHttpRequest();
+xmlHttp.onreadystatechange = function() {
+  if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+     $("#id").text(xmlHttp.responseText);
+}
+xmlHttp.open("GET", url, true); // true for asynchronous 
+xmlHttp.send(null);
+//end firebase token retrieval  
+}
+  
 //send sms
 function myFunction(phone,say) {
   phone = phone.replace(/\n/g, "',");
