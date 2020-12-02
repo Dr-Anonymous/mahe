@@ -1,5 +1,5 @@
 ---
-layout: signInScript
+layout: default
 ---
 <p id="demo">You must be signed-in to access this app</p>
 <p id="id" style="display: none;"></p>
@@ -9,7 +9,7 @@ layout: signInScript
 <br><br>
 <button id= "btn" onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value);">Send</button>
 </div>
-<div id="my-signin" class="my-signin"></div>
+<div data-target="slide-out" class="sidenav-trigger my-signin"><i class="material-icons">account_circle</i>Sign-in</div>
 <a class="signout" onclick="signOut();" style="display: none;">Sign out</a>
 
 <script>
