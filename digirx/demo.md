@@ -91,7 +91,7 @@ layout: default
   </div>
   <div class="row">
     <h5>Rx</h5>
-     <table class="col s12 striped centered responsive-table">
+     <table class="col s12 striped centered responsive-table" id="myTable">
         <thead>
           <tr>
               <th>Drug</th>
@@ -181,8 +181,6 @@ layout: default
 <!--modal end-->
 <script>
 $(document).ready(function(){
-    //$('select').formSelect();
-    $('.modal').modal();
     M.updateTextFields();
   });
   
@@ -200,6 +198,7 @@ $(document).on('click', '.btn-floating.blue', function(){ //add
 }
 
 $('.btn-floating.orange').on('click', function(){ //edit
+  $('.modal').modal();
   $('#modal1').modal('open');
   // Get all TD from the cliked Button
   var td = $(this).parents('tr').find('td:lt(4)'); //index numbers start at 0
@@ -217,6 +216,10 @@ $('.btn-floating.orange').on('click', function(){ //edit
 function updateDrug(id, drug, dose, duration, instructions){
    //var col_index = $(this).index();
    console.log(id, drug, dose, duration, instructions);
+   $('#myTable tr').eq(id).find('td').eq(0).text(drug);
+   $('#myTable tr').eq(id).find('td').eq(1).text(dose);
+   $('#myTable tr').eq(id).find('td').eq(2).text(duration);
+   $('#myTable tr').eq(id).find('td').eq(3).text(instructions);
 }
 var jsPDF = window.jspdf.jsPDF,
 doc = new jsPDF(),
