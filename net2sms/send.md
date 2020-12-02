@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: signInScript
 ---
 <p id="demo">You must be signed-in to access this app</p>
 <p id="id" style="display: none;"></p>
@@ -15,19 +15,19 @@ layout: default
 <script>
 //code for google sign-in
 function onSuccess(googleUser) {
-    //document.getElementById("my-signin2").style.display = "none";
+    $(".my-signin").hide();
     document.getElementById("form").style.display = "initial";
-    //document.getElementById("signout").style.display = "initial";
+    $(".signout").show();
      //display user details
      var profile = googleUser.getBasicProfile();
-     document.getElementById("demo").innerText = "Welcome "+ profile.getName()+ " ("+profile.getEmail()+")";
+     $("#demo").text("Welcome "+ profile.getName()+ " ("+profile.getEmail()+")");
      console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
     //get firebase token using email id
     var url= "https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail="+profile.getEmail();
  var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            document.getElementById("id").innerText= xmlHttp.responseText;
+           $("#id").text(xmlHttp.responseText);
     }
     xmlHttp.open("GET", url, true); // true for asynchronous 
     xmlHttp.send(null);
@@ -58,25 +58,25 @@ function onSuccess(googleUser) {
 //send sms
 function myFunction(phone,say) {
   phone = phone.replace(/\n/g, "',");
-  var id= document.getElementById("id").innerText;
+  var id= $("#id").text();
   if (id==="noToken"){
-     document.getElementById("demo").innerHTML = "You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.";
+     $("#demo").("You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.");
     return;
     }
 //change button state
- document.getElementById("btn").innerText = "Sending...";
+ $("#btn").text("Sending...");
  
 //make call to script
   fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say+"&id="+id)
   .then(function(data) {
     // Here you get the data
-    document.getElementById("form").style.display = "none";
-    document.getElementById("demo").innerHTML = "Sent. <a href='javascript:location.reload();' id='reload'>Send another message</a>";
+    $("#form").hide();
+    $("#demo").html("Sent. <a href='javascript:location.reload();' id='reload'>Send another message</a>");
     console.log(data);
     })
   .catch(function(error) {
     // If there is any error
-    document.getElementById("demo").innerHTML = "Server error. Try again";
+    $("#demo").html("Server error. Try again");
     console.log(error);
   });
 }
