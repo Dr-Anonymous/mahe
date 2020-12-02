@@ -60,7 +60,7 @@ function myFunction(phone,say) {
   phone = phone.replace(/\n/g, "',");
   var id= $("#id").text();
   if (id==="noToken"){
-     $("#demo").("You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.");
+     $("#demo").html("You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.");
     return;
     }
 //change button state
