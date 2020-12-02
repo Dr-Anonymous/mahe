@@ -191,8 +191,8 @@ $('.btn-floating.red').on('click', function(){ //delete
   $(this).parents('tr').remove();
 })
 $('.btn-floating.blue').on('click', function(){ //add
-  $(this).parents('tr').after("<tr><td></td><td></td><td></td><td></td>"+$(this).parents('tr').find("td")[4].html()+"</tr>")
-})
+  $(this).parents('tr').after("<tr><td></td><td></td><td></td><td></td><td><a onClick=\"btnClick();\" class=\"btn-floating waves-effect waves-light red hoverable\"><i class=\"material-icons\">delete</i></a><a data-target=\"modal1\" class=\"btn-floating waves-effect waves-light orange btn modal-trigger hoverable\"><i class=\"material-icons\">edit</i></a><a onClick=\"btnClick();\" class=\"btn-floating waves-effect waves-light blue hoverable\"><i class=\"material-icons\">add</i></a></td></tr>")
+  })
 $('.btn-floating.orange').on('click', function(){ //edit
   $('#modal1').modal('open');
   // Get all TD from the cliked Button
