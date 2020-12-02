@@ -12,4 +12,4 @@ layout: default
     <a href="./user" class="waves-effect waves-light btn"><i class="material-icons left">border_color</i>Register/Login</a>
 </p>
 
-<script> function otherSignedInStuff(){ window.location.href = "./demo" ; } </script>
+<script> function otherSignedInStuff(){ window.location.href = "./user" ; } </script>
