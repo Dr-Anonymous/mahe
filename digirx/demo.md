@@ -176,7 +176,7 @@ $(document).ready(function(){
   });
   
 //all btns function
-$('.btn-floating.red').on('click', .'btn-floating.red' ,function(){ //delete
+$('.btn-floating.red').on('click', '.btn-floating.red' ,function(){ //delete
   $(this).parents('tr').remove();
 })
 $('.btn-floating.blue').on('click', '.btn-floating.blue', function(){ //add
