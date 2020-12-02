@@ -319,21 +319,13 @@ doc.table(28, 152, generateData(), headers, { headerBackgroundColor: c1});
 doc.save($('#name').val()+'-digiRx.pdf');
 }
 //==================table
-var generateData = function() {
+generateData() {
 var data = [];
 var table = document.getElementById("myTable");
   for (let i in table.rows) {
     let row = table.rows[i]
     if (i>0){
-      var dataIn = [];
-      dataIn.push({'No.': i});
-      for (let j in row.cells) {
-        if (j<4){
-          let cell = row.cells[j]
-          dataIn.push({table.rows[0].cells[j].innerText : cell.innerText});
-        }
-      }
-      data.push(dataIn);  
+      data.push({"No.": i, "Drug":row.cells[0].innerText, "Dose & freq.":row.cells[1].innerText, "Duration" :row.cells[2].innerText, "Instructions" :row.cells[3].innerText});
     }
   }
   return data;
