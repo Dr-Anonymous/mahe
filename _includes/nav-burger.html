@@ -32,7 +32,7 @@ $(".signout").show();
 var profile = googleUser.getBasicProfile();
 $("#userName").text(profile.getName());
 $('#userMail').text(profile.getName());
-$('#userImage').attr('src':profile.getImageUrl());
+$('#userImage').attr('src', profile.getImageUrl());
 otherSignedInStuff(googleUser);
 }
 function onFailure(error) {
