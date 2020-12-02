@@ -11,6 +11,13 @@ Quick links:
 
 >_Any suggestions/ queries :e-mail:_ [mail@orthosam.com](mailto:mail@orthosam.com).
 
+
+<script>
+ function otherSignedInStuff(googleUser){
+ console.log(googleUser);
+ }
+</script>
+
  {% if site.show_posts %}
  ## Posts
 
