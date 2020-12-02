@@ -13,9 +13,7 @@ Quick links:
 
 
 <script>
- function otherSignedInStuff(googleUser){
- console.log(googleUser);
- }
+ function otherSignedInStuff(googleUser){ }
 </script>
 
  {% if site.show_posts %}
