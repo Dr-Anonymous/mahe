@@ -11,3 +11,5 @@ layout: default
     <a href="./demo" class="waves-effect waves-light btn"><i class="material-icons left">view_list</i>Demo</a>
     <a href="./register" class="waves-effect waves-light btn"><i class="material-icons left">border_color</i>Register/Login</a>
 </p>
+
+<script> function otherSignedInStuff(){ window.location.href = "./demo" ; } </script>
