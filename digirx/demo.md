@@ -164,7 +164,7 @@ layout: default
     </div>
   </div>
   <div class="modal-footer">
-    <a onclick="updateDrug($(this).attr('value'), $('#drug').val(), $('#dose').val(), $('#duration').val(), $('#instructions').val());" class="modal-action modal-close waves-effect waves-green btn-flat ">Update</a>
+    <a onclick="updateDrug($('#modal1').attr('value'), $('#drug').val(), $('#dose').val(), $('#duration').val(), $('#instructions').val());" class="modal-action modal-close waves-effect waves-green btn-flat ">Update</a>
   </div>
 </div>
 <!--modal end-->
@@ -194,7 +194,7 @@ $('.btn-floating.orange').on('click', function(){ //edit
   var td = $(this).parents('tr').find('td:lt(4)'); //index numbers start at 0
   // $td.each(function(i){
   // Only the $() makes this td Object of DOM
-    $('#modal1').val($(this).parent().index())
+    $('#modal1').attr("value", $(this).parent().index());
     $('#drug').val($(td[0]).text());
     $('#dose').val($(td[1]).text());
     $('#duration').val($(td[2]).text());
