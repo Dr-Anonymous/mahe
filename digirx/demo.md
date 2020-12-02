@@ -194,25 +194,21 @@ function deleteRow(elem){
 
 function addRow(elem){
 //$(document).on('click', '.btn-floating.blue', function(){ //add
-  elem.parents('tr').after("<tr><td></td><td></td><td></td><td></td><td><a onclick=\"deleteRow($(this));\" class=\"btn-floating waves-effect waves-light red hoverable\"><i class=\"material-icons\">delete</i></a><a data-target=\"modal1\" class=\"btn-floating waves-effect waves-light orange btn modal-trigger hoverable\"><i class=\"material-icons\">edit</i></a><a onclick=\"addRow($(this));\" class=\"btn-floating waves-effect waves-light blue hoverable\"><i class=\"material-icons\">add</i></a></td></tr>")
+  elem.parents('tr').after("<tr><td></td><td></td><td></td><td></td><td><a onclick=\"deleteRow($(this));\" class=\"btn-floating waves-effect waves-light red hoverable\"><i class=\"material-icons\">delete</i></a><a onclick=\"editRow($(this));\" data-target=\"modal1\" class=\"btn-floating waves-effect waves-light orange btn modal-trigger hoverable\"><i class=\"material-icons\">edit</i></a><a onclick=\"addRow($(this));\" class=\"btn-floating waves-effect waves-light blue hoverable\"><i class=\"material-icons\">add</i></a></td></tr>")
 //})
 }
 
-$('.btn-floating.orange').on('click', function(){ //edit
+function editRow(elem){
+//$('.btn-floating.orange').on('click', function(){ //edit
   $('#modal1').modal('open');
-  $('#modal1').attr("value", $(this).parents('tr').index()+1);
-
-  // Get all TD from the cliked Button
-  var td = $(this).parents('tr').find('td:lt(4)'); //index numbers start at 0
-  // $td.each(function(i){
-  // Only the $() makes this td Object of DOM
-    $('#drug').val($(td[0]).text());
-    $('#dose').val($(td[1]).text());
-    $('#duration').val($(td[2]).text());
-    $('#instructions').val($(td[3]).text());
-  // })
-});
-  
+  $('#modal1').attr("value", elem.parents('tr').index()+1);
+  var td = $(elem).parents('tr').find('td:lt(4)'); //index numbers start at 0
+  $('#drug').val($(td[0]).text());
+  $('#dose').val($(td[1]).text());
+  $('#duration').val($(td[2]).text());
+  $('#instructions').val($(td[3]).text());
+//});
+}
 //modal function
 function updateDrug(id, drug, dose, duration, instructions){
    //var col_index = $(this).index();
