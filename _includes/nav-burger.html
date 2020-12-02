@@ -15,8 +15,36 @@
     <li><a class="waves-effect" href="/r">URLredirect</a></li>
     <li><a class="waves-effect" href="/digirx">digi&#8478;</a></li>
     <li><div class="divider"></div></li>
-    <li><div class="my-signin"></div><li>
+    <li><div id="my-signin" class="my-signin"></div><li>
     <li><a class="signout" onclick="signOut();" style="display: none;"><i class="material-icons">account_circle</i>Sign out</a></li>
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger fixed-action-btn btn-floating btn-large"><i class="material-icons">menu</i></a>
-
+<script>
+//code for google sign-in
+function onSuccess(googleUser) {
+    $(".my-signin").hide();
+    document.getElementById("form").style.display = "initial";
+    $(".signout").show();
+     //display user details
+     var profile = googleUser.getBasicProfile();
+     $("#userName").text("Welcome "+ profile.getName());
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+ //google signout
+ function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+    location.reload();
+    });
+  }
+</script>
