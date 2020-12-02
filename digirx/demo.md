@@ -141,7 +141,7 @@ layout: default
 </form>
 </div>
 <!--modal start-->
-<div id="modal1" class="modal modal-fixed-footer" value="nothing">
+<div id="modal1" class="modal modal-fixed-footer" value="empty">
   <div class="modal-content">
     <h4>Edit prescription</h4>
     <div class="row">
@@ -182,6 +182,7 @@ layout: default
 <script>
 $(document).ready(function(){
     M.updateTextFields();
+    $('.modal').modal();
   });
   
 //all btns function
@@ -198,13 +199,16 @@ $(document).on('click', '.btn-floating.blue', function(){ //add
 }
 
 $('.btn-floating.orange').on('click', function(){ //edit
-  $('.modal').modal();
+ $('#modal1').modal({
+   reset();
+  });
   $('#modal1').modal('open');
+  $('#modal1').attr("value", $(this).parents('tr').index()+1);
+
   // Get all TD from the cliked Button
   var td = $(this).parents('tr').find('td:lt(4)'); //index numbers start at 0
   // $td.each(function(i){
   // Only the $() makes this td Object of DOM
-    $('#modal1').attr("value", $(this).parents('tr').index()+1);
     $('#drug').val($(td[0]).text());
     $('#dose').val($(td[1]).text());
     $('#duration').val($(td[2]).text());
