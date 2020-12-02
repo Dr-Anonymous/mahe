@@ -125,4 +125,5 @@ var url = new URL(window.location.href);
 var param = url.searchParams.toString().slice(0, -1);
 return param;
 }
+function otherSignedInStuff(googleUser){}
 </script>
