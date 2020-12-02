@@ -204,7 +204,7 @@ $('.btn-floating.orange').on('click', function(){ //edit
   var td = $(this).parents('tr').find('td:lt(4)'); //index numbers start at 0
   // $td.each(function(i){
   // Only the $() makes this td Object of DOM
-    $('#modal1').attr("value", $(this).parents('tr').index());
+    $('#modal1').attr("value", $(this).parents('tr').index()+1);
     $('#drug').val($(td[0]).text());
     $('#dose').val($(td[1]).text());
     $('#duration').val($(td[2]).text());
