@@ -7,7 +7,7 @@ layout: default
   Phone number: <a href ="../mycontacts" target="_blank">View your contacts here</a><textarea id="phone" placeholder="Multiple contacts can entered separated by a space or , inbetween them"></textarea>
   SMS Message: <textarea type="text" id="say"></textarea>
 <br><br>
-<button id= "btn" onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value);">Send</button>
+<button id="btn" class="btn waves-effect waves-light" onclick="myFunction($('#phone').val(), $('#say').val());">Send</button>
 </div>
 <div data-target="slide-out" class="sidenav-trigger my-signin"><i class="material-icons">account_circle</i>Sign-in</div>
 
@@ -17,7 +17,6 @@ function otherSignedInStuff(googleUser){
 $("#form").show();
 var profile = googleUser.getBasicProfile();
 $("#demo").text("Welcome "+ profile.getName()+ " ("+profile.getEmail()+")");
-console.log('Logged in as: ' + profile.getName()+ " "+profile.getEmail());
 //get firebase token using email id
 var url= "https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail="+profile.getEmail();
 var xmlHttp = new XMLHttpRequest();
@@ -39,19 +38,21 @@ function myFunction(phone,say) {
     return;
     }
 //change button state
- $("#btn").text("Sending...");
+ M.toast({html: "Sending..."});
+ $("#btn").hide();
  
 //make call to script
   fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say+"&id="+id)
   .then(function(data) {
     // Here you get the data
     $("#form").hide();
-    $("#demo").html("Sent. <a href='javascript:location.reload();' id='reload'>Send another message</a>");
+    M.toast({html: "Message sent."});
+    $("#demo").html("<a href='javascript:location.reload();' id='reload'>Send another message</a>");
     console.log(data);
     })
   .catch(function(error) {
     // If there is any error
-    $("#demo").html("Server error. Try again");
+    M.toast({html: "Server error. Try again"});
     console.log(error);
   });
 }
