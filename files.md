@@ -54,4 +54,6 @@ $(document).ready(function() {
         jusChange(urlParam());
     });
 });
+
+function otherSignedInStuff(googleUser){}
 </script>
