@@ -5,4 +5,7 @@ layout: default
 
 {% include_relative ./form.html %}
 
-<script> function otherSignedInStuff(googleUser){} </script>
+<script>
+function otherSignedInStuff(googleUser){ 
+}
+</script>
