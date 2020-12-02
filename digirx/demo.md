@@ -315,22 +315,22 @@ doc.text($('#advise').val(), 25, 265);
 doc.setTextColor(c2);
 doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 8, 290);
 doc.setTextColor(c0);
-doc.table(28, 152, generateData(3),headers ,{ headerBackgroundColor: c1});
+doc.table(28, 152, generateData(), headers, { headerBackgroundColor: c1});
 doc.save($('#name').val()+'-digiRx.pdf');
 }
 //==================table
 var generateData = function() {
-var data[];
+var data = [];
 var table = document.getElementById("myTable");
   for (let i in table.rows) {
     let row = table.rows[i]
     if (i>0){
       var dataIn = [];
-      dataIn.push('No.': i);
+      dataIn.push({'No.': i});
       for (let j in row.cells) {
         if (j<4){
           let cell = row.cells[j]
-          dataIn.push(table.rows[0].cells[j].innerText :cell.innerText);
+          dataIn.push({table.rows[0].cells[j].innerText : cell.innerText});
         }
       }
       data.push(dataIn);  
