@@ -11,3 +11,5 @@ With more than 10 years of experience in the medical field and good hold over va
 Our prices, not unlike our services, are also based on your particular needs. To get an estimate of product completion time line and price quote, kindly mail your dream project outline to [mail@orthosam.com](mailto:mail@orthosam.com).
 
 *We will code your dream to reality.*
+
+<script> function otherSignedInStuff(googleUser){} </script>
