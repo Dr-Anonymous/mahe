@@ -9,7 +9,7 @@ layout: signInScript
 <br><br>
 <button id= "btn" onclick="myFunction(document.getElementById('phone').value,document.getElementById('say').value);">Send</button>
 </div>
-<div class="my-signin"></div>
+<div id="my-signin" class="my-signin"></div>
 <a class="signout" onclick="signOut();" style="display: none;">Sign out</a>
 
 <script>
