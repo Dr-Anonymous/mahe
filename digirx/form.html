@@ -305,7 +305,7 @@ var table = document.getElementById("myTable");
   for (let i in table.rows) {
     let row = table.rows[i]
     if (i > 0){
-      data.push({"No.": i, "Drug":row.cells[0].innerText, "Dose & freq.":row.cells[1].innerText, "Duration" :row.cells[2].innerText, "Instructions" :row.cells[3].innerText});
+      data.push({"No.": i, "Drug":row.cells[0].innerText||"-", "Dose & freq.":row.cells[1].innerText||"-", "Duration" :row.cells[2].innerText||"-", "Instructions" :row.cells[3].innerText||"-"});
     }
   }
   return data;
