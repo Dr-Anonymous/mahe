@@ -36,4 +36,3 @@ var profile = googleUser.getBasicProfile();
  M.toast({html: 'Hi '+profile.getName()});
 }
 </script>
-<a class="waves-effect waves-light btn" onclick="makePdf();"><i class="material-icons left">bubble_chart</i>Create prescription</a>
