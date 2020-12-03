@@ -182,8 +182,7 @@ $(document).ready(function(){
   
 //all btns function
 function deleteRow(elem){
-  console.log(elem.parent('tr').index());
-  if (elem.parent('tr').index()==1)
+  if (elem.parents('tr').index()==0 && elem.closest("tr").is(":last-child"))
     addRow(elem);
   elem.parents('tr').remove();
 }
