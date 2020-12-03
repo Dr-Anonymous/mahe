@@ -300,9 +300,9 @@ doc.save($('#name').val()+'-digiRx.pdf');
 var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 50, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 35, align: "center"},{name: "Instructions", width: 50, align: "left"}];
 
 function getTableData() {
-var data = [], i;
+var data = [];
 var table = document.getElementById("myTable");
-  for (i in table.rows && i > 0) {
+  for (var i in table.rows && i > 0) {
     let row = table.rows[i]
     //if (){
       data.push({"No.": i, "Drug":row.cells[0].innerText, "Dose & freq.":row.cells[1].innerText, "Duration" :row.cells[2].innerText, "Instructions" :row.cells[3].innerText});
