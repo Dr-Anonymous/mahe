@@ -32,5 +32,3 @@ doc.setFontSize(f0-3);
 doc.text("Reg. No 95695",203, 290, null, null, "right");
 function otherSignedInStuff(googleUser){}
 </script>
-<a class="waves-effect waves-light btn" onclick="makePdf();"><i class="material-icons left">bubble_chart</i>Create prescription</a>
-
