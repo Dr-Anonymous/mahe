@@ -1,10 +1,6 @@
 ---
 layout: default
----
-### digi&#8478; demo
-
-<script>
-//==================header
+script: //==================header
 //institiute
 doc.setTextColor(c0);
 doc.setFont("times", "bold");
@@ -28,7 +24,11 @@ doc.setFont("times", "normal");
 doc.text("Dr Samuel Manoj Cherukuri",203, 285, null, null, "right");
 doc.setFontSize(f0-3);
 doc.text("Reg. No 95695",203, 290, null, null, "right");
+---
+### digi&#8478; demo
+
+{% include_relative form.html content= page.script %}
+
+<script>
 function otherSignedInStuff(googleUser){}
 </script>
-
-{% include_relative form.html %}
