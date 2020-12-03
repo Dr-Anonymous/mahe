@@ -290,25 +290,26 @@ doc.text($('#diagnosis').val(), 33, 147);
 //advise
 doc.text($('#advise').val(), 25, 265);
 doc.setTextColor(c2);
-doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 8, 290);
+if ($('#followup').val())
+  doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 8, 290);
 doc.setTextColor(c0);
-doc.table(28, 152, generateData(), headers, { headerBackgroundColor: c1});
+doc.table(28, 152, getTableData(), headers, { headerBackgroundColor: c1});
 doc.save($('#name').val()+'-digiRx.pdf');
 }
 //==================table
-function generateData() {
+var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 50, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 35, align: "center"},{name: "Instructions", width: 50, align: "left"}];
+
+function getTableData() {
 var data = [];
 var table = document.getElementById("myTable");
-  for (let i in table.rows) {
+  for (let i in table.rows && i > 0) {
     let row = table.rows[i]
-    if (i>0){
+    //if (){
       data.push({"No.": i, "Drug":row.cells[0].innerText, "Dose & freq.":row.cells[1].innerText, "Duration" :row.cells[2].innerText, "Instructions" :row.cells[3].innerText});
-    }
+    //}
   }
   return data;
 }
-
-var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 50, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 35, align: "center"},{name: "Instructions", width: 50, align: "left"}];
 
 //====================footer
 doc.text(new Date().toLocaleString([],{hour12:true}),203, 280, null, null, "right");
