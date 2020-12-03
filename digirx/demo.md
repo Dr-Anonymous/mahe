@@ -1,6 +1,7 @@
 ---
 layout: default
-script: //==================header
+script: |
+//==================header
 //institiute
 doc.setTextColor(c0);
 doc.setFont("times", "bold");
