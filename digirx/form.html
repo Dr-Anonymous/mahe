@@ -300,7 +300,7 @@ doc.save($('#name').val()+'-digiRx.pdf');
 var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 50, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 35, align: "center"},{name: "Instructions", width: 50, align: "left"}];
 
 function getTableData() {
-var data = [];
+var data = [], i;
 var table = document.getElementById("myTable");
   for (i in table.rows && i > 0) {
     let row = table.rows[i]
