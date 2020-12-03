@@ -5,6 +5,7 @@ layout: default
 
 {% include_relative form.html %}
 <script>
+$('#myForm').show();
 //==================header
 //institiute
 doc.setTextColor(c0);
