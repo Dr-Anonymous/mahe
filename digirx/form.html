@@ -222,6 +222,9 @@ doc = new jsPDF(),
     c4 = "rgb(0, 0, 255)",
     c5 = "rgb(255,255, 255)";
 
+//=======header and footer
+  {{ include.content }}
+  
 //=====================body headings
 doc.setFontSize(f1);
 doc.setFont("times", "italic");
