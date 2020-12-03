@@ -1,6 +1,10 @@
 ---
 layout: default
-script: |
+---
+### digi&#8478; demo
+
+{% include_relative form.html %}
+<script>
 //==================header
 //institiute
 doc.setTextColor(c0);
@@ -25,11 +29,7 @@ doc.setFont("times", "normal");
 doc.text("Dr Samuel Manoj Cherukuri",203, 285, null, null, "right");
 doc.setFontSize(f0-3);
 doc.text("Reg. No 95695",203, 290, null, null, "right");
----
-### digi&#8478; demo
-
-{% include_relative form.html content= page.script %}
-
-<script>
 function otherSignedInStuff(googleUser){}
 </script>
+<a class="waves-effect waves-light btn" onclick="makePdf();"><i class="material-icons left">bubble_chart</i>Create prescription</a>
+
