@@ -3,9 +3,6 @@ layout: default
 ---
 ### digi&#8478; demo
 
-
-{% include_relative form.html %}
-
 <script>
 //==================header
 //institiute
@@ -33,3 +30,5 @@ doc.setFontSize(f0-3);
 doc.text("Reg. No 95695",203, 290, null, null, "right");
 function otherSignedInStuff(googleUser){}
 </script>
+
+{% include_relative form.html %}
