@@ -182,6 +182,8 @@ $(document).ready(function(){
   
 //all btns function
 function deleteRow(elem){
+  if (elem.parent().index()==1)
+    addRow(elem);
   elem.parents('tr').remove();
 }
 
