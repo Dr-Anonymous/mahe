@@ -99,9 +99,9 @@
         </thead>
         <tbody>
           <tr>
-            <td>Tab. DOLO</td>
+            <td>Tab. PARACETAMOL</td>
             <td>650mg TID</td>
-            <td>10 days</td>
+            <td>7 days</td>
             <td>If fever >100 F</td>
             <td>
               <a onclick="deleteRow($(this));" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
@@ -110,9 +110,9 @@
             </td>
           </tr>
           <tr>
-            <td>Tab. PAN</td>
+            <td>Tab. PANTOPRAZOLE</td>
             <td>40mg OD</td>
-            <td>10 days</td>
+            <td>7 days</td>
             <td>Before breakfast</td>
             <td>
               <a onclick="deleteRow($(this));" class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">delete</i></a>
@@ -188,7 +188,7 @@ function deleteRow(elem){
   if (elem.parents('tr').index()==0 && elem.closest("tr").is(":last-child"))
     addRow(elem);
   deleteDrug = setTimeout(function(){elem.parents('tr').remove(); }, 4000);
-  M.toast({html: '<span>Drug deleted</span><button onclick="clearTimeout(deleteDrug);" class="btn-flat toast-action">Undo</button>'});
+  M.toast({html: '<span>Drug deleted</span><button onclick="clearTimeout(deleteDrug);elem.parents('tr').show();" class="btn-flat toast-action">Undo</button>'});
 }
 
 function addRow(elem){
