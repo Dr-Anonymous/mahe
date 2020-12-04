@@ -179,6 +179,14 @@
 $(document).ready(function(){
     M.updateTextFields();
     $('.modal').modal();
+    $('#drug').autocomplete({
+      data: {
+        "PARACETAMOL": null,
+        "PANTOPRAZOLE": null,
+        "TRAMADOL": null
+      },
+    });
+  
   });
   
 //all btns function
