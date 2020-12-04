@@ -182,12 +182,12 @@ $(document).ready(function(){
   });
   
 //all btns function
+var deleteDrug;
 function deleteRow(elem){
-  var deleteDrug;
-  deleteDrug = setTimeout(function(){
-    if (elem.parents('tr').index()==0 && elem.closest("tr").is(":last-child"))
-      addRow(elem);
-    elem.parents('tr').remove(); }, 4000);
+  elem.parents('tr').hide();
+  if (elem.parents('tr').index()==0 && elem.closest("tr").is(":last-child"))
+    addRow(elem);
+  deleteDrug = setTimeout(function(){elem.parents('tr').remove(); }, 4000);
   M.toast({html: '<span>Drug deleted</span><button onclick="clearTimeout(deleteDrug);" class="btn-flat toast-action">Undo</button>'});
 }
 
