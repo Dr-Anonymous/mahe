@@ -185,8 +185,7 @@ $(document).ready(function(){
 function deleteRow(elem){
   if (elem.parents('tr').index()==0 && elem.closest("tr").is(":last-child"))
     addRow(elem);
-  var deleteDrug = function(){ elem.parents('tr').remove(); }
-  setTimeout(deleteDrug, 4000);
+  var deleteDrug = setTimeout(function(){ elem.parents('tr').remove(); }, 4000);
   M.toast({html: '<span>Drug deleted</span><button onclick="clearTimeout(deleteDrug);" class="btn-flat toast-action">Undo</button>'});
 }
 
