@@ -1,9 +1,8 @@
 ---
 layout: default
+title: Orthosam
+description: Contact us
 ---
-
-# Contact us-
-
 <div>
 	<p>Phone: <a href="tel:+919866812555">+91 98668 12555</a></p>
 	<p>Email: <a href="mailto:mail@orthosam.com">mail@orthosam.com</a></p>
