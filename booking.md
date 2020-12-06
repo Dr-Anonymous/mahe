@@ -1,5 +1,7 @@
 ---
 layout: iframe
+title: Dr Samuel Manoj
+description: Appointment booking
 ---
 Book appointment with [Dr Samuel Manoj Ch](https://samuel.cf/#about) <small>M.S Orthopaedics(Manipal)</small>:
 
