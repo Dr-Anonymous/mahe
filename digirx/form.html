@@ -303,11 +303,12 @@ doc.setTextColor(c2);
 if ($('#followup').val())
   doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 8, 290);
 doc.setTextColor(c0);
+doc.setLineWidth(0);
 doc.table(28, 152, getTableData(), headers, { headerBackgroundColor: c1});
 doc.save($('#name').val()+'-digiRx.pdf');
 }
 //==================table
-var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 50, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 35, align: "center"},{name: "Instructions", width: 50, align: "left"}];
+var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 60, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 30, align: "center"},{name: "Instructions", width: 50, align: "left"}];
 
 function getTableData() {
 var data = [];
