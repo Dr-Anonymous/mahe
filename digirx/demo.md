@@ -1,8 +1,8 @@
 ---
 layout: default
+title: digi&#8478; demo
+description: Digital health records
 ---
-### digi&#8478; demo
-
 {% include_relative form.html %}
 <script>
 $('form').show();
