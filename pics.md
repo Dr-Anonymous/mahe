@@ -1,5 +1,7 @@
 ---
 layout: default
+title: Pic gallery
+description: Albums
 ---
 <div id="pics" class="row"></div>
 <div class="flow-text center" id="load"></div>
@@ -18,8 +20,6 @@ layout: default
 <!--spinner end-->
   
 <script>
-document.title = 'Pic gallery';
-$('#project_title').text('Pic gallery');
 $('#main_content').css("max-width", "100%");
 	
 var albumId = urlParam(),
@@ -32,7 +32,6 @@ if (!albumId){
     history.replaceState({urlPath:'./?'+ albumId}, "", './?'+ albumId);
     }else{
     changeDest(albumId);
-    $('#project_tagline').text('Albums');
     }
     
 function changeDest(id) {
