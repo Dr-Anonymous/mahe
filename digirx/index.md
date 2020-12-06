@@ -1,7 +1,7 @@
 ---
 layout: default
 title: digi&#8478;
-description: digital health record
+description: Digital health records
 ---
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
 
