@@ -1,11 +1,12 @@
 ---
 layout: default
+title: Orthosam
+description: Files
 ---
 <link href="https://drive.google.com/static/doclist/client/css/4152783537-folderlandingpage.css" rel="stylesheet">
 <div id="folders" class="row">Loading.....</div>
 
 <script>
-document.title = 'Orthosam/files';
 var id = urlParam();
 if (!id){
     id = "1MGTIataD9rRTVA7qBUZC8Im4Sq99NCri";
