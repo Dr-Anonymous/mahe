@@ -7,7 +7,7 @@ description: Send SMS
 <p id="id" style="display: none;"></p>
 <div id= "form" style="display: none;">
   Phone number: <a href ="../mycontacts" target="_blank">View your contacts here</a><textarea id="phone" placeholder="Multiple contacts can entered separated by a space or , inbetween them"></textarea>
-  SMS Message: <textarea type="text" id="say"></textarea>
+  SMS body: <textarea id="say" placeholder="Hello, how are you?"></textarea>
 <br><br>
 <button id="btn" class="btn waves-effect waves-light" onclick="myFunction($('#phone').val(), $('#say').val());">Send</button>
 </div>
@@ -33,30 +33,34 @@ xmlHttp.send(null);
   
 //send sms
 function myFunction(phone,say) {
-  phone = phone.replace(/\n/g, "',");
-  var id= $("#id").text();
-  if (id==="noToken"){
-     $("#demo").html("You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.");
-    return;
-    }
+if (!phone){
+M.toast({html: "Enter a phone number."});
+return;
+}
+phone = phone.replace(/\n/g, "',");
+var id= $("#id").text();
+if (id==="noToken"){
+   $("#demo").html("You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.");
+  return;
+  }
 //change button state
- M.toast({html: "Sending..."});
- $("#btn").hide();
- 
+M.toast({html: "Sending..."});
+$("#btn").hide();
+
 //make call to script
-  fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say+"&id="+id)
-  .then(function(data) {
-    // Here you get the data
-    $("#form").hide();
-    M.toast({html: "Message sent."});
-    $("#demo").html("<a href='javascript:location.reload();' id='reload'>Send another message</a>");
-    console.log(data);
-    })
-  .catch(function(error) {
-    // If there is any error
-    M.toast({html: "Server error. Try again"});
-    console.log(error);
-  });
+fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say+"&id="+id)
+.then(function(data) {
+  // Here you get the data
+  $("#form").hide();
+  M.toast({html: "Message sent."});
+  $("#demo").html("<a href='javascript:location.reload();' id='reload'>Send another message</a>");
+  console.log(data);
+  })
+.catch(function(error) {
+  // If there is any error
+  M.toast({html: "Server error. Try again"});
+  console.log(error);
+});
 }
 //send sms end
 </script>
