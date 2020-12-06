@@ -1,8 +1,8 @@
 ---
 layout: default
+title: digi&#8478;
+description: Digital health records
 ---
-
-### digi&#8478;
 {% include_relative form.html %}
 <script>
 //==================header
