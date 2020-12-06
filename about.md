@@ -1,8 +1,8 @@
 ---
 layout: default
+title: Orthosam
+description: About us
 ---
-
-# About us
 
 Orthosam.com is an online portal offering the best of its kind comprehensive medical software solutions for individuals and hospitals. It was started by Dr [Samuel Ch](https://samuel.cf/#about), during his orthopaedic surgical residency at [Kasturba Hospital, Manipal](https://www.google.co.in/search?q=kasturba+hospital+manipal&oq=kasturba+hospital).
 
