@@ -5,13 +5,14 @@ description: Digital health records
 ---
 {% include_relative form.html %}
 <script>
-var pass;
+var pass = prompt("Please enter your id:","");
 function otherSignedInStuff(googleUser){
 $('form').show();
 var profile = googleUser.getBasicProfile();
 //$('#userMail').text(profile.getEmail());
  M.toast({html: 'Hi '+profile.getName()});
-pass = "auto";
+if (pass == "" || pass == null)
+ pass = "auto";
 var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&id=1&pass="+pass;
 // Make an AJAX call to Google Script
 jQuery.ajax({
