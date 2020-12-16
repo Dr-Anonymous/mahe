@@ -48,7 +48,8 @@ doc.setFont("times", "normal");
 doc.text(e[1],203, 285, null, null, "right");
 doc.setFontSize(f0-3);
 doc.text(e[3],203, 290, null, null, "right");
-}catch(err) {
-      //$("#main_content").html("No such doctor in database");
+}catch(err){
+$("#main_content").html("No such doctor in database");
+ }
 }
 </script>
