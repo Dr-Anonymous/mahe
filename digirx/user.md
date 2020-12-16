@@ -6,7 +6,7 @@ description: Digital health records
 {% include_relative form.html %}
 <script>
 var pass;
- function otherSignedInStuff(googleUser){
+function otherSignedInStuff(googleUser){
 $('form').show();
 var profile = googleUser.getBasicProfile();
 //$('#userMail').text(profile.getEmail());
@@ -15,13 +15,12 @@ pass = "auto";
 }
 var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&id=1&pass="+pass;
 // Make an AJAX call to Google Script
-var request = jQuery.ajax({
-      crossDomain: true,
-      url: url,
-      method: "GET",
-      dataType: "jsonp"
-    });
- }
+jQuery.ajax({
+crossDomain: true,
+url: url,
+method: "GET",
+dataType: "jsonp"
+});
 
 function loadData(e) {
 try {
