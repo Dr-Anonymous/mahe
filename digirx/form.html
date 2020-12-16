@@ -188,6 +188,7 @@ $(document).ready(function(){
 //all btns function
 var deleteDrug;
 function deleteRow(elem){
+  elem.parents('tr').eq(elem.parents('tr').index()-1).remove();
   elem.parents('tr').hide();
   if (elem.parents('tr').index()==0 && elem.closest("tr").is(":last-child"))
     addRow(elem);
