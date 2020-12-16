@@ -12,7 +12,6 @@ var profile = googleUser.getBasicProfile();
 //$('#userMail').text(profile.getEmail());
  M.toast({html: 'Hi '+profile.getName()});
 pass = "auto";
-}
 var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&id=1&pass="+pass;
 // Make an AJAX call to Google Script
 jQuery.ajax({
@@ -21,6 +20,8 @@ url: url,
 method: "GET",
 dataType: "jsonp"
 });
+
+}
 
 function loadData(e) {
 try {
