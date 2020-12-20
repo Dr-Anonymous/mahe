@@ -17,9 +17,8 @@ crossDomain: true,
 url: url,
 type: "POST",
 data: JSON.stringify ({id: id, pass: pass}),
-dataType: "jsonp",
-success: loadData(data)
-});
+dataType: "jsonp"
+ });
  }
  
 function otherSignedInStuff(googleUser){
