@@ -55,11 +55,28 @@ description: Registration/ modification
       <label for="address">Address</label>
     </div>
   </div>
+  <div class="row">
+    <h5>Password</h5>
+    <div class="input-field col s6">
+      <input id="password" type="password">
+      <label for="password">Enter password</label>
+    </div>
+    <div class="input-field col s6">
+      <input id="rptPassword" type="password">
+      <label for="rptPassword">Re-enter password</label>
+    </div>
+  </div>
   <a class="waves-effect waves-light btn" onclick="update();"><i class="material-icons left">save</i>Save</a>
 </form>
 </div>
 <script>
 function update(){
+if ($('#password').val() != $('#rptPassword').val()){
+  M.toast({html: 'Passwords not matching. Re-enter again.');
+  return;
+  }
+
+$("#main_content").html("Processing....Please wait.")
 var data = JSON.stringify({
   name: $('#name').val(),
   institute: $('#institute').val(),
@@ -70,7 +87,6 @@ var data = JSON.stringify({
   mail: $('#mail').val(),
   address: $('#address').val()  
   });
-console.log(data);
 var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&save=true&data="+data;
 $.ajax({
 crossDomain: true,
@@ -82,7 +98,7 @@ dataType: "jsonp"
 }
 function loadData(e) {
 try {
-console.log(e);
+$("#main_content").html("Registration successful!. Your login id number is: "+ e+ ". You can now <a href='/digirx'>login</a> and start using the app with this id and the password that you\'ve set.");
 } catch(err){
 $("#main_content").html(err);
   }
