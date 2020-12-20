@@ -58,11 +58,11 @@ description: Registration/ modification
   <div class="row">
     <h5>Password</h5>
     <div class="input-field col s6">
-      <input id="password" type="text">
+      <input id="password" type="password">
       <label for="password">Enter password</label>
     </div>
     <div class="input-field col s6">
-      <input id="rptPassword" type="text">
+      <input id="rptPassword" type="password">
       <label for="rptPassword">Re-enter password</label>
     </div>
   </div>
@@ -79,7 +79,6 @@ if ($('#password').val() == ''){
   M.toast({html: 'Password can\'t be empty.'});
   return;
   }
-$("#main_content").html("Processing....Please wait.")
 var data = JSON.stringify({
   password: $('#password').val(),
   name: $('#name').val(),
@@ -91,7 +90,6 @@ var data = JSON.stringify({
   mail: $('#mail').val(),
   address: $('#address').val()
   });
-console.log(data);
 var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&save=true&data="+data;
 $.ajax({
 crossDomain: true,
@@ -99,7 +97,8 @@ url: url,
 method: "GET",
 dataType: "jsonp"
 });
-  
+$("#main_content").html("Processing....Please wait.")
+ 
 }
 function loadData(e) {
 try {
