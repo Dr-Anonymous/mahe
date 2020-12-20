@@ -15,10 +15,10 @@ if (pass != "" || pass != null){
 $.ajax({
 crossDomain: true,
 url: url,
-type: "GET",
+method: "GET",
 dataType: "jsonp"
  });
- }
+}
  
 function otherSignedInStuff(googleUser){
 var profile = googleUser.getBasicProfile();
