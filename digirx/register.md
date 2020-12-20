@@ -19,9 +19,14 @@ description: Registration/ modification
       <input id="regNo" type="text" required="" aria-required="true">
       <label for="regNo">Registration No.</label>
     </div>
-    <div class="input-field col s6">
-      <input id="sign" type="file">
-      <label for="sign">Upload signature</label>
+    <div class="file-field input-field col s6">
+      <div class="btn">
+        <span>Upload signature</span>
+        <input id="sign" type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
     </div>
   </div>
   <div class="row">
