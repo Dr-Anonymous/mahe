@@ -50,6 +50,8 @@ doc.text(e[4], 203, 35, null, null, "right");
 doc.setFontSize(f0);
 doc.text(e[5]+"\n"+e[6]+", "+ e[7], 203, 42, null, null, "right");
 //===============footer
+var signImg = e[8];
+doc.addImage(signImg, 170, 255, 30, 35);
 doc.setFont("times", "normal");
 doc.text(e[1],203, 285, null, null, "right");
 doc.setFontSize(f0-3);
