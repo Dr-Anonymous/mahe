@@ -15,8 +15,7 @@ if (pass != "" || pass != null){
 $.ajax({
 crossDomain: true,
 url: url,
-type: "POST",
-data: JSON.stringify ({id: id, pass: pass}),
+type: "GET",
 dataType: "jsonp"
  });
  }
