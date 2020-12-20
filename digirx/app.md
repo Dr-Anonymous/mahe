@@ -14,7 +14,7 @@ var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pq
 $.ajax({
 crossDomain: true,
 url: url,
-method: "POST",
+method: "GET",
 dataType: "jsonp"
 });
  
@@ -51,7 +51,7 @@ doc.setFontSize(f0);
 doc.text(e[5]+"\n"+e[6]+", "+ e[7], 203, 42, null, null, "right");
 //===============footer
 var signImg = e[8];
-doc.addImage(signImg, 170, 255, 40, 30);
+doc.addImage(signImg, 165, 250, 35, 30);
 doc.setFont("times", "normal");
 doc.text(e[1],203, 285, null, null, "right");
 doc.setFontSize(f0-3);
