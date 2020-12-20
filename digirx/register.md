@@ -82,7 +82,7 @@ dataType: "jsonp"
 }
 function loadData(e) {
 try {
-
+console.log(e);
 } catch(err){
 $("#main_content").html(err);
   }
