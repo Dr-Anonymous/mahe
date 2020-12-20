@@ -75,7 +75,10 @@ if ($('#password').val() != $('#rptPassword').val()){
   M.toast({html: 'Passwords not matching. Re-enter passwords.'});
   return;
   }
-
+if ($('#password').val() == ''){
+  M.toast({html: 'Password can\'t be empty.'});
+  return;
+  }
 $("#main_content").html("Processing....Please wait.")
 var data = JSON.stringify({
   password: $('#password').val(),
