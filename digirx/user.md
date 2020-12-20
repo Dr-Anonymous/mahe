@@ -12,11 +12,13 @@ if (id != "" || id != null){
 if (pass != "" || pass != null){
  var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&id="+ id +"&pass="+ pass;
 // Make an AJAX call to Google Script
-jQuery.ajax({
+$.ajax({
 crossDomain: true,
 url: url,
-method: "POST",
-dataType: "jsonp"
+type: "POST",
+data: JSON.stringify ({id: id, pass: pass}),
+dataType: "jsonp",
+success: loadData(data)
 });
  }
  
