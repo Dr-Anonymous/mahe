@@ -91,6 +91,7 @@ var data = JSON.stringify({
   mail: $('#mail').val(),
   address: $('#address').val()
   });
+console.log(data);
 var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&save=true&data="+data;
 $.ajax({
 crossDomain: true,
