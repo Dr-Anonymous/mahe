@@ -78,6 +78,7 @@ if ($('#password').val() != $('#rptPassword').val()){
 
 $("#main_content").html("Processing....Please wait.")
 var data = JSON.stringify({
+  password: $('#password').val(),
   name: $('#name').val(),
   institute: $('#institute').val(),
   degree: $('#degree').val(),
