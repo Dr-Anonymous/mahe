@@ -12,10 +12,6 @@ description: Registration/ modification
       <label for="name">Name</label>
     </div>
     <div class="input-field col s6">
-      <input id="institute" type="text">
-      <label for="institute">Institute</label>
-    </div>
-    <div class="input-field col s6">
       <input id="degree" type="text">
       <label for="degree">Degree</label>
     </div>
@@ -23,10 +19,20 @@ description: Registration/ modification
       <input id="regNo" type="text">
       <label for="regNo">Registration No.</label>
     </div>
+  </div>
+  <div class="row">
+    <h5>Institutional details</h5>
     <div class="input-field col s6">
       <input id="post" type="text">
       <label for="post">Post/Position</label>
     </div>
+    <div class="input-field col s6">
+      <input id="institute" type="text">
+      <label for="institute">Institute Name</label>
+    </div>
+  </div>
+  <div class="row">
+    <h5>Contact through</h5>
     <div class="input-field col s6">
       <input id="phone" type="tel">
       <label for="phone">Phone</label>
@@ -43,6 +49,7 @@ description: Registration/ modification
 </form>
 </div>
 <script>
+function update(){
 var data = JSON.stringify({
   name: $('#name').val(),
   institute: $('#institute').val(),
@@ -61,7 +68,8 @@ url: url,
 method: "GET",
 dataType: "jsonp"
 });
-
+  
+}
 function loadData(e) {
 try {
 
