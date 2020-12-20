@@ -58,11 +58,11 @@ description: Registration/ modification
   <div class="row">
     <h5>Password</h5>
     <div class="input-field col s6">
-      <input id="password" type="password">
+      <input id="password" type="text">
       <label for="password">Enter password</label>
     </div>
     <div class="input-field col s6">
-      <input id="rptPassword" type="password">
+      <input id="rptPassword" type="text">
       <label for="rptPassword">Re-enter password</label>
     </div>
   </div>
