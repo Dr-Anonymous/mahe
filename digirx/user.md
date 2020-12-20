@@ -15,7 +15,7 @@ if (pass != "" || pass != null){
 jQuery.ajax({
 crossDomain: true,
 url: url,
-method: "GET",
+method: "POST",
 dataType: "jsonp"
 });
  }
