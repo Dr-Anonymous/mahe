@@ -72,7 +72,7 @@ description: Registration/ modification
 <script>
 function update(){
 if ($('#password').val() != $('#rptPassword').val()){
-  M.toast({html: 'Passwords not matching. Re-enter again.'});
+  M.toast({html: 'Passwords not matching. Re-enter passwords.'});
   return;
   }
 
@@ -99,7 +99,7 @@ dataType: "jsonp"
 }
 function loadData(e) {
 try {
-$("#main_content").html("Registration successful!. Your login id number is: "+ e+ ". You can now <a href='/digirx'>login</a> and start using the app with this id and the password that you\'ve set.");
+$("#main_content").html("Registration successful!. Your login id number is "+ e+ ". You can now <a href='/digirx'>login</a> and start using the app with this id and the password that you\'ve set.");
 } catch(err){
 $("#main_content").html(err);
   }
