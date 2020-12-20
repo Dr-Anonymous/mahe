@@ -8,16 +8,20 @@ description: Registration/ modification
   <div class="row">
     <h5>Doctor details</h5>
     <div class="input-field col s6">
-      <input id="name" type="text">
+      <input id="name" type="text" required="" aria-required="true">
       <label for="name">Name</label>
     </div>
     <div class="input-field col s6">
-      <input id="degree" type="text">
+      <input id="degree" type="text" required="" aria-required="true">
       <label for="degree">Degree</label>
     </div>
     <div class="input-field col s6">
-      <input id="regNo" type="text">
+      <input id="regNo" type="text" required="" aria-required="true">
       <label for="regNo">Registration No.</label>
+    </div>
+    <div class="input-field col s6">
+      <input id="sign" type="file">
+      <label for="sign">Upload signature</label>
     </div>
   </div>
   <div class="row">
@@ -46,6 +50,7 @@ description: Registration/ modification
       <label for="address">Address</label>
     </div>
   </div>
+  <a class="waves-effect waves-light btn" onclick="update();"><i class="material-icons left">save</i>Save</a>
 </form>
 </div>
 <script>
