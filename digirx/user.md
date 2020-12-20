@@ -11,10 +11,10 @@ if (id != "" || id != null){
 }
 if (pass != "" || pass != null){
 var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&id="+ id +"&pass="+ pass;
-jQuery.ajax({
+$.ajax({
 crossDomain: true,
 url: url,
-method: "GET",
+method: "POST",
 dataType: "jsonp"
 });
  
