@@ -8,8 +8,7 @@ description: Digital health records
 //======cookie start
 var id = getCookie("id");
 var pass = getCookie("pass");
-if (id != "") {
-  M.toast({html: 'Welcome back'});
+if (id != "" && pass != "") {
   getData(id, pass); 
 } else {
   //id and password prompt
