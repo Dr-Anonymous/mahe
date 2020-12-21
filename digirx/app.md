@@ -5,11 +5,50 @@ description: Digital health records
 ---
 {% include_relative form.html %}
 <script>
-var id = prompt("Please enter your id:","");
+//======cookie start
+var id = getCookie("id");
+var pass = getCookie("pass");
+if (id != "") {
+  M.toast({html: 'Welcome back'});
+  getData(id, pass); 
+} else {
+  //id and password prompt
+id = prompt("Please enter your id:","");
 if (id != "" || id != null){
- var pass = prompt("Please enter your password:","");
-}
+   pass = prompt("Please enter your password:","");
+  }
 if (pass != "" || pass != null){
+   setCookie("id", id, 30);
+   setCookie("pass", pass, 30);
+   getData(id, pass);
+ }
+
+}
+ 
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  var expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+//===cookie end
+
+function getData(id, pass) {
 var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&id="+ id +"&pass="+ pass;
 $.ajax({
 crossDomain: true,
@@ -20,9 +59,9 @@ dataType: "jsonp"
  
 }
 function otherSignedInStuff(googleUser){
-var profile = googleUser.getBasicProfile();
+//var profile = googleUser.getBasicProfile();
 //$('#userMail').text(profile.getEmail());
- M.toast({html: 'Hi '+profile.getName()});
+// M.toast({html: 'Hi '+profile.getName()});
 }
 
 function loadData(e) {
@@ -52,7 +91,7 @@ doc.text(e[5]+"\n"+e[6]+", "+ e[7], 203, 42, null, null, "right");
 //===============footer
 var signImg = e[8];
 if (signImg != '')
-doc.addImage(signImg, 165, 255, 35, 20);
+doc.addImage(signImg, 170, 259, 35, 17);
 doc.setFont("times", "normal");
 doc.text(e[1],203, 285, null, null, "right");
 doc.setFontSize(f0-3);
