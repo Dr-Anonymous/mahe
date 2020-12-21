@@ -52,7 +52,7 @@ doc.text(e[5]+"\n"+e[6]+", "+ e[7], 203, 42, null, null, "right");
 //===============footer
 var signImg = e[8];
 if (signImg != '')
-doc.addImage(signImg, 165, 252, 35, 25);
+doc.addImage(signImg, 165, 255, 35, 20);
 doc.setFont("times", "normal");
 doc.text(e[1],203, 285, null, null, "right");
 doc.setFontSize(f0-3);
