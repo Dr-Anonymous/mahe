@@ -13,14 +13,16 @@ if (id != "" && id != null && pass != "" && pass != null) {
 } else {
   //id and password prompt
 id = prompt("Please enter your id:","");
-if (id != "" || id != null){
+if (id != "" && id != null){
    pass = prompt("Please enter your password:","");
   }
-if (pass != "" || pass != null){
+if (pass != "" && pass != null){
    setCookie("id", id, 30);
    setCookie("pass", pass, 30);
    getData(id, pass);
- }
+ }else {
+  
+  }
 
 }
  
@@ -94,11 +96,11 @@ doc.addImage(signImg, 170, 259, 35, 17);
 doc.setFont("times", "normal");
 doc.text(e[1],203, 285, null, null, "right");
 doc.setFontSize(f0-3);
-doc.text(e[3],203, 290, null, null, "right");
+doc.text(e[3].toString(), 203, 290, null, null, "right");
 
 $('form').show();
 }catch(err){
-$("#main_content").html(err);
+$("#main_content").append(err);
  }
 }
 </script>
