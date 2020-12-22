@@ -13,4 +13,17 @@ description: Digital health records
     <a href="./app" class="waves-effect waves-light btn"><i class="material-icons left">contacts</i>Login</a>
 </p>
 
-<script> function otherSignedInStuff(){ window.location.href = "./app" ;} </script>
+<script>
+var name = "id=";
+var ca = document.cookie.split(';');
+for(var i = 0; i < ca.length; i++) {
+  var c = ca[i];
+  while (c.charAt(0) == ' ') {
+    c = c.substring(1);
+  }
+  if (c.indexOf(name) == 0) {
+    window.location.href = "./app" ;
+  }
+}    
+function otherSignedInStuff(){ window.location.href = "./app" ;}
+</script>
