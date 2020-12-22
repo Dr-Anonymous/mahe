@@ -6,23 +6,25 @@ description: Digital health records
 
 {% include_relative form.html %}
 <script>
-//======cookie start
+window.onload = (event) => {
+  //======cookie start
 var id = getCookie("id");
 var pass = getCookie("pass");
 if (id != "" && id != null && pass != "" && pass != null) {
 getData(id, pass); 
 } else {
-//id and password prompt
-id = prompt("Please enter your id:","");
-pass = prompt("Please enter your password:","");
-if (id != "" && id != null && pass != "" && pass != null){
-  setCookie("id", id, 30);
-  setCookie("pass", pass, 30);
-  getData(id, pass);
-  }else{
-    M.toast({html: 'Enter valid id and password.'});
-  }
+  //id and password prompt
+  id = prompt("Please enter your id:","");
+  pass = prompt("Please enter your password:","");
+  if (id != "" && id != null && pass != "" && pass != null){
+    setCookie("id", id, 30);
+    setCookie("pass", pass, 30);
+    getData(id, pass);
+    }else{
+      M.toast({html: 'Enter valid id and password.'});
+    }
 }
+};
 
 function setCookie(cname, cvalue, exdays) {
 var d = new Date();
@@ -98,7 +100,7 @@ try {
 
   $('form').show();
 }catch(err){
-  $("#main_content").append(err);
+  $("#main_content").html(err);
 }
 }
 </script>
