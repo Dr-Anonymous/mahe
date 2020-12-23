@@ -56,7 +56,7 @@ location.reload();
 }
 //===cookie end
 function editDetails(){
-window.location.assign("../register/"+id);
+window.location.assign("../register/?"+id);
 }
 function getData(id, pass) {
 var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&id="+ id +"&pass="+ pass;
