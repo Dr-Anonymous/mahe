@@ -8,15 +8,15 @@ description: Registration/ modification
   <div class="row">
     <h5>Doctor details</h5>
     <div class="input-field col s6">
-      <input id="name" type="text" required="" aria-required="true">
+      <input id="name" type="text">
       <label for="name">Name</label>
     </div>
     <div class="input-field col s6">
-      <input id="degree" type="text" required="" aria-required="true">
+      <input id="degree" type="text">
       <label for="degree">Degree</label>
     </div>
     <div class="input-field col s6">
-      <input id="regNo" type="text" required="" aria-required="true">
+      <input id="regNo" type="text">
       <label for="regNo">Registration No.</label>
     </div>
     <div class="file-field input-field col s6">
@@ -71,6 +71,10 @@ description: Registration/ modification
 </div>
 <script>
 function update(){
+if ($('#name').val() == ''){
+  M.toast({html: 'Name can\'t be empty.'});
+  return;
+  }
 if ($('#password').val() != $('#rptPassword').val()){
   M.toast({html: 'Passwords not matching. Re-enter passwords.'});
   return;
