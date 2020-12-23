@@ -3,7 +3,13 @@ layout: default
 title: digi&#8478;
 description: Digital health records
 ---
-
+<div class="row">
+  <h5>Welcome back <span id="doctorName"></span></h5>
+  <div class="input-field col s6">
+      <textarea id="doctorDetails" class="materialize-textarea" disabled></textarea>
+      <label for="address">Doctor details</label>
+  </div>
+</div>
 {% include_relative form.html %}
 <script>
 window.onload = (event) => {
@@ -16,6 +22,7 @@ getData(id, pass);
   //id and password prompt
   id = prompt("Please enter your id:","");
   pass = prompt("Please enter your password:","");
+  
   if (id != "" && id != null && pass != "" && pass != null){
     setCookie("id", id, 30);
     setCookie("pass", pass, 30);
@@ -62,7 +69,7 @@ $.ajax({
 function otherSignedInStuff(googleUser){
 //var profile = googleUser.getBasicProfile();
 //$('#userMail').text(profile.getEmail());
-// M.toast({html: 'Hi '+profile.getName()});
+//M.toast({html: 'Hi '+profile.getName()});
 }
 
 function loadData(e) {
@@ -97,8 +104,10 @@ try {
   doc.text(e[1],203, 285, null, null, "right");
   doc.setFontSize(f0-3);
   doc.text(e[3].toString(), 203, 290, null, null, "right");
-
   $('form').show();
+  
+  $('#doctorName').text(e[1]);
+  $('#doctorDetails').val(e);
 }catch(err){
   $("#main_content").html(err);
 }
