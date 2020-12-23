@@ -14,7 +14,7 @@ description: Digital health records
 </p>
 
 <script>
-var name = "id=";
+var name = "pass=";
 var ca = document.cookie.split(';');
 for(var i = 0; i < ca.length; i++) {
   var c = ca[i];
