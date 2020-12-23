@@ -7,8 +7,8 @@ description: Digital health records
   <h5>Welcome back <span id="doctorName"></span></h5>
   <div class="input-field col s6">
       <textarea id="doctorDetails" class="materialize-textarea" disabled></textarea>
-      <label for="address">Doctor details</label>
   </div>
+  <a class="waves-effect waves-light btn right" onclick="document.cookie = 'id= ;';location.reload();"><i class="material-icons right">clear</i>Log out</a>
 </div>
 {% include_relative form.html %}
 <script>
