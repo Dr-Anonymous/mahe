@@ -6,10 +6,11 @@ description: Digital health records
 
 {% include_relative form.html %}
 <script>
+var id, pass;
 window.onload = (event) => {
   //======cookie start
-var id = getCookie("id");
-var pass = getCookie("pass");
+id = getCookie("id");
+pass = getCookie("pass");
 if (id != "" && id != null && pass != "" && pass != null) {
 getData(id, pass); 
 } else {
@@ -48,8 +49,15 @@ for(var i = 0; i < ca.length; i++) {
 }
 return "";
 }
-//===cookie end
 
+function clearCookie(cname){
+document.cookie = cname +"=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+location.reload();
+}
+//===cookie end
+function editDetails(){
+window.location.assign("../register/"+id);
+}
 function getData(id, pass) {
 var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&id="+ id +"&pass="+ pass;
 $.ajax({
