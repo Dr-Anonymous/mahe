@@ -3,10 +3,7 @@ layout: default
 title: digi&#8478;
 description: Digital health records
 ---
-<div class="row">
-<div class="input-field col s6" id="doctorDetails"></div>
-<a class="waves-effect waves-light btn right" onclick="document.cookie = 'id= ;path=/';location.reload();"><i class="material-icons right">clear</i>Log out</a>
-</div>
+
 {% include_relative form.html %}
 <script>
 window.onload = (event) => {
@@ -101,9 +98,9 @@ try {
   doc.text(e[1],203, 285, null, null, "right");
   doc.setFontSize(f0-3);
   doc.text(e[3].toString(), 203, 290, null, null, "right");
-  $('form').show();
   
-  $('#doctorDetails').html('<h5>Welcome back '+e[1]+'.</h5>'+e);
+  $('#doctorDetails').html('<h5>Welcome back '+e[1]+'.</h5>'+'\n'+e[2]+'-'+e[3]+'\n'+e[4]+'-'+e[0]+'\n'+e[5]+'\n'+e[6]+'-'+e[7]);
+  $('form').show();
 }catch(err){
   $("#main_content").html(err);
 }
