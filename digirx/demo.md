@@ -30,5 +30,6 @@ doc.setFont("times", "normal");
 doc.text("Dr Samuel Manoj Cherukuri",203, 285, null, null, "right");
 doc.setFontSize(f0-3);
 doc.text("Reg. No 95695",203, 290, null, null, "right");
+$('#doctorDetails').html('Welcome back Dr Samuel.');
 function otherSignedInStuff(googleUser){}
 </script>
