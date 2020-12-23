@@ -4,11 +4,8 @@ title: digi&#8478;
 description: Digital health records
 ---
 <div class="row">
-  <h5>Welcome back <span id="doctorName"></span></h5>
-  <div class="input-field col s6">
-      <textarea id="doctorDetails" class="materialize-textarea" disabled></textarea>
-  </div>
-  <a class="waves-effect waves-light btn right" onclick="document.cookie = 'id= ;';location.reload();"><i class="material-icons right">clear</i>Log out</a>
+<div class="input-field col s6" id="doctorDetails"></div>
+<a class="waves-effect waves-light btn right" onclick="document.cookie = 'id= ;path=/';location.reload();"><i class="material-icons right">clear</i>Log out</a>
 </div>
 {% include_relative form.html %}
 <script>
@@ -106,8 +103,7 @@ try {
   doc.text(e[3].toString(), 203, 290, null, null, "right");
   $('form').show();
   
-  $('#doctorName').text(e[1]);
-  $('#doctorDetails').val(e);
+  $('#doctorDetails').html('<h5>Welcome back '+e[1]+'.</h5>'+e);
 }catch(err){
   $("#main_content").html(err);
 }
