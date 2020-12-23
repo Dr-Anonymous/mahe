@@ -19,7 +19,7 @@ description: Registration/ modification
       <input id="regNo" type="text">
       <label for="regNo">Registration No.</label>
     </div>
-    <div class="file-field input-field col s6">
+    <div class="file-field input-field col s6 hide">
       <div class="btn">
         <span>Upload signature</span>
         <input id="sign" type="file">
