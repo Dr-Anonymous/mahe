@@ -111,6 +111,8 @@ try {
   $('form').show();
 }catch(err){
   $("#main_content").html(err);
+  clearCookie('id');
+  clearCookie('pass');
 }
 }
 </script>
