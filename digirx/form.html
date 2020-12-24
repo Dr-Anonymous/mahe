@@ -193,9 +193,12 @@ $(document).ready(function(){
 //all btns function
 var deleteDrug;
 function deleteRow(elem){
-  //if ($('table tbody tr').is(":hidden"))
-    //elem.parents('tr').eq(elem.parents('tr').index()-1).remove();
+  M.Toast.dismissAll();
+  //remove previously hidden rows
+  $('table tbody tr').each(function (){if ($(this).css('display') == 'none'){ this.remove();}})
+  //hide current row
   elem.parents('tr').hide();
+  //if last row, add new empty row
   if (elem.parents('tr').index()==0 && elem.closest("tr").is(":last-child"))
     addRow(elem);
   deleteDrug = setTimeout(function(){elem.parents('tr').remove(); }, 4000);
