@@ -19,7 +19,7 @@ var request = jQuery.ajax({
  // print the returned data from jsonp
   function loadData(e) {
   try {
-  	var html = "<table><tr><th>ShortURL</th><th>Description</th><th>Full URL</th></tr>";
+  	var html = "<table class='col s12 striped centered responsive-table'><tr><th>ShortURL</th><th>Description</th><th>Full URL</th></tr>";
          for (var i = 1; i < e.length; i++) {
 		html= html+ "<tr>";
 		
