@@ -77,9 +77,9 @@ description: Registration/ modification
 var id, pass;
 window.onload = (event) => {
 //====see if editing or new user
-if(urlParam()== 'edit'){
+if (urlParam() != "edit")
+   return;
 //=============existing user stuff
-//======cookie start
 id = getCookie("id");
 pass = getCookie("pass");
 if (id != "" && id != null && pass != "" && pass != null) {
@@ -94,7 +94,6 @@ if (id != "" && id != null && pass != "" && pass != null) {
           M.toast({html: 'Enter valid id and password.'});
         }
     }
-  }
 };
 function getCookie(cname) {
 var name = cname + "=";
@@ -130,9 +129,10 @@ try {
      $('#mail').val(e[6]);
      $('#address').val(e[5]);     
     }catch(err){
-    $("#main_content").html(err+ "\nContact admin for support.")
+    $("#main_content").html(err + "\nContact admin for support.")
   }
 }
+                             
 //=========new user stuff
 function update(){
 if ($('#name').val() == ''){
@@ -176,9 +176,6 @@ $("#main_content").html(err);
   }
 }
 function otherSignedInStuff(googleUser){
-//var profile = googleUser.getBasicProfile();
-//$('#userMail').text(profile.getEmail());
-//M.toast({html: 'Hi '+profile.getName()});
 }
 function urlParam(){
 var url = new URL(window.location.href);
