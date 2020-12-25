@@ -164,7 +164,7 @@ function update() {
     });
     return;
   }
-  var data = {
+  var data = [
     password: $('#password').val(),
     name: $('#name').val(),
     institute: $('#institute').val(),
@@ -174,7 +174,7 @@ function update() {
     phone: $('#phone').val(),
     mail: $('#mail').val(),
     address: $('#address').val()
-  };
+  ];
   if (urlParam() == "edit")
     data.push({'id': id});
   console.log(data);
