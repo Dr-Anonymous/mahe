@@ -7,8 +7,8 @@ description: Registration/ modification
 <form class="col s12">
   <div class="row">
     <h5>Doctor details</h5>
-    <div class="input-field col s6">
-      <input id="id" type="text" style="display: none;" readonly>
+    <div id="idField" class="input-field col s6" style="display: none;">
+      <input id="id" type="text" readonly>
       <label for="id">id</label>
     </div>
     <div class="input-field col s6">
@@ -119,6 +119,7 @@ $.ajax({
 });
 function loadData1(e) {
 try {
+     $('#idField').show();
      $('#id').val(id);
      $('#name').val(e[1]);
      $('#institute').val(e[0]);
@@ -129,7 +130,7 @@ try {
      $('#mail').val(e[6]);
      $('#address').val(e[5]);     
     }catch(err){
-    $("#main_content").html(err + "\nContact admin for support.")
+    $("#main_content").html(err + "\nContact admin for support.");
   }
 }
                              
