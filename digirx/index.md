@@ -9,7 +9,7 @@ description: Digital health records
 <p>
     <a href="./digiRx.pdf" class="waves-effect waves-light btn" download><i class="material-icons left">file_download</i>View sample</a>
     <a href="./demo" class="waves-effect waves-light btn"><i class="material-icons left">view_list</i>Demo</a>
-    <a href="./register" class="waves-effect waves-light btn"><i class="material-icons left">border_color</i>Register</a>
+    <a href="./user" class="waves-effect waves-light btn"><i class="material-icons left">border_color</i>Register</a>
     <a href="./app" class="waves-effect waves-light btn"><i class="material-icons left">contacts</i>Login</a>
 </p>
 
@@ -25,5 +25,5 @@ for(var i = 0; i < ca.length; i++) {
     window.location.href = "./app" ;
   }
 }    
-function otherSignedInStuff(){ window.location.href = "./app" ;}
+function otherSignedInStuff(){}
 </script>
