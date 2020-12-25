@@ -137,7 +137,7 @@ function loadData1(e) {
     $('#mail').val(e[6]);
     $('#address').val(e[5]);
     M.updateTextFields();
-    $('form').show;
+    $('form').show();
   } catch (err) {
     $("#main_content").html(err + "\nContact admin for support.");
   }
