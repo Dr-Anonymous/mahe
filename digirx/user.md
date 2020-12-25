@@ -36,12 +36,12 @@ description: Registration/ modification
   <div class="row">
     <h5>Institutional details</h5>
     <div class="input-field col s6">
-      <input id="post" type="text">
-      <label for="post">Post/Position</label>
-    </div>
-    <div class="input-field col s6">
       <input id="institute" type="text">
       <label for="institute">Institute Name</label>
+    </div>
+    <div class="input-field col s6">
+      <input id="post" type="text">
+      <label for="post">Post/Position</label>
     </div>
   </div>
   <div class="row">
@@ -79,6 +79,7 @@ window.onload = (event) => {
   //====see if editing or new user
   if (urlParam() != "edit")
     return;
+  $('form').hide();
   //=============existing user stuff
   id = getCookie("id");
   pass = getCookie("pass");
@@ -135,6 +136,8 @@ function loadData1(e) {
     $('#phone').val(e[7]);
     $('#mail').val(e[6]);
     $('#address').val(e[5]);
+    M.updateTextFields();
+    $('form').show;
   } catch (err) {
     $("#main_content").html(err + "\nContact admin for support.");
   }
@@ -161,7 +164,7 @@ function update() {
     });
     return;
   }
-  var data = JSON.stringify({
+  var data = {
     password: $('#password').val(),
     name: $('#name').val(),
     institute: $('#institute').val(),
@@ -171,7 +174,11 @@ function update() {
     phone: $('#phone').val(),
     mail: $('#mail').val(),
     address: $('#address').val()
-  });
+  };
+  if (urlParam() == "edit")
+    data.push({'id': id});
+  console.log(data);
+  data = JSON.stringify(data);
   var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&save=true&data=" + data;
   $.ajax({
     crossDomain: true,
