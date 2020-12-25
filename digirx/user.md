@@ -165,15 +165,15 @@ function update() {
     return;
   }
   var data = [
-    password: $('#password').val(),
-    name: $('#name').val(),
-    institute: $('#institute').val(),
-    degree: $('#degree').val(),
-    regNo: $('#regNo').val(),
-    post: $('#post').val(),
-    phone: $('#phone').val(),
-    mail: $('#mail').val(),
-    address: $('#address').val()
+    {'password': $('#password').val()},
+    {'name': $('#name').val()},
+    {'institute': $('#institute').val()},
+    {'degree': $('#degree').val()},
+    {'regNo': $('#regNo').val()},
+    {'post': $('#post').val()},
+    {'phone': $('#phone').val()},
+    {'mail': $('#mail').val()},
+    {'address': $('#address').val()}
   ];
   if (urlParam() == "edit")
     data.push({'id': id});
