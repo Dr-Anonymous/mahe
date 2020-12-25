@@ -164,19 +164,19 @@ function update() {
     });
     return;
   }
-  var data = [
-    {'password': $('#password').val()},
-    {'name': $('#name').val()},
-    {'institute': $('#institute').val()},
-    {'degree': $('#degree').val()},
-    {'regNo': $('#regNo').val()},
-    {'post': $('#post').val()},
-    {'phone': $('#phone').val()},
-    {'mail': $('#mail').val()},
-    {'address': $('#address').val()}
-  ];
+  var data = {
+    password: $('#password').val(),
+    name: $('#name').val(),
+    institute: $('#institute').val(),
+    degree: $('#degree').val(),
+    regNo: $('#regNo').val(),
+    post: $('#post').val(),
+    phone: $('#phone').val(),
+    mail: $('#mail').val(),
+    address: $('#address').val()
+  };
   if (urlParam() == "edit")
-    data.push({'id': id});
+    data.id = id;
   console.log(data);
   data = JSON.stringify(data);
   var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&save=true&data=" + data;
