@@ -9,7 +9,7 @@ description: Registration/ modification
     <h5>Doctor details</h5>
     <div id="idField" class="input-field col s6" style="display: none;">
       <input id="id" type="text" readonly>
-      <label for="id">id</label>
+      <label for="id">digi&#8478; id</label>
     </div>
     <div class="input-field col s6">
       <input id="name" type="text">
@@ -133,8 +133,8 @@ function loadData1(e) {
     $('#degree').val(e[2]);
     $('#regNo').val(e[3]);
     $('#post').val(e[4]);
-    $('#phone').val(e[7]);
-    $('#mail').val(e[6]);
+    $('#phone').val(e[6]);
+    $('#mail').val(e[7]);
     $('#address').val(e[5]);
     M.updateTextFields();
     $('form').show();
@@ -177,7 +177,7 @@ function update() {
   };
   if (urlParam() == "edit")
     data.id = id;
-  console.log(data);
+
   data = JSON.stringify(data);
   var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&save=true&data=" + data;
   $.ajax({
