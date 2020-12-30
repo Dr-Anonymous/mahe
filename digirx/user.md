@@ -4,6 +4,19 @@ title: User info
 description: Registration/ modification
 ---
 <div class="row">
+<!--spinner start-->
+<center><div id="spin" class="preloader-wrapper active" style="display: none;">
+<div class="spinner-layer">
+<div class="circle-clipper left">
+<div class="circle"></div>
+</div><div class="gap-patch">
+<div class="circle"></div>
+</div><div class="circle-clipper right">
+<div class="circle"></div>
+</div>
+</div>
+</div></center>
+<!--spinner end-->
 <form class="col s12">
   <div class="row">
     <h5>Doctor details</h5>
@@ -74,12 +87,13 @@ description: Registration/ modification
 </form>
 </div>
 <script>
-var id, pass;
+var id, pass, data;
 window.onload = (event) => {
   //====see if editing or new user
   if (urlParam() != "edit")
     return;
   $('form').hide();
+  $('#spin').show();
   //=============existing user stuff
   id = getCookie("id");
   pass = getCookie("pass");
@@ -138,6 +152,7 @@ function loadData1(e) {
     $('#address').val(e[5]);
     M.updateTextFields();
     $('form').show();
+    $('#spin').hide();
   } catch (err) {
     $("#main_content").html(err + "\nContact admin for support.");
   }
@@ -164,7 +179,7 @@ function update() {
     });
     return;
   }
-  var data = {
+  data = {
     password: $('#password').val(),
     name: $('#name').val(),
     institute: $('#institute').val(),
@@ -191,7 +206,11 @@ function update() {
 
 function loadData(e) {
   try {
+    if (data.id){
+    $("#main_content").html("<p>Records modified successfully!.\nYour login id number is:<h4>" + e + "</h4>You can now <a href='/digirx'>login</a> and start using the app with this id and the password that you\'ve set.</p>");
+    } else{
     $("#main_content").html("<p>Registration successful!.\nYour login id number is:<h4>" + e + "</h4>You can now <a href='/digirx'>login</a> and start using the app with this id and the password that you\'ve set.</p>");
+    }
   } catch (err) {
     $("#main_content").html(err);
   }
