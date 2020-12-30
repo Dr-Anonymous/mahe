@@ -199,8 +199,7 @@ function update() {
   if (urlParam() == "edit")
     data.id = id;
 
-  data = JSON.stringify(data);
-  var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&save=true&data=" + data;
+  var url = "https://script.google.com/macros/s/AKfycbwfHSn8ysX_yhbNIx_FHtqwJhH1pqML_0fZ9QV65gjSbOOw2Wo/exec?callback=loadData&save=true&data=" + JSON.stringify(data);
   $.ajax({
     crossDomain: true,
     url: url,
@@ -212,7 +211,7 @@ function update() {
 
 function loadData(e) {
   try {
-    if (data.id){
+    if (data.id ){
     $("#main_content").html("<p>Records modified successfully!.\nYour login id number is:<h4>" + e + "</h4>You can now <a href='/digirx'>login</a> and start using the app with this id and the password that you\'ve set.</p>");
     } else{
     $("#main_content").html("<p>Registration successful!.\nYour login id number is:<h4>" + e + "</h4>You can now <a href='/digirx'>login</a> and start using the app with this id and the password that you\'ve set.</p>");
