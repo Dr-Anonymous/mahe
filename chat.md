@@ -1,27 +1,8 @@
 ---
 ---
 
-<input id="myinput">
-
+<video src="https://ppng.io/myvideo" autoplay muted></video>
 <script>
-const readableStream = new ReadableStream({
-  start(ctrl) {
-    const encoder = new TextEncoder();
-    window.myinput.onkeyup = (ev) => {
-      if (ev.key === 'Enter') {
-        ctrl.enqueue(encoder.encode(ev.target.value+'\n'));
-        ev.target.value = '';
-      }
-    }
-  }
-});
-
-fetch("https://ppng.io/mytext", {
-  method: 'POST',
-  body: readableStream,
-  headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-  allowHTTP1ForStreamingUpload: true,
-});
 
 function otherSignedInStuff(){}
 </script>
