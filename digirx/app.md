@@ -3,6 +3,19 @@ layout: default
 title: digi&#8478;
 description: e-prescription app
 ---
+<!--spinner start-->
+<center><div id="spin" class="preloader-wrapper active">
+<div class="spinner-layer">
+<div class="circle-clipper left">
+<div class="circle"></div>
+</div><div class="gap-patch">
+<div class="circle"></div>
+</div><div class="circle-clipper right">
+<div class="circle"></div>
+</div>
+</div>
+</div></center>
+<!--spinner end-->
 
 {% include_relative form.html %}
 <script>
@@ -111,6 +124,7 @@ try {
   
   $('#doctorDetails').html('<h5>Welcome back '+e[1]+'.</h5>'+'\n<small>'+e[2]+'-'+e[3]+'\n'+e[4]+'-'+e[0]+'\n'+e[5]+'\n'+e[6]+'-'+e[7]+'</small>');
   $('form').show();
+  $('#spin').hide();
 }catch(err){
   $("#main_content").html(err);
   clearCookie('id');
