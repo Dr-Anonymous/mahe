@@ -1,0 +1,30 @@
+---
+---
+<script>
+(async () => {
+  // Get display
+  const mediaStream = await navigator.mediaDevices.getDisplayMedia({video: true});
+  // Convert MediaStream to ReadableStream
+  const readableStream = mediaStreamToReadableStream(mediaStream, 100);
+
+  fetch("https://ppng.io/myvideo", {
+    method: 'POST',
+    body: readableStream,
+    allowHTTP1ForStreamingUpload: true,
+  });
+})();
+
+// Convert MediaStream to ReadableStream
+function mediaStreamToReadableStream(mediaStream, timeslice) {
+  return new ReadableStream({
+    start(ctrl){
+      const recorder = new MediaRecorder(mediaStream);
+      recorder.ondataavailable = async (e) => {
+        ctrl.enqueue(new Uint8Array(await e.data.arrayBuffer()));
+      };
+      recorder.start(timeslice);
+    }
+  });
+}
+function otherSignedInStuff(){}
+</script>
