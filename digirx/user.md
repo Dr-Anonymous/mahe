@@ -139,6 +139,12 @@ function getData(id, pass) {
 }
 
 function loadData1(e) {
+if (e == "Password Wrong"){
+  $("#main_content").html("User id/ password mismatch. Contact support if problem persisting.");
+  clearCookie('id');
+  clearCookie('pass');
+  return;
+}
   try {
     $('#idField').show();
     $('#id').val(id);
