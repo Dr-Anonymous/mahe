@@ -22,4 +22,6 @@ fetch("https://ppng.io/mytext", {
   headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
   allowHTTP1ForStreamingUpload: true,
 });
+
+function otherSignedInStuff(){}
 </script>
