@@ -1,7 +1,7 @@
 ---
 layout: default
 title: digi&#8478; demo
-description: Digital health records
+description: e-prescription app
 ---
 {% include_relative form.html %}
 <script>
