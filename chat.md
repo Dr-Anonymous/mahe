@@ -1,8 +1,7 @@
 ---
 ---
 
-<video src="https://ppng.io/myvideo" autoplay muted></video>
+<video src="https://ppng.io/myvideo" controls></video>
 <script>
-
 function otherSignedInStuff(){}
 </script>
