@@ -24,11 +24,14 @@ window.onload = (event) => {
   //======cookie start
 id = getCookie("id");
 pass = getCookie("pass");
-if (id != "" && id != null && pass != "" && pass != null) {
-getData(id, pass); 
+if (id != "" && id != null && pass != "" && pass != null && !isNaN(getCookie("id"))) {
+getData(id, pass);
 } else {
   //id and password prompt
-  id = prompt("Please enter your id:","");
+  id = prompt("Please enter your id number:","");
+  while (isNaN(id)){
+  id = prompt("Please enter your id NUMBER:","");
+  }
   pass = prompt("Please enter your password:","");
   
   if (id != "" && id != null && pass != "" && pass != null){
