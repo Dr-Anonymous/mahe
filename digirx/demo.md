@@ -11,7 +11,7 @@ $('form').show();
 doc.setTextColor(c0);
 doc.setFont("times", "bold");
 doc.setFontSize(f4);
-doc.text("Orthosam", 203, 15, null, null, "right");
+doc.text("Kakinada Hospital", 203, 15, null, null, "right");
 doc.setFont("times", "normal");
 //consultant
 doc.setFontSize(f3);
