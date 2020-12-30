@@ -223,7 +223,9 @@ function loadData(e) {
 }
 
 function otherSignedInStuff(googleUser) {}
-
+function clearCookie(cname){
+document.cookie = cname +"=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
 function urlParam() {
   var url = new URL(window.location.href);
   var param = url.searchParams.toString().slice(0, -1);
