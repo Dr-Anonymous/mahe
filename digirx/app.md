@@ -126,7 +126,7 @@ function otherStuff(doc){
   doc.text(p[4], 203, 35, null, null, "right");
   //address
   doc.setFontSize(f0);
-  doc.text(p[5]+"\n"+e[6]+", "+ e[7], 203, 42, null, null, "right");
+  doc.text(p[5]+"\n"+p[6]+", "+ p[7], 203, 42, null, null, "right");
   //===============footer
   var signImg = p[8];
   if (signImg != '')
