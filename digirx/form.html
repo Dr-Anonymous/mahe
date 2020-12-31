@@ -139,7 +139,7 @@
       <label for="followup">Followup date</label>
     </div>
   </div>
-  <a class="waves-effect waves-light btn" onclick="makePdf();"><i class="material-icons left">bubble_chart</i>Create prescription</a>
+  <a class="waves-effect waves-light btn" onclick="makePdf(doc);"><i class="material-icons left">bubble_chart</i>Create prescription</a>
 </form>
 </div>
 <!--modal start-->
@@ -285,8 +285,7 @@ doc.text("Investigations:", 8, 137);
 doc.text("Diagnosis:", 8, 147);
 
 //============body user entered data
-function makePdf(){
-var doc1 = doc;
+function makePdf(doc1){
 doc1.setTextColor(c0);
 doc1.setFontSize(f1);
 doc1.text($('#name').val() , 25, 62);
