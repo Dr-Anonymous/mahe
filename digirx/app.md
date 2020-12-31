@@ -107,7 +107,7 @@ try {
   clearCookie('pass');
 }
 }
-function otherStuff(){
+function otherStuff(doc){
 //==================header
   //institiute
   doc.setTextColor(c0);
