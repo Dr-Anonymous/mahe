@@ -88,7 +88,7 @@ function otherSignedInStuff(googleUser){
 //$('#userMail').text(profile.getEmail());
 //M.toast({html: 'Hi '+profile.getName()});
 }
-var e;
+var p;
 function loadData(e) {
 if (e == "Password Wrong"){
   $("#main_content").html("User id/ password mismatch. Contact support if problem persisting.");
@@ -97,7 +97,7 @@ if (e == "Password Wrong"){
   return;
 }
 try {
-  e = e;
+  p = e;
   $('#doctorDetails').html('<h5>Welcome back '+e[1]+'.</h5>'+'\n<small>'+e[2]+'-'+e[3]+'\n'+e[4]+'-'+e[0]+'\n'+e[5]+'\n'+e[6]+'-'+e[7]+'</small>');
   $('form').show();
   $('#spin').hide();
@@ -113,27 +113,27 @@ function otherStuff(doc){
   doc.setTextColor(c0);
   doc.setFont("times", "bold");
   doc.setFontSize(f4);
-  doc.text(e[0], 203, 15, null, null, "right");
+  doc.text(p[0], 203, 15, null, null, "right");
   doc.setFont("times", "normal");
   //consultant
   doc.setFontSize(f3);
-  doc.text(e[1],203, 25, null, null, "right");
+  doc.text(p[1],203, 25, null, null, "right");
   //degree
   doc.setFontSize(f0);
-  doc.text(e[2], 203, 30, null, null, "right");
+  doc.text(p[2], 203, 30, null, null, "right");
   //post
   doc.setFontSize(f2);
-  doc.text(e[4], 203, 35, null, null, "right");
+  doc.text(p[4], 203, 35, null, null, "right");
   //address
   doc.setFontSize(f0);
-  doc.text(e[5]+"\n"+e[6]+", "+ e[7], 203, 42, null, null, "right");
+  doc.text(p[5]+"\n"+e[6]+", "+ e[7], 203, 42, null, null, "right");
   //===============footer
-  var signImg = e[8];
+  var signImg = p[8];
   if (signImg != '')
     doc.addImage(signImg, 170, 259, 35, 17);
   doc.setFont("times", "normal");
-  doc.text(e[1],203, 285, null, null, "right");
+  doc.text(p[1],203, 285, null, null, "right");
   doc.setFontSize(f0-3);
-  doc.text(e[3].toString(), 203, 290, null, null, "right");
+  doc.text(p[3].toString(), 203, 290, null, null, "right");
   }
 </script>
