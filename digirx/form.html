@@ -139,7 +139,7 @@
       <label for="followup">Followup date</label>
     </div>
   </div>
-  <a class="waves-effect waves-light btn" onclick="makePdf(doc);"><i class="material-icons left">bubble_chart</i>Create prescription</a>
+  <a class="waves-effect waves-light btn" onclick="makePdf();"><i class="material-icons left">bubble_chart</i>Create prescription</a>
 </form>
 </div>
 <!--modal start-->
@@ -226,6 +226,10 @@ function updateDrug(id, drug, dose, duration, instructions){
    $('#myTable tr').eq(id).find('td').eq(3).text(instructions);
 }
 
+function makePdf(){
+$('form').hide();
+M.toast({html: '<p>Generating prescription. Please wait...</p>'});
+  
 var jsPDF = window.jspdf.jsPDF,
 doc = new jsPDF(),
     //font sixes
@@ -285,52 +289,35 @@ doc.text("Investigations:", 8, 137);
 doc.text("Diagnosis:", 8, 147);
 
 //============body user entered data
-function makePdf(doc1){
-doc1.setTextColor(c0);
-doc1.setFontSize(f1);
-doc1.text($('#name').val() , 25, 62);
+doc.setTextColor(c0);
+doc.setFontSize(f1);
+doc.text($('#name').val() , 25, 62);
 //pt details
-doc1.text($('#age').val()+'/'+$('#sex').val(), 110, 62);
-doc1.text($('#dob').val(), 170, 62);
-doc1.text($('#phone').val(), 25, 70);
-doc1.text($('#address').val(), 110, 70);
+doc.text($('#age').val()+'/'+$('#sex').val(), 110, 62);
+doc.text($('#dob').val(), 170, 62);
+doc.text($('#phone').val(), 25, 70);
+doc.text($('#address').val(), 110, 70);
 //vitals
-doc1.text($('#height').val()+" cms", 8, 97);
-doc1.text($('#weight').val()+" kgs", 35, 97);
-doc1.text($('#temp').val()+" F", 65, 97);
-doc1.text($('#bp').val()+" mmHg", 98, 97, null, null, "center");
-doc1.text($('#pulse').val()+" bpm", 123, 97);
-doc1.text($('#rr').val()+"/min", 150, 97);
-doc1.text($('#sat').val()+" %", 185, 97);
+doc.text($('#height').val()+" cms", 8, 97);
+doc.text($('#weight').val()+" kgs", 35, 97);
+doc.text($('#temp').val()+" F", 65, 97);
+doc.text($('#bp').val()+" mmHg", 98, 97, null, null, "center");
+doc.text($('#pulse').val()+" bpm", 123, 97);
+doc.text($('#rr').val()+"/min", 150, 97);
+doc.text($('#sat').val()+" %", 185, 97);
 //notes
-doc1.text($('#complaints').val(), 36, 110);
-doc1.text($('#findings').val(), 30, 125);
-doc1.text($('#investigations').val(), 43, 137);
-doc1.text($('#diagnosis').val(), 33, 147);
+doc.text($('#complaints').val(), 36, 110);
+doc.text($('#findings').val(), 30, 125);
+doc.text($('#investigations').val(), 43, 137);
+doc.text($('#diagnosis').val(), 33, 147);
 //advise
-doc1.text($('#advise').val(), 25, 265);
-doc1.setTextColor(c2);
+doc.text($('#advise').val(), 25, 265);
+doc.setTextColor(c2);
 if ($('#followup').val())
-  doc1.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 8, 290);
-doc1.setTextColor(c0);
-doc1.setLineWidth(0);
-doc1.table(28, 152, getTableData(), headers, { headerBackgroundColor: c1});
-doc1.output('dataurlnewwindow', $('#name').val()+'-digiRx.pdf');
-}
-//==================table
-var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 70, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 30, align: "center"},{name: "Instructions", width: 50, align: "left"}];
-
-function getTableData() {
-var data = [];
-var table = document.getElementById("myTable");
-  for (let i in table.rows) {
-    let row = table.rows[i]
-    if (i > 0){
-      data.push({"No.": i, "Drug":row.cells[0].innerText||"-", "Dose & freq.":row.cells[1].innerText||"-", "Duration" :row.cells[2].innerText||"-", "Instructions" :row.cells[3].innerText||"-"});
-    }
-  }
-  return data;
-}
+  doc.text("Followup date: "+ new Date($('#followup').val()).toLocaleDateString([],{hour12:true}), 8, 290);
+doc.setTextColor(c0);
+doc.setLineWidth(0);
+doc.table(28, 152, getTableData(), headers, { headerBackgroundColor: c1});
 
 //====================footer
 doc.text(new Date().toLocaleString([],{hour12:true}),203, 280, null, null, "right");
@@ -361,4 +348,21 @@ doc.addImage(logoImg, 10, 10, 35, 35);
 //====================branding
 doc.setTextColor(c5);
 doc.text("https://orthosam.com/digirx",107, 296, null, null, "center");
+
+doc.save($('#name').val()+'-digiRx.pdf');
+}
+
+//==================table
+var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 70, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 30, align: "center"},{name: "Instructions", width: 50, align: "left"}];
+function getTableData() {
+var data = [];
+var table = document.getElementById("myTable");
+  for (let i in table.rows) {
+    let row = table.rows[i]
+    if (i > 0){
+      data.push({"No.": i, "Drug":row.cells[0].innerText||"-", "Dose & freq.":row.cells[1].innerText||"-", "Duration" :row.cells[2].innerText||"-", "Instructions" :row.cells[3].innerText||"-"});
+    }
+  }
+  return data;
+}
 </script>
