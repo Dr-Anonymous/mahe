@@ -315,7 +315,7 @@ if ($('#followup').val())
 doc1.setTextColor(c0);
 doc1.setLineWidth(0);
 doc1.table(28, 152, getTableData(), headers, { headerBackgroundColor: c1});
-doc1.save($('#name').val()+'-digiRx.pdf');
+doc1.output('dataurlnewwindow', $('#name').val()+'-digiRx.pdf');
 }
 //==================table
 var headers = [{name: "No.", width: 17, align: "center"},{name: "Drug", width: 70, align: "center"}, {name: "Dose & freq.", width: 45, align: "center"},{name: "Duration", width: 30, align: "center"},{name: "Instructions", width: 50, align: "left"}];
