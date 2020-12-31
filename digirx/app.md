@@ -88,7 +88,7 @@ function otherSignedInStuff(googleUser){
 //$('#userMail').text(profile.getEmail());
 //M.toast({html: 'Hi '+profile.getName()});
 }
-
+var e;
 function loadData(e) {
 if (e == "Password Wrong"){
   $("#main_content").html("User id/ password mismatch. Contact support if problem persisting.");
@@ -97,7 +97,18 @@ if (e == "Password Wrong"){
   return;
 }
 try {
-  //==================header
+  e = e;
+  $('#doctorDetails').html('<h5>Welcome back '+e[1]+'.</h5>'+'\n<small>'+e[2]+'-'+e[3]+'\n'+e[4]+'-'+e[0]+'\n'+e[5]+'\n'+e[6]+'-'+e[7]+'</small>');
+  $('form').show();
+  $('#spin').hide();
+}catch(err){
+  $("#main_content").html(err);
+  clearCookie('id');
+  clearCookie('pass');
+}
+}
+function otherStuff(){
+//==================header
   //institiute
   doc.setTextColor(c0);
   doc.setFont("times", "bold");
@@ -124,14 +135,5 @@ try {
   doc.text(e[1],203, 285, null, null, "right");
   doc.setFontSize(f0-3);
   doc.text(e[3].toString(), 203, 290, null, null, "right");
-  
-  $('#doctorDetails').html('<h5>Welcome back '+e[1]+'.</h5>'+'\n<small>'+e[2]+'-'+e[3]+'\n'+e[4]+'-'+e[0]+'\n'+e[5]+'\n'+e[6]+'-'+e[7]+'</small>');
-  $('form').show();
-  $('#spin').hide();
-}catch(err){
-  $("#main_content").html(err);
-  clearCookie('id');
-  clearCookie('pass');
-}
-}
+  }
 </script>
