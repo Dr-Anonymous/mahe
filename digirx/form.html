@@ -226,9 +226,6 @@ function updateDrug(id, drug, dose, duration, instructions){
    $('#myTable tr').eq(id).find('td').eq(3).text(instructions);
 }
 
-function makePdf(){
-$('form').hide();
-M.toast({html: '<p>Generating prescription. Please wait...</p>'});
   
 var jsPDF = window.jspdf.jsPDF,
 doc = new jsPDF(),
@@ -245,6 +242,10 @@ doc = new jsPDF(),
     c3 = "rgb(0,255,0)",
     c4 = "rgb(0, 0, 255)",
     c5 = "rgb(255,255, 255)";
+  
+function makePdf(){
+$('form').hide();
+M.toast({html: '<p>Generating prescription. Please wait...</p>'});
   
 //=====================body headings
 doc.setFontSize(f1);
