@@ -27,7 +27,6 @@ var albumId = urlParam(),
 
 if (!albumId){
     albumId = "AH7cjMvUZu6qi79NHsKZxKJMMA6ik4RfOIKBIP-0XyxUOs3fwu05sfaYz1cDx4IK6Oc7dFuW250z";
-    $('#project_tagline').text('Shalima-Manoj');
     myFunction();
     history.replaceState({urlPath:'./?'+ albumId}, "", './?'+ albumId);
     }else{
@@ -84,6 +83,8 @@ dataType: "jsonp"
 
 function loadData(e) {
 pageToken = e["nextPageToken"] || '';
+if (e["albumTitle"])
+$('#project_tagline').text(e["albumTitle"]);
 $('#spin').hide();
 if (pageToken != ''){
 $('#load').html('<a href="#" onclick="loadMore(\''+ pageToken +'\'); return false;">Load more ...</a>');
