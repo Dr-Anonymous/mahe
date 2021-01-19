@@ -73,7 +73,7 @@ var end = $("#load").offset().top
 
 function myFunction(t){
 pageToken = t || ''; 
-var url = "https://script.google.com/macros/s/AKfycbxTzetvK_cfyhveGnXhafHlLrIc25smJrpvCdEFNUaCxgkPACeR/exec?callback=loadData&albumId="+albumId+"&pageToken="+pageToken;
+var url = "https://script.google.com/macros/s/AKfycbze1uKbYn9MTkBMxBhZF8NQPMAy_RkMnGRIRIZCJeK8KLeI9GGPDuRSLw/exec?callback=loadData&albumId="+albumId+"&pageToken="+pageToken;
 jQuery.ajax({
 crossDomain: true,
 url: url,
