@@ -109,7 +109,7 @@ for (var i=0; i< e.length; i++){ //individual file
 	if (mimeType.includes("video"))
 	$('#pics').append("<div class='col s4'><video class='responsive-video' width='"+ dimen["width"] +"' height='"+ dimen["height"] +"' poster='"+link+"' preload='none' controls onclick='play();'><source src='"+link+"=dv' type='"+mimeType+"'></video><p class='flow-text truncate' style='max-width:"+screen.width *80/100+"px;width:"+ dimen["width"] +"px'>"+ e[i]["filename"] +"</p><p><a href='"+ link +"=dv' target='_blank'>Download video</a></p></div>");
 	else
-	$('#pics').append("<div class='col s4'><img src='"+link+"'><p>Created: "+ crTime +". - <a href='"+link+"=w"+ dimen["width"]/2+"-h"+ dimen["height"]/2+"' target='_blank'>View full size.</a></p></div>");
+	$('#pics').append("<div class='col s4'><img src='"+link+"'><p>Created: "+ crTime +". - <a href='"+link+"=w"+ dimen["width"]+"-h"+ dimen["height"]+"' target='_blank'>View full size.</a></p></div>");
 		}
 	}
 }
