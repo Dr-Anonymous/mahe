@@ -3,11 +3,6 @@ layout: default
 title: Pic gallery
 description: Albums
 ---
-<style>
-.s4{
-min-width: fit-content;	
-}
-</style>
 <div id="pics" class="row"></div>
 <div class="flow-text center" id="load"></div>
 <!--spinner start-->
