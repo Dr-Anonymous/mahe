@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0100)https://virtualcme.live/imaapcon2021/certificate/index.php?type=&token=shalima.pinnamaneni@gmail.com -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Certificate</title>
+  <link rel="icon" href="https://virtualcme.live/imaapcon2021/certificate/images/favicon.png" type="image/gif" sizes="16x16">
+<script src="./jquery-1.12.4.js.download"></script>
+<script src="./jspdf.min.js.download"></script>
+<script src="./polyfills.umd.js.download"></script>
+
+
+<style>
+
+    .makePdf {height:500px; width:700px;position: relative; float:left; margin-left: 10px; clear:both;box-shadow: 5px 10px 8px 14px #888888;}
+    .imgpdf {height:100%; width:100%;}
+    .pdfName {position: absolute; font-family:"Helvetica"; font-size:18px;  font-weight:bold; width:100%; color:black;  top: 42%; left:32%;}
+    .pdfName2 {position: absolute; font-family:"Helvetica"; font-size:22px;  font-weight:bold; width:100%; color:Red;  top: 50%; left:36.5%;}
+    #print {border:1px solid #000;width:150px;cursor:pointer;display: flex;border-radius:7px; background-color:#CEBE0B;  align-items: center; justify-content: center; margin:4px;box-shadow: 0 0 5px -2px rgba(0,0,0,0.9);font-size:24px; padding:10px; margin-left:400px; margin-top:20px;}
+    .divHome {float:left; width:60px;}
+	.headingDiv {margin-left:20px; width:50%;}
+	.headingDiv h2 {float:left;}
+	#print:hover {color:#fff; background-color:#000;}
+	
+</style>
+
+<script>
+    $(document).ready(function () { //getPDF()
+
+        $("#print").click(function () {
+            // alert("The paragraph was clicked.");
+            getPDF();
+//           
+        });
+        if ($('#lblCategory').text() == 'Delegate') {
+            $(".imgpdf").attr("src", "./participation_delegate.jpg");
+        } else {
+            $(".imgpdf").attr("src", "./participation_delegate.jpg");
+        }
+
+        
+       
+    });
+
+
+
+
+    function getPDF() {
+        $(".makePdf").css({ 'transform': 'rotate(0deg)', 'height': '210mm', 'width': '297mm' });
+        $(".pdfName").css({ 'top': '45%', 'left': '30%', 'font-size': '18px' });
+        $(".pdfName2").css({ 'top': '25%', 'left': '36%', 'font-size': '30px' });
+        
+        var HTML_Width = $(".makePdf").width();
+        var HTML_Height = $(".makePdf").height();
+        var top_left_margin = 0;
+        var PDF_Width = HTML_Height;
+        var PDF_Height = HTML_Width;
+
+        var canvas_image_width = HTML_Height;
+        var canvas_image_height = HTML_Width;
+
+
+
+
+        html2canvas($(".makePdf")[0], { allowTaint: true }).then(function (canvas) {
+            canvas.getContext('2d');
+
+            console.log(canvas.height + "  " + canvas.width);
+
+
+            var imgData = canvas.toDataURL("image/jpeg", 1.0);
+
+            var pdf = new jsPDF('p', 'mm', [PDF_Width, PDF_Height]);
+            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+
+
+            var doc = new jsPDF('l', 'mm', [PDF_Height, PDF_Width]);
+
+
+
+
+            doc.setFont("helvetica");
+            doc.setFontType("bold");
+            
+            doc.setTextColor(0, 0, 0, 0.8);
+
+            doc.setFontSize(100);
+
+
+            var img = new Image()
+            if ($('#lblCategory').text() == 'Delegate') {
+                img.src = './participation_delegate.jpg';
+            } else {
+                img.src = './participation_delegate.jpg';
+            }
+
+
+            doc.addImage(img, "JPG", 0, 0, canvas_image_height, canvas_image_width);
+
+            doc.text($('#lblName').text(), 250, 360);
+            doc.text($('#lblName2').text(), 80, 350);
+
+
+
+            //pdf.save("certificate.pdf");
+            doc.save("IMAAPCON2021.pdf");
+
+            $(".makePdf").css({ 'transform': 'rotate(0deg)', 'height': '500px', 'width': '700px' });
+            $(".pdfName").css({ 'top': '45%', 'left': '30%', 'font-size': '18px' });
+            $(".pdfName2").css({ 'top': '50%', 'left': '36%', 'font-size': '22px' });
+        });
+    };
+
+</script>
+</head>
+<body>
+<form method="post" action="https://virtualcme.live/imaapcon2021/certificate/default4.aspx?Id=773" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPD">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="73B35769">
+</div>
+<!--<div class="divHome">-->
+<!--    <a href="Default.aspx"><img src="homeicon.png" width="60px"/></a>-->
+<!-- </div>-->
+ <div class="headingDiv"><h2>YOUR NAME:</h2><input id="lblName"></input> <div id="print">Download</div></div>
+  
+    <div class="makePdf" style="transform: rotate(0deg); height: 500px; width: 700px;">
+    
+    <img src="./participation_delegate.jpg" class="imgpdf">
+    <div class="pdfName" style="top: 45%; left: 30%; font-size: 18px;">
+        <span>Your Name Here</span>
+        </div>
+    </div>
+    <div hidden="">
+    <span id="lblCategory">Faculty</span>
+    </div>
+    <br>
+
+
+
+
+ </form>
+
+
+</body></html>
