@@ -15,52 +15,53 @@ description: Send SMS
 
 <script>
 //code for google sign-in
-function otherSignedInStuff(googleUser){
-$("#form").show();
-var profile = googleUser.getBasicProfile();
-$("#demo").text("Welcome "+ profile.getName()+ " ("+profile.getEmail()+")");
-//get firebase token using email id
-var url= "https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail="+profile.getEmail();
-var xmlHttp = new XMLHttpRequest();
-xmlHttp.onreadystatechange = function() {
-  if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-     $("#id").text(xmlHttp.responseText);
-}
-xmlHttp.open("GET", url, true); // true for asynchronous 
-xmlHttp.send(null);
-//end firebase token retrieval  
-}
-  
-//send sms
-function myFunction(phone,say) {
-if (!phone){
-M.toast({html: "Enter a phone number."});
-return;
-}
-phone = phone.replace(/\n/g, "',");
-var id= $("#id").text();
-if (id==="noToken"){
-   $("#demo").html("You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.");
-  return;
+function otherSignedInStuff(googleUser) {
+  $("#form").show();
+  var profile = googleUser.getBasicProfile();
+  $("#demo").text("Welcome " + profile.getName() + " (" + profile.getEmail() + ")");
+  //get firebase token using email id
+  var url = "https://script.google.com/macros/s/AKfycbzt9Hbl-fc3wM-xQU_EkqvYKFmSwLX2m9HJdZv75IR6T06OBxw/exec?mail=" + profile.getEmail();
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function () {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+      $("#id").text(xmlHttp.responseText);
   }
-//change button state
-M.toast({html: "Sending..."});
-$("#btn").hide();
+  xmlHttp.open("GET", url, true); // true for asynchronous 
+  xmlHttp.send(null);
+  //end firebase token retrieval  
+}
 
-//make call to script
-fetch("https://script.google.com/macros/s/AKfycbwumJwu6L0RWpzI_Vlo39otIEPcrOe7UBComcBMRJvGek81xyFiyNOYFK9rk4UgqZL4Rw/exec?phone="+phone+"&say="+say+"&id="+id)
-.then(function(data) {
+//send sms
+function myFunction(phone, say) {
+  if (!phone) {
+    M.toast({ html: "Enter a phone number." });
+    return;
+  }
+  phone = phone.replace(/\n/g, "',");
+  var id = $("#id").text();
+  if (id === "noToken") {
+    $("#demo").html("You haven't installed/registered Net2SMS app. Kindly install the app from <a href='https://drive.google.com/open?id=1BY9HzqFtTCpjGMbcnoll6L_kNEWpmKcf'>here</a> to use this online SMS feature.");
+    return;
+  }
+  //change button state
+  M.toast({ html: "Sending..." });
+  $("#btn").hide();
+
+  //make call to script
+  fetch("https://script.google.com/macros/s/AKfycbwumJwu6L0RWpzI_Vlo39otIEPcrOe7UBComcBMRJvGek81xyFiyNOYFK9rk4UgqZL4Rw/exec?phone=" + phone + "&say=" + say + "&id=" + id & callback="callBack")
+}
+function callBack(data) {
   // Here you get the data
   $("#form").hide();
-  M.toast({html: "Message sent."});
+  if (data == 200.0){
+  M.toast({ html: "Message sent." });
   $("#demo").html("<a href='javascript:location.reload();' id='reload'>Send another message</a>");
   console.log(data);
-  })
-.catch(function(error) {
+  }else{
   // If there is any error
-  M.toast({html: "Server error. Try again"});
+  M.toast({ html: "Server error. Try again" });
   console.log(error);
-});
+  }
 }
 //send sms end
 </script>
