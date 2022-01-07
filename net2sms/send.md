@@ -48,7 +48,7 @@ M.toast({html: "Sending..."});
 $("#btn").hide();
 
 //make call to script
-fetch("https://t.orthosam.com/send.php?phone="+phone+"&say="+say+"&id="+id)
+fetch("https://script.google.com/macros/s/AKfycbwumJwu6L0RWpzI_Vlo39otIEPcrOe7UBComcBMRJvGek81xyFiyNOYFK9rk4UgqZL4Rw/exec?phone="+phone+"&say="+say+"&id="+id)
 .then(function(data) {
   // Here you get the data
   $("#form").hide();
