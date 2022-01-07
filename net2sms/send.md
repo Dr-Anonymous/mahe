@@ -53,7 +53,7 @@ function myFunction(phone, say) {
 function callBack(data) {
   // Here you get the data
   $("#form").hide();
-  if (data == 200.0){
+  if (data == 200){
   M.toast({ html: "Message sent." });
   $("#demo").html("<a href='javascript:location.reload();' id='reload'>Send another message</a>");
   console.log(data);
