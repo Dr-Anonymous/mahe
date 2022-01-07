@@ -48,7 +48,7 @@ function myFunction(phone, say) {
   $("#btn").hide();
 
   //make call to script
-  fetch("https://script.google.com/macros/s/AKfycbwumJwu6L0RWpzI_Vlo39otIEPcrOe7UBComcBMRJvGek81xyFiyNOYFK9rk4UgqZL4Rw/exec?phone=" + phone + "&say=" + say + "&id=" + id & callback="callBack")
+  fetch("https://script.google.com/macros/s/AKfycbwumJwu6L0RWpzI_Vlo39otIEPcrOe7UBComcBMRJvGek81xyFiyNOYFK9rk4UgqZL4Rw/exec?phone=" + phone + "&say=" + say + "&id=" + id+ "& callback=callBack")
 }
 function callBack(data) {
   // Here you get the data
