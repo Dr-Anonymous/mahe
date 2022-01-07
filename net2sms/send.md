@@ -48,7 +48,13 @@ function myFunction(phone, say) {
   $("#btn").hide();
 
   //make call to script
-  fetch("https://script.google.com/macros/s/AKfycbwumJwu6L0RWpzI_Vlo39otIEPcrOe7UBComcBMRJvGek81xyFiyNOYFK9rk4UgqZL4Rw/exec?phone=" + phone + "&say=" + say + "&id=" + id+ "& callback=callBack")
+  var url= "https://script.google.com/macros/s/AKfycbwumJwu6L0RWpzI_Vlo39otIEPcrOe7UBComcBMRJvGek81xyFiyNOYFK9rk4UgqZL4Rw/exec?&callback=callBack&phone=" + phone + "&say=" + say + "&id=" + id;
+  jQuery.ajax({
+      crossDomain: true,
+      url: url,
+      method: "GET",
+      dataType: "jsonp"
+    });
 }
 function callBack(data) {
   // Here you get the data
