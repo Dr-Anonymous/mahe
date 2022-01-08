@@ -48,7 +48,7 @@ function myFunction(phone, say) {
   $("#btn").hide();
 
   //make call to script
-  var url= "https://script.google.com/macros/s/AKfycbwqPdJkz9qz-06B7CCrmi-PnWNxyomYgwMAECNl5OE8xMMJ-hyWCRTE59LyaxL0vPnnqg/exec?&callback=callBack&phone=" + phone + "&say=" + say + "&id=" + id;
+  var url= "https://script.google.com/macros/s/AKfycbwqPdJkz9qz-06B7CCrmi-PnWNxyomYgwMAECNl5OE8xMMJ-hyWCRTE59LyaxL0vPnnqg/exec?&callback=callBack&phone=" + phone + "&say=" + say + "&to=" + id;
   jQuery.ajax({
       crossDomain: true,
       url: url,
