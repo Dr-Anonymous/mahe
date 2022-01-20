@@ -12,6 +12,7 @@ description: Appointment booking
 var docId = urlParam() || "1";
 
 if (docId == "2"){
+$('#project_title').text("Dr Shalima Pinnamaneni")
 $('p').html("Book appointment with <a href='https://orthosam.com/shalima/#about'>Dr Shalima Pinnamaneni</a> <small>M.D General Medicine</small>:");
 } else {
 $('p').html("Book appointment with <a href='https://orthosam.com/samuel/#about'>Dr Samuel Manoj Ch</a> <small>M.S Orthopaedics(Manipal)</small>:");
