@@ -1,6 +1,5 @@
 ---
 ---
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,16 +30,16 @@
 	<p>
 		<video width=250 id=local controls autoplay></video>
 		Local
-		<!--<textarea rows="4" cols="50"  id=localOffer></textarea>
-		<button id=localOfferSet>CreateOffer</button>-->
+		<!--<textarea rows="4" cols="50"  id=localOffer></textarea>-->
+		<button id=localOfferSet>CreateOffer</button>
 	</p>	
 </div>
 <div>
 	<p>
 		<video width=250 id=remote controls autoplay></video>
 		Remote
-		<!--<textarea id="remoteOffer" rows="4" cols="50" placeholder="Paste remote SDP"></textarea>
-		<button id=remoteOfferGot>Answer</button>-->
+		<!--<textarea id="remoteOffer" rows="4" cols="50" placeholder="Paste remote SDP"></textarea>-->
+		<button id=remoteOfferGot>Answer</button>
 	</p>	
 </div>
 <!--
@@ -82,6 +81,9 @@ var conf = { iceServers: [{"urls":"stun:stun.l.google.com:19302"}] },
     bytesPrev = 0,
 	songNumber = " ",
 	parent = false,
+	child = false,
+	_remoteOffer = false,
+	myDescription,
 	firebaseConfig = {
 		apiKey: "AIzaSyBpFCW5CcLoQP3ThnTm2gtOJoxLPAnas-A",
 		authDomain: "mydatabase-c35da.firebaseapp.com",
@@ -105,6 +107,11 @@ firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
 database = firebase.database().ref();
 
+//before exit reset everything
+window.onbeforeunload = function() {
+	songNumber = ' ';
+	writeFirebaseData(false, 0);
+};
 
 function writeFirebaseData(functionName, value) {
 	database.set({
@@ -113,12 +120,6 @@ function writeFirebaseData(functionName, value) {
 		"songNumber": songNumber
 	});
 }
-
-function enableChat() {
-    enable_chat.checked ? (chatEnabled = true) : (chatEnabled = false);
-}
-//enableChat();
-
 
 navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
     localStream = stream;
@@ -152,7 +153,7 @@ pc.onicecandidate = function(e) {
     var cand = e.candidate;
     if (!cand) {
         console.log('iceGatheringState complete\n', pc.localDescription.sdp);
-        localOffer.value = JSON.stringify(pc.localDescription);
+        writeFirebaseData("RTCvideo", [JSON.stringify(pc.localDescription), ' '])
     } else {
         console.log(cand.candidate);
     }
@@ -169,43 +170,35 @@ pc.onconnection = function(e) {
     console.log('onconnection ', e);
 }
 
-if (!parent) {
-var _remoteOffer;
-database.on('value', (snapshot) => {
+remoteOfferGot.onclick = function() {
+	database.on('value', (snapshot) => {
 		var data = snapshot.val();
 		var value = data["value"];
 		switch (data["functionName"]) {
 			case 'RTCvideo':
-				_remoteOffer = new RTCSessionDescription(JSON.parse(value));
-				afterRemote(_remoteOffer);
+				var _remoteOffer = new RTCSessionDescription(JSON.parse(value[0]));
+				console.log('remoteOffer \n', _remoteOffer);
+				pc.setRemoteDescription(_remoteOffer).then(function() {
+					console.log('setRemoteDescription ok');
+					if (_remoteOffer.type == "offer") {
+						pc.createAnswer().then(function(description) {
+							console.log('createAnswer 200 ok \n', description);
+							writeFirebaseData("RTCvideo", [_remoteOffer ,JSON.stringify(pc.localDescription)]);
+							pc.setLocalDescription(description).then(function() {}).catch(console.log);
+						}).catch(console.log);
+					}
+				}).catch(console.log);
 				break;
 			default:
-				return;
 				//no default behaviour
 		}
+
 	});
-}
-function afterRemote(_remoteOffer){
-    console.log('remoteOffer \n', _remoteOffer);
-    pc.setRemoteDescription(_remoteOffer).then(function() {
-        console.log('setRemoteDescription ok');
-        if (_remoteOffer.type == "offer") {
-            pc.createAnswer().then(function(description) {
-                console.log('createAnswer 200 ok \n', description);
-                pc.setLocalDescription(description).then(function(description) { writeFirebaseData("RTCvideo", [ _remoteOffer, description] ) }).catch(console.log);
-            }).catch(console.log);
-        }
-    }).catch(console.log);
+
+    
 }
 
-if (parent) {
-    if (chatEnabled) {
-        _chatChannel = pc.createDataChannel('chatChannel');
-        _fileChannel = pc.createDataChannel('fileChannel');
-        // _fileChannel.binaryType = 'arraybuffer';
-        chatChannel(_chatChannel);
-        fileChannel(_fileChannel);
-    }
+localOfferSet.onclick = function() {
     pc.createOffer().then(des => {
         console.log('createOffer ok ');
         pc.setLocalDescription(des).then(() => {
@@ -214,8 +207,7 @@ if (parent) {
                     return;
                 } else {
                     console.log('after GatherTimeout');
-					
-                    writeFirebaseData("RTCvideo", [JSON.stringify(pc.localDescription)]);
+                    writeFirebaseData("RTCvideo", [JSON.stringify(pc.localDescription), ' ']);
                 }
             }, 2000);
             console.log('setLocalDescription ok');
@@ -223,84 +215,7 @@ if (parent) {
         // For chat
     }).catch(console.log);
 }
-/*
-//File transfer
-fileTransfer.onchange = function(e) {
-    var files = fileTransfer.files;
-    if (files.length > 0) {
-        file = files[0];
-        sendFileDom.name = file.name;
-        sendFileDom.size = file.size;
-        sendFileDom.type = file.type;
-        sendFileDom.fileInfo = "areYouReady";
-        console.log(sendFileDom);
-    } else {
-        console.log('No file selected');
-    }
-}
 
-function sendFile() {
-    if (!fileTransfer.value) return;
-    var fileInfo = JSON.stringify(sendFileDom);
-    _fileChannel.send(fileInfo);
-    console.log('file info sent');
-}
-
-
-function fileChannel(e) {
-    _fileChannel.onopen = function(e) {
-        console.log('file channel is open', e);
-    }
-    _fileChannel.onmessage = function(e) {
-        // Figure out data type
-        var type = Object.prototype.toString.call(e.data),
-            data;
-        if (type == "[object ArrayBuffer]") {
-            data = e.data;
-            receiveBuffer.push(data);
-            receivedSize += data.byteLength;
-            recFileProg.value = receivedSize;
-            if (receivedSize == recFileDom.size) {
-                var received = new window.Blob(receiveBuffer);
-                file_download.href = URL.createObjectURL(received);
-                file_download.innerHTML = "download";
-                file_download.download = recFileDom.name;
-                // rest
-                receiveBuffer = [];
-                receivedSize = 0;
-                // clearInterval(window.timer);	
-            }
-        } else if (type == "[object String]") {
-            data = JSON.parse(e.data);
-        } else if (type == "[object Blob]") {
-            data = e.data;
-            file_download.href = URL.createObjectURL(data);
-            file_download.innerHTML = "download";
-            file_download.download = recFileDom.name;
-        }
-
-        // Handle initial msg exchange
-        if (data.fileInfo) {
-            if (data.fileInfo == "areYouReady") {
-                recFileDom = data;
-                recFileProg.max = data.size;
-                var sendData = JSON.stringify({ fileInfo: "readyToReceive" });
-                _fileChannel.send(sendData);
-                // window.timer = setInterval(function(){
-                // 	Stats();
-                // },1000)				
-            } else if (data.fileInfo == "readyToReceive") {
-                sendFileProg.max = sendFileDom.size;
-                sendFileinChannel(); // Start sending the file
-            }
-            console.log('_fileChannel: ', data.fileInfo);
-        }
-    }
-    _fileChannel.onclose = function() {
-        console.log('file channel closed');
-    }
-}
-*/
 function chatChannel(e) {
     _chatChannel.onopen = function(e) {
         console.log('chat channel is open', e);
@@ -417,6 +332,7 @@ var audioRTC = function(cb) {
         }
     }
 }
+
 </script>
 </body>
 </html>
