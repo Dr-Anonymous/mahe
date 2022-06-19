@@ -57,11 +57,13 @@ $('#joinBtn').click(function () {
     video.srcObject = stream;
     video.play()
     pc2.addStream(stream)
+	$('#offerRecdBtn').click();
 }).catch(function (error) {
     console.log('Error adding stream to pc2: ' + error)
 });
   $('#createOrJoin').modal('hide')
   $('#getRemoteOffer').modal('show')
+  
 })
 
 $('#offerSentBtn').click(function () {
@@ -70,11 +72,12 @@ $('#offerSentBtn').click(function () {
 })
 
 $('#offerRecdBtn').click(function () {
+
   var offer = data//$('#remoteOffer').val()
   var offerDesc = new RTCSessionDescription(JSON.parse(offer))
   console.log('Received remote offer', offerDesc)
   writeToChatLog('Received remote offer', 'text-success')
-  handleOfferFromPC1(offerDesc)
+  handleOfferFromPC1(offerDesc);
   $('#getRemoteOffer').modal('hide')
   $('#showLocalAnswer').modal('show')
 })
@@ -282,6 +285,7 @@ pc2.ondatachannel = function (e) {
 }
 
 function handleOfferFromPC1 (offerDesc) {
+
   pc2.setRemoteDescription(offerDesc)
   pc2.createAnswer(function (answerDesc) {
     writeToChatLog('Created local answer', 'text-success')
