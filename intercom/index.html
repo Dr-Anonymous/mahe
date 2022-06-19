@@ -132,7 +132,8 @@
 	const app = initializeApp(firebaseConfig);
 	import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
 	
-	var firstTime = true;
+	var firstTime1 = true,
+	    firstTime2 = true;
 	const db = getDatabase();
 	const callerdb = ref(db, '1/');
 	const receiverdb = ref(db, '2/');
@@ -141,14 +142,14 @@
 	  //console.log(data);
 	  window.data = data;
 	  
-	  if (data == null) { $('#createBtn').click(); firstTime = false;}
-	  else { if (firstTime) { $('#joinBtn').click(); $('#offerRecdBtn').click(); } }
+	  if (data == null && firstTime1) { $('#createBtn').click(); firstTime1 = false;}
+	  else { if (firstTime1) { $('#joinBtn').click(); $('#offerRecdBtn').click(); } }
 	});
 	onValue(receiverdb, (snapshot) => {
 	  const hisoffer = snapshot.val();
 	  //console.log(hisoffer);
 	  window.hisoffer = hisoffer;
-	  if (hisoffer != null) { $('#answerRecdBtn').click();}
+	  if (hisoffer != null && firstTime2) { $('#answerRecdBtn').click(); firstTime2 = false;}
 	});
 	window.set = set;
 	window.callerdb = callerdb;
