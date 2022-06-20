@@ -1,15 +1,15 @@
-/* See also:
-    http://www.html5rocks.com/en/tutorials/webrtc/basics/
-    https://code.google.com/p/webrtc-samples/source/browse/trunk/apprtc/index.html
-
-    https://webrtc-demos.appspot.com/html/pc1.html
-*/
-
 // Attach a media stream to an element.
 attachMediaStream = function (element, stream) {
-  console.log('Attaching media stream')
-  element.srcObject = stream
-  element.play()
+  console.log('Attaching media stream');
+  element.srcObject = stream;
+  // Show loading animation.
+  var playPromise = element.play();
+
+  if (playPromise !== undefined) {
+    playPromise.then(_ => {  })
+    .catch(error => {    });
+  }
+  
 }
 
 reattachMediaStream = function (to, from) {
