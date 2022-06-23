@@ -59,7 +59,7 @@ $('#createBtn').click(function () {
 })
 
 $('#joinBtn').click(function () {
-  navigator.mediaDevices.getUserMedia({video: false, audio: false}).then(function (stream) {
+  navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
     var video = document.getElementById('localVideo')
     video.srcObject = stream;
     video.play()
