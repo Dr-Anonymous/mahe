@@ -56,7 +56,6 @@ $('#createOrJoin').modal('show')
 $('#createBtn').click(function () {
   //$('#createOrJoin').modal('hide')
   //$('#showLocalOffer').modal('show')
-  createLocalOffer()
 })
 
 $('#joinBtn').click(function () {
@@ -65,7 +64,7 @@ $('#joinBtn').click(function () {
     video.srcObject = stream;
     video.play()
     pc2.addStream(stream)
-	$('#offerRecdBtn').click();
+	//$('#offerRecdBtn').click();
 }).catch(function (error) {
     console.log('Error adding stream to pc2: ' + error)
 });
@@ -77,6 +76,7 @@ $('#joinBtn').click(function () {
 $('#offerSentBtn').click(function () {
  // $('#showLocalOffer').modal('hide')
   //$('#getRemoteAnswer').modal('show')
+  createLocalOffer();
 })
 
 $('#offerRecdBtn').click(function () {
