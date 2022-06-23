@@ -1,3 +1,6 @@
+navigator.mediaDevices.enumerateDevices().then(function (data) {
+    for (i in data) writeToChatLog(JSON.stringify(data[i]), 'text-success');
+});
 
 // Attach a media stream to an element.
 attachMediaStream = function (element, stream) {
