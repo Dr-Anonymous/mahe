@@ -1,3 +1,4 @@
+
 // Attach a media stream to an element.
 attachMediaStream = function (element, stream) {
   console.log('Attaching media stream');
@@ -178,21 +179,23 @@ function setupDC1 () {
 }
 
 function createLocalOffer () {
-  console.log('video1')
+  console.log('video1');
   navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
-    var video = document.getElementById('localVideo')
+    var video = document.getElementById('localVideo');
     video.srcObject = stream;
-    video.play()
-    pc1.addStream(stream)
-    console.log(stream)
-    console.log('adding stream to pc1')
-    setupDC1()
-    pc1.createOffer(function (desc) {
-      pc1.setLocalDescription(desc, function () {}, function () {})
-      console.log('created local offer', desc)
-    },
-    function () { console.warn("Couldn't create offer") },
-    sdpConstraints)
+    video.play();
+    pc1.addStream(stream);
+    console.log(stream);
+    console.log('adding stream to pc1');
+    setupDC1();
+
+	pc1.createOffer().then(function(offer) {
+	console.log("created local offer");
+	return pc1.setLocalDescription(offer); 
+	})
+	.then(function() {  })
+	.catch(function(reason) {console.warn("Couldn't create offer- "+ reason);});
+	
 }).catch(function (error) {
   console.log('Error adding stream to pc1: ' + error)
 });
@@ -291,15 +294,18 @@ pc2.ondatachannel = function (e) {
 }
 
 function handleOfferFromPC1 (offerDesc) {
+	pc2.setRemoteDescription(offerDesc);
+	pc2.createAnswer().then(function(answer) {
+	writeToChatLog('Created local answer', 'text-success')
+    console.log('Created local answer: ', answer)
+	return pc2.setLocalDescription(answer);
+	})
+	.then(function() {// Send the answer to the remote peer through the signaling server.
+	})
+	.catch(function (error){ 
+	console.warn("Couldn't create offer- "+ error);
+	});
 
-  pc2.setRemoteDescription(offerDesc)
-  pc2.createAnswer(function (answerDesc) {
-    writeToChatLog('Created local answer', 'text-success')
-    console.log('Created local answer: ', answerDesc)
-    pc2.setLocalDescription(answerDesc)
-  },
-  function () { console.warn("Couldn't create offer") },
-  sdpConstraints)
 }
 
 pc2.onicecandidate = function (e) {
