@@ -62,8 +62,10 @@ $('#joinBtn').click(function () {
   navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
     var video = document.getElementById('localVideo')
     video.srcObject = stream;
-    video.play()
-    pc2.addStream(stream)
+    video.play();
+	stream.getTracks().forEach(function (track) {
+    pc2.addTrack(track, stream);
+	});
 	//$('#offerRecdBtn').click();
 }).catch(function (error) {
     console.log('Error adding stream to pc2: ' + error)
@@ -184,7 +186,9 @@ function createLocalOffer () {
     var video = document.getElementById('localVideo');
     video.srcObject = stream;
     video.play();
-    pc1.addStream(stream);
+	stream.getTracks().forEach(function (track) {
+    pc1.addTrack(track, stream);
+	});
     console.log(stream);
     console.log('adding stream to pc1');
     setupDC1();
