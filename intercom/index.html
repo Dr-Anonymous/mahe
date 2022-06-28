@@ -208,7 +208,7 @@
 	
 	onValue(ref(db), (snapshot) => {
 	  const data = snapshot.val();
-	  console.log(data);
+	  //console.log(data);
 	  
 	  if (data == null && firstTime) {
 		  firstTime = false;
@@ -220,11 +220,11 @@
 		  if (firstTime) {
 		  firstTime = false;
 		  window.remoteOffer = data[0];
-		  console.log(remoteOffer);
+		  //console.log(remoteOffer);
 		  $("#getRemoteOffer .modal-body").append($("#options").html()); $("#options").remove(); $('#joinBtn').click();
 		  } else {
 			if (!one) return;
-			if (data[1]) { window.remoteAnswer = data[1]; $('#answerRecdBtn').click();}
+			if (data[1]) { window.remoteAnswer = data[1]; $('#answerRecdBtn').click(); }
 		  }
 	  }
 	});
@@ -232,8 +232,7 @@
 	window.set = set;
 	window.ref = ref;
 	window.onunload = function(){
-	if (one) set(ref(db, '0/'), null);
-	else set(ref(db, '1/'), null);
+	set(ref(db), null);
 	};
 </script>
 
