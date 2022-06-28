@@ -1,31 +1,3 @@
-
-// Attach a media stream to an element.
-attachMediaStream = function (element, stream) {
-  console.log('Attaching media stream');
-  element.srcObject = stream;
-  
-  
-  // promises
-  var playPromise = element.play();
-  if (playPromise !== undefined) {
-    playPromise.then(_ => {  })
-    .catch(error => {    });
-  }
-}
-
-reattachMediaStream = function (to, from) {
-  console.log('Reattaching media stream')
-  to.srcObject = from.srcObject
-  
-  // promises
-  var playPromise = to.play();
-  if (playPromise !== undefined) {
-    playPromise.then(_ => {  })
-    .catch(error => {    });
-  }
-  
-}
-
 var cfg = {'iceServers': [{urls: 'stun:stun.l.google.com:19302'}]}; //stun:23.21.150.121
 
 /* THIS IS ALICE, THE CALLER/SENDER */
@@ -37,15 +9,7 @@ var pc1 = new RTCPeerConnection(cfg),
 // Since the same JS file contains code for both sides of the connection,
 // activedc tracks which of the two possible datachannel variables we're using.
 var activedc,
-	pc1icedone = false,
-
-	sdpConstraints = {
-	optional: [],
-	mandatory: {
-	OfferToReceiveAudio: true,
-	OfferToReceiveVideo: true
-	}
-}
+	pc1icedone = false;
 /*
 $('#showLocalOffer').modal('hide')
 $('#getRemoteAnswer').modal('hide')
@@ -58,8 +22,12 @@ $('#createBtn').click(function () {
   //$('#showLocalOffer').modal('show')
 })
 
+/*
+if ($('#screenShare').attr('share') == 'no') myVar = navigator.mediaDevices.getUserMedia({video: true, audio: true});
+	else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
+*/
 $('#joinBtn').click(function () {
-  navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
+	navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
     var video = document.getElementById('localVideo')
     video.srcObject = stream;
     video.play();
@@ -70,6 +38,7 @@ $('#joinBtn').click(function () {
 }).catch(function (error) {
     console.log('Error adding stream to pc2: ' + error)
 });
+
   //$('#createOrJoin').modal('hide')
   //$('#getRemoteOffer').modal('show')
   
@@ -105,80 +74,6 @@ $('#answerRecdBtn').click(function () {
   //$('#waitForConnection').modal('show')
 })
 
-$('#fileBtn').change(function () {
-  var file = this.files[0]
-  console.log(file)
-
-  sendFile(file)
-})
-
-function fileSent (file) {
-  console.log(file + ' sent')
-}
-
-function fileProgress (file) {
-  console.log(file + ' progress')
-}
-
-function sendFile (data) {
-  if (data.size) {
-    FileSender.send({
-      file: data,
-      onFileSent: fileSent,
-      onFileProgress: fileProgress,
-    })
-  }
-}
-
-function sendMessage () {
-  if ($('#messageTextBox').val()) {
-    var channel = new RTCMultiSession()
-    writeToChatLog($('#messageTextBox').val(), 'text-success')
-    channel.send({message: $('#messageTextBox').val()})
-    $('#messageTextBox').val('')
-
-    // Scroll chat text area to the bottom on new input.
-    $('#chatlog').scrollTop($('#chatlog')[0].scrollHeight)
-  }
-
-  return false
-}
-
-function setupDC1 () {
-  try {
-    var fileReceiver1 = new FileReceiver()
-    dc1 = pc1.createDataChannel('test', {reliable: true})
-    activedc = dc1
-    console.log('Created datachannel (pc1)')
-    dc1.onopen = function (e) {
-      console.log('data channel connect')
-      //$('#waitForConnection').modal('hide')
-      //$('#waitForConnection').remove()
-    }
-    dc1.onmessage = function (e) {
-      console.log('Got message (pc1)', e.data)
-      if (e.data.size) {
-        fileReceiver1.receive(e.data, {})
-      } else {
-        if (e.data.charCodeAt(0) == 2) {
-          // The first message we get from Firefox (but not Chrome)
-          // is literal ASCII 2 and I don't understand why -- if we
-          // leave it in, JSON.parse() will barf.
-          return
-        }
-        console.log(e)
-        var data = JSON.parse(e.data)
-        if (data.type === 'file') {
-          fileReceiver1.receive(e.data, {})
-        } else {
-          writeToChatLog(data.message, 'text-info')
-          // Scroll chat text area to the bottom on new input.
-          $('#chatlog').scrollTop($('#chatlog')[0].scrollHeight)
-        }
-      }
-    }
-  } catch (e) { console.warn('No data channel (pc1)', e); }
-}
 
 function createLocalOffer () {
   console.log('video1');
@@ -191,8 +86,8 @@ function createLocalOffer () {
 	});
     console.log(stream);
     console.log('adding stream to pc1');
-    setupDC1();
-
+    //setupDC1(); /* <======== function in other script */
+	codecCheck(stream);
 	pc1.createOffer().then(function(offer) {
 	console.log("created local offer");
 	return pc1.setLocalDescription(offer); 
@@ -214,11 +109,24 @@ pc1.onicecandidate = function (e) {
   }
 }
 
+// Attach a media stream to an element.
+attachMediaStream = function (element, stream) {
+  console.log('Attaching media stream');
+  element.srcObject = stream;
+  
+  // promises
+  var playPromise = element.play();
+  if (playPromise !== undefined) {
+    playPromise.then(_ => {  })
+    .catch(error => {    });
+  }
+}
+
 function handleOnaddstream (e) {
-  console.log('Got remote stream', e.streams[0])
-  var el = document.getElementById('remoteVideo')
-  el.autoplay = true
-  attachMediaStream(el, e.streams[0])
+  console.log('Got remote streams', e.streams);
+  var el = document.getElementById('remoteVideo');
+  el.autoplay = true;
+  attachMediaStream(el, e.streams[0]);
 }
 
 pc1.ontrack = handleOnaddstream
@@ -259,9 +167,6 @@ function handleAnswerFromPC2 (answerDesc) {
   pc1.setRemoteDescription(answerDesc)
 }
 
-function handleCandidateFromPC2 (iceCandidate) {
-  pc1.addIceCandidate(iceCandidate)
-}
 
 /* THIS IS BOB, THE ANSWERER/RECEIVER */
 
@@ -272,9 +177,9 @@ var pc2 = new RTCPeerConnection(cfg),
 pc2.ondatachannel = function (e) {
   var fileReceiver2 = new FileReceiver()
   var datachannel = e.channel || e; // Chrome sends event, FF sends raw channel
-  console.log('Received datachannel (pc2)', arguments)
-  dc2 = datachannel
-  activedc = dc2
+  console.log('Received datachannel (pc2)', arguments);
+  dc2 = datachannel;
+  activedc = dc2;
   dc2.onopen = function (e) {
     console.log('data channel connect')
     //$('#waitForConnection').modal('hide')
@@ -299,6 +204,7 @@ pc2.ondatachannel = function (e) {
 
 function handleOfferFromPC1 (offerDesc) {
 	pc2.setRemoteDescription(offerDesc);
+	
 	pc2.createAnswer().then(function(answer) {
 	writeToChatLog('Created local answer', 'text-success')
     console.log('Created local answer: ', answer)
@@ -324,37 +230,29 @@ pc2.onicecandidate = function (e) {
 pc2.onsignalingstatechange = onsignalingstatechange
 pc2.oniceconnectionstatechange = oniceconnectionstatechange
 pc2.onicegatheringstatechange = onicegatheringstatechange
+pc2.ontrack = handleOnaddstream
+pc2.onconnection = handleOnconnection
+
+
+/* not used code */
+reattachMediaStream = function (to, from) {
+  console.log('Reattaching media stream')
+  to.srcObject = from.srcObject
+  
+  // promises
+  var playPromise = to.play();
+  if (playPromise !== undefined) {
+    playPromise.then(_ => {  })
+    .catch(error => {    });
+  }
+  
+}
+
 
 function handleCandidateFromPC1 (iceCandidate) {
   pc2.addIceCandidate(iceCandidate)
 }
 
-pc2.ontrack = handleOnaddstream
-pc2.onconnection = handleOnconnection
-
-function getTimestamp () {
-  var totalSec = new Date().getTime() / 1000
-  var hours = parseInt(totalSec / 3600) % 24
-  var minutes = parseInt(totalSec / 60) % 60
-  var seconds = parseInt(totalSec % 60)
-
-  var result = (hours < 10 ? '0' + hours : hours) + ':' +
-    (minutes < 10 ? '0' + minutes : minutes) + ':' +
-    (seconds < 10 ? '0' + seconds : seconds)
-
-  return result
-}
-
-function escapeHTML (unsafe_str) {
-  return unsafe_str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/\"/g, '&quot;')
-    .replace(/\'/g, '&#39;')
-    .replace(/\//g, '&#x2F;')
-}
-
-function writeToChatLog (message, message_type) {
-  document.getElementById('chatlog').innerHTML += '<p class="' + message_type + '">' + '[' + getTimestamp() + '] ' + escapeHTML(message) + '</p>'
+function handleCandidateFromPC2 (iceCandidate) {
+  pc1.addIceCandidate(iceCandidate)
 }
