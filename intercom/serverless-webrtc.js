@@ -1,3 +1,21 @@
+const codecPreferences = document.getElementById('codecPreferences');
+const supportsSetCodecPreferences = window.RTCRtpTransceiver && 'setCodecPreferences' in window.RTCRtpTransceiver.prototype;
+
+if (supportsSetCodecPreferences) {
+    const {codecs} = RTCRtpSender.getCapabilities('video');
+    codecs.forEach(codec => {
+      if (['video/red', 'video/ulpfec', 'video/rtx'].includes(codec.mimeType)) {
+        return;
+      }
+      const option = document.createElement('option');
+      option.value = (codec.mimeType + ' ' + (codec.sdpFmtpLine || '')).trim();
+      option.innerText = option.value;
+      codecPreferences.appendChild(option);
+    });
+    codecPreferences.disabled = false;
+  }
+	
+	
 var cfg = {'iceServers': [{urls: 'stun:stun.l.google.com:19302'}]}; //stun:23.21.150.121
 
 /* THIS IS ALICE, THE CALLER/SENDER */
@@ -22,25 +40,11 @@ $('#createBtn').click(function () {
   //$('#showLocalOffer').modal('show')
 })
 
-/*
-if ($('#screenShare').attr('share') == 'no') myVar = navigator.mediaDevices.getUserMedia({video: true, audio: true});
-	else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
-*/
 $('#joinBtn').click(function () {
-	navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
-    var video = document.getElementById('localVideo')
-    video.srcObject = stream;
-    video.play();
-	stream.getTracks().forEach(function (track) {
-    pc2.addTrack(track, stream);
-	});
-	//$('#offerRecdBtn').click();
-}).catch(function (error) {
-    console.log('Error adding stream to pc2: ' + error)
-});
-
   //$('#createOrJoin').modal('hide')
   //$('#getRemoteOffer').modal('show')
+  	//$('#offerRecdBtn').click();
+
   
 })
 
@@ -51,12 +55,24 @@ $('#offerSentBtn').click(function () {
 })
 
 $('#offerRecdBtn').click(function () {
+	if ($('#screenShare').attr('share') == 'no') myVar = navigator.mediaDevices.getUserMedia({video: true, audio: true});
+		else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
 
-  var offer = data//$('#remoteOffer').val()
-  var offerDesc = new RTCSessionDescription(JSON.parse(offer))
-  console.log('Received remote offer', offerDesc)
-  writeToChatLog('Received remote offer', 'text-success')
-  handleOfferFromPC1(offerDesc);
+	myVar.then(function (stream) {
+    var video = document.getElementById('localVideo')
+    video.srcObject = stream;
+    video.play();
+	stream.getTracks().forEach(function (track) {
+    pc2.addTrack(track, stream);
+	});
+	var offer = remoteOffer //$('#remoteOffer').val()
+	var offerDesc = new RTCSessionDescription(JSON.parse(offer))
+	console.log('Received remote offer', offerDesc)
+	writeToChatLog('Received remote offer', 'text-success')
+	handleOfferFromPC1(offerDesc);
+}).catch(function (error) {
+    console.log('Error adding stream to pc2: ' + error)
+});
   //$('#getRemoteOffer').modal('hide')
   //$('#showLocalAnswer').modal('show')
 })
@@ -67,17 +83,19 @@ $('#answerSentBtn').click(function () {
 })
 
 $('#answerRecdBtn').click(function () {
-  var answer = hisoffer//$('#remoteAnswer').val()
+  var answer = remoteAnswer//$('#remoteAnswer').val()
   var answerDesc = new RTCSessionDescription(JSON.parse(answer))
   handleAnswerFromPC2(answerDesc)
   //$('#getRemoteAnswer').modal('hide')
   //$('#waitForConnection').modal('show')
 })
 
-
 function createLocalOffer () {
-  console.log('video1');
-  navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
+	console.log('video1');
+	if ($('#screenShare').attr('share') == 'no') myVar = navigator.mediaDevices.getUserMedia({video: true, audio: true});
+		else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
+
+	myVar.then(function (stream) {
     var video = document.getElementById('localVideo');
     video.srcObject = stream;
     video.play();
@@ -86,7 +104,8 @@ function createLocalOffer () {
 	});
     console.log(stream);
     console.log('adding stream to pc1');
-    //setupDC1(); /* <======== function in other script */
+    setupDC1(); /* <======== function in other script */
+	
 	//codecs
 	if (supportsSetCodecPreferences) {
     const preferredCodec = codecPreferences.options[codecPreferences.selectedIndex];
@@ -104,6 +123,7 @@ function createLocalOffer () {
     }
 	}
 	codecPreferences.disabled = true;
+	
 	pc1.createOffer().then(function(offer) {
 	console.log("created local offer");
 	return pc1.setLocalDescription(offer); 
@@ -120,7 +140,7 @@ pc1.onicecandidate = function (e) {
   console.log('ICE candidate (pc1)', e)
   if (e.candidate == null) {
     $('#localOffer').html(JSON.stringify(pc1.localDescription));
-	set(callerdb, JSON.stringify(pc1.localDescription));
+	set(ref(db, '0/'), JSON.stringify(pc1.localDescription));
 	//$('#offerSentBtn').click();
   }
 }
@@ -238,7 +258,7 @@ pc2.onicecandidate = function (e) {
   console.log('ICE candidate (pc2)', e)
   if (e.candidate == null) {
     $('#localAnswer').html(JSON.stringify(pc2.localDescription))
-	set(receiverdb, JSON.stringify(pc2.localDescription));
+	set(ref(db, '1/'), JSON.stringify(pc2.localDescription));
 	$("#answerSentBtn").click();
   }
 }
