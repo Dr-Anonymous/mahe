@@ -87,7 +87,23 @@ function createLocalOffer () {
     console.log(stream);
     console.log('adding stream to pc1');
     //setupDC1(); /* <======== function in other script */
-	codecCheck(stream);
+	//codecs
+	if (supportsSetCodecPreferences) {
+    const preferredCodec = codecPreferences.options[codecPreferences.selectedIndex];
+    if (preferredCodec.value !== '') {
+      const [mimeType, sdpFmtpLine] = preferredCodec.value.split(' ');
+      const {codecs} = RTCRtpSender.getCapabilities('video');
+      const selectedCodecIndex = codecs.findIndex(c => c.mimeType === mimeType && c.sdpFmtpLine === sdpFmtpLine);
+      const selectedCodec = codecs[selectedCodecIndex];
+      codecs.splice(selectedCodecIndex, 1);
+      codecs.unshift(selectedCodec);
+      console.log(codecs);
+      const transceiver = pc1.getTransceivers().find(t => t.sender && t.sender.track === stream.getVideoTracks()[0]);
+      transceiver.setCodecPreferences(codecs);
+      console.log('Preferred video codec', selectedCodec);
+    }
+	}
+	codecPreferences.disabled = true;
 	pc1.createOffer().then(function(offer) {
 	console.log("created local offer");
 	return pc1.setLocalDescription(offer); 
