@@ -35,7 +35,6 @@ function gotDevices(deviceInfos) {
       select.value = values[selectorIndex];
     }
   });
-  return stream;
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
@@ -85,14 +84,18 @@ function start() {
   }
   const audioSource = audioInputSelect.value;
   const videoSource = videoSelect.value;
+  /*
+  if ($('#screenShare').attr('share') == 'no') myVar = start();//navigator.mediaDevices.getUserMedia({video: true, audio: true});
+		else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
+  */
   const constraints = {
     audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
     video: {deviceId: videoSource ? {exact: videoSource} : undefined}
   };
-  return navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+  navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
 }
 
 audioInputSelect.onchange = start;
 audioOutputSelect.onchange = changeAudioDestination;
 videoSelect.onchange = start;
-//start();
+start();
