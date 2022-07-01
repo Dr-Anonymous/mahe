@@ -54,6 +54,7 @@ $('#offerSentBtn').click(function () {
 var localVideo = document.getElementById('localVideo');
 
 $('#offerRecdBtn').click(function () {
+	start().then(function(x){
     localVideo.srcObject = stream;
     localVideo.play();
 	stream.getTracks().forEach(function (track) {
@@ -67,6 +68,7 @@ $('#offerRecdBtn').click(function () {
 
   //$('#getRemoteOffer').modal('hide')
   //$('#showLocalAnswer').modal('show')
+	});
 });
 
 $('#answerSentBtn').click(function () {
@@ -83,7 +85,8 @@ $('#answerRecdBtn').click(function () {
 })
 
 function createLocalOffer () {
-    localVideo.srcObject = stream;
+    start().then(function(x){
+	localVideo.srcObject = stream;
     localVideo.play();
 	stream.getTracks().forEach(function (track) {
     pc1.addTrack(track, stream);
@@ -116,6 +119,7 @@ function createLocalOffer () {
 	})
 	.then(function() {  })
 	.catch(function(reason) {console.warn("Couldn't create offer- "+ reason);});
+	});
 }
 
 pc1.onicecandidate = function (e) {
