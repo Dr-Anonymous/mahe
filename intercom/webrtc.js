@@ -42,7 +42,7 @@ $('#createBtn').click(function () {
 $('#joinBtn').click(function () {
   //$('#createOrJoin').modal('hide')
   //$('#getRemoteOffer').modal('show')
-  $('#offerRecdBtn').click();
+  //$('#offerRecdBtn').click();
 });
 
 $('#offerSentBtn').click(function () {
@@ -54,10 +54,6 @@ $('#offerSentBtn').click(function () {
 var localVideo = document.getElementById('localVideo');
 
 $('#offerRecdBtn').click(function () {
-	if ($('#screenShare').attr('share') == 'no') myVar = navigator.mediaDevices.getUserMedia({video: true, audio: true});
-		else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
-
-	myVar.then(function (stream) {
     localVideo.srcObject = stream;
     localVideo.play();
 	stream.getTracks().forEach(function (track) {
@@ -68,9 +64,7 @@ $('#offerRecdBtn').click(function () {
 	//console.log('Received remote offer', offerDesc)
 	//writeToChatLog('Received remote offer', 'text-success')
 	handleOfferFromPC1(offerDesc);
-}).catch(function (error) {
-    console.log('Error adding stream to pc2: ' + error)
-});
+
   //$('#getRemoteOffer').modal('hide')
   //$('#showLocalAnswer').modal('show')
 });
@@ -89,18 +83,13 @@ $('#answerRecdBtn').click(function () {
 })
 
 function createLocalOffer () {
-	console.log('video1');
-	if ($('#screenShare').attr('share') == 'no') myVar = start();//navigator.mediaDevices.getUserMedia({video: true, audio: true});
-		else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
-
-	myVar.then(function (stream) {
     localVideo.srcObject = stream;
     localVideo.play();
 	stream.getTracks().forEach(function (track) {
     pc1.addTrack(track, stream);
 	});
-    console.log(stream);
-    console.log('adding stream to pc1');
+    //console.log(stream);
+    //console.log('adding stream to pc1');
     setupDC1(); /* <======== function in other script */
 	
 	//codecs
@@ -127,10 +116,6 @@ function createLocalOffer () {
 	})
 	.then(function() {  })
 	.catch(function(reason) {console.warn("Couldn't create offer- "+ reason);});
-	
-}).catch(function (error) {
-  console.log('Error adding stream to pc1: ' + error)
-});
 }
 
 pc1.onicecandidate = function (e) {
