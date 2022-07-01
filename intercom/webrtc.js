@@ -15,7 +15,6 @@ if (supportsSetCodecPreferences) {
     codecPreferences.disabled = false;
   }
 	
-	
 var cfg = {'iceServers': [{urls: 'stun:stun.l.google.com:19302'}]}; //stun:23.21.150.121
 
 /* THIS IS ALICE, THE CALLER/SENDER */
@@ -44,14 +43,12 @@ $('#joinBtn').click(function () {
   //$('#createOrJoin').modal('hide')
   //$('#getRemoteOffer').modal('show')
   	//$('#offerRecdBtn').click();
-
-  
 })
 
 $('#offerSentBtn').click(function () {
- // $('#showLocalOffer').modal('hide')
-  //$('#getRemoteAnswer').modal('show')
-  createLocalOffer();
+	//$('#showLocalOffer').modal('hide')
+	//$('#getRemoteAnswer').modal('show')
+	createLocalOffer();
 })
 
 $('#offerRecdBtn').click(function () {
@@ -67,7 +64,7 @@ $('#offerRecdBtn').click(function () {
 	});
 	var offer = remoteOffer //$('#remoteOffer').val()
 	var offerDesc = new RTCSessionDescription(JSON.parse(offer))
-	console.log('Received remote offer', offerDesc)
+	//console.log('Received remote offer', offerDesc)
 	writeToChatLog('Received remote offer', 'text-success')
 	handleOfferFromPC1(offerDesc);
 }).catch(function (error) {
@@ -162,7 +159,8 @@ function handleOnaddstream (e) {
   console.log('Got remote streams', e.streams);
   var el = document.getElementById('remoteVideo');
   el.autoplay = true;
-  attachMediaStream(el, e.streams[0]);
+  window.remoteStream = e.streams[0];
+  attachMediaStream(el, remoteStream);
 }
 
 pc1.ontrack = handleOnaddstream
