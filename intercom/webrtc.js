@@ -42,42 +42,43 @@ $('#createBtn').click(function () {
 $('#joinBtn').click(function () {
   //$('#createOrJoin').modal('hide')
   //$('#getRemoteOffer').modal('show')
-  	//$('#offerRecdBtn').click();
-})
+  $('#offerRecdBtn').click();
+});
 
 $('#offerSentBtn').click(function () {
 	//$('#showLocalOffer').modal('hide')
 	//$('#getRemoteAnswer').modal('show')
 	createLocalOffer();
-})
+});
+
+var localVideo = document.getElementById('localVideo');
 
 $('#offerRecdBtn').click(function () {
 	if ($('#screenShare').attr('share') == 'no') myVar = navigator.mediaDevices.getUserMedia({video: true, audio: true});
 		else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
 
 	myVar.then(function (stream) {
-    var video = document.getElementById('localVideo')
-    video.srcObject = stream;
-    video.play();
+    localVideo.srcObject = stream;
+    localVideo.play();
 	stream.getTracks().forEach(function (track) {
     pc2.addTrack(track, stream);
 	});
 	var offer = remoteOffer //$('#remoteOffer').val()
 	var offerDesc = new RTCSessionDescription(JSON.parse(offer))
 	//console.log('Received remote offer', offerDesc)
-	writeToChatLog('Received remote offer', 'text-success')
+	//writeToChatLog('Received remote offer', 'text-success')
 	handleOfferFromPC1(offerDesc);
 }).catch(function (error) {
     console.log('Error adding stream to pc2: ' + error)
 });
   //$('#getRemoteOffer').modal('hide')
   //$('#showLocalAnswer').modal('show')
-})
+});
 
 $('#answerSentBtn').click(function () {
   //$('#showLocalAnswer').modal('hide')
   //$('#waitForConnection').modal('show')
-})
+});
 
 $('#answerRecdBtn').click(function () {
   var answer = remoteAnswer//$('#remoteAnswer').val()
@@ -89,13 +90,12 @@ $('#answerRecdBtn').click(function () {
 
 function createLocalOffer () {
 	console.log('video1');
-	if ($('#screenShare').attr('share') == 'no') myVar = navigator.mediaDevices.getUserMedia({video: true, audio: true});
+	if ($('#screenShare').attr('share') == 'no') myVar = start();//navigator.mediaDevices.getUserMedia({video: true, audio: true});
 		else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
 
 	myVar.then(function (stream) {
-    var video = document.getElementById('localVideo');
-    video.srcObject = stream;
-    video.play();
+    localVideo.srcObject = stream;
+    localVideo.play();
 	stream.getTracks().forEach(function (track) {
     pc1.addTrack(track, stream);
 	});
@@ -196,8 +196,8 @@ pc1.oniceconnectionstatechange = oniceconnectionstatechange
 pc1.onicegatheringstatechange = onicegatheringstatechange
 
 function handleAnswerFromPC2 (answerDesc) {
-  console.log('Received remote answer: ', answerDesc)
-  writeToChatLog('Received remote answer', 'text-success')
+  //console.log('Received remote answer: ', answerDesc)
+  //writeToChatLog('Received remote answer', 'text-success')
   pc1.setRemoteDescription(answerDesc)
 }
 
