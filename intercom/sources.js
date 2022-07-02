@@ -2,8 +2,8 @@ const audioInputSelect = document.querySelector('select#audioSource');
 const audioOutputSelect = document.querySelector('select#audioOutput');
 const videoSelect = document.querySelector('select#videoSource');
 const selectors = [audioInputSelect, audioOutputSelect, videoSelect];
-
 audioOutputSelect.disabled = !('sinkId' in HTMLMediaElement.prototype);
+
 
 function gotDevices(deviceInfos) {
   // Handles being called several times to update labels. Preserve values.
@@ -68,6 +68,11 @@ function changeAudioDestination() {
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
   localVideo.srcObject = stream;
+  localVideo.play();
+  stream.getTracks().forEach(function (track) {
+    if (two) pc2.addTrack(track, stream);
+	if (one) pc1.addTrack(track, stream);
+	});
   //Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
 }
