@@ -87,8 +87,8 @@ function start() {
       track.stop();
     });
   }
-  const audioSource = audioInputSelect.value;
-  const videoSource = videoSelect.value;
+  const audioSource = document.querySelector('#audioSource').value;
+  const videoSource = document.querySelector('#videoSource').value;
   /*
   if ($('#screenShare').attr('share') == 'no') myVar = start();//navigator.mediaDevices.getUserMedia({video: true, audio: true});
 		else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
