@@ -249,10 +249,9 @@
 	import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
 	window.set = set;
 	window.ref = ref;
-	
-	var one = false,
-		two = false;
 	window.db = getDatabase();
+	window.one = false,
+	window.two = false;
 	
 	onValue(ref(db), (snapshot) => {
 	  const data = snapshot.val();
