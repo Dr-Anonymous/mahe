@@ -55,11 +55,6 @@ var localVideo = document.getElementById('localVideo');
 
 $('#offerRecdBtn').click(function () {
 	start().then(function(x){
-    localVideo.srcObject = stream;
-    localVideo.play();
-	stream.getTracks().forEach(function (track) {
-    pc2.addTrack(track, stream);
-	});
 	var offer = remoteOffer //$('#remoteOffer').val()
 	var offerDesc = new RTCSessionDescription(JSON.parse(offer))
 	//console.log('Received remote offer', offerDesc)
@@ -86,12 +81,7 @@ $('#answerRecdBtn').click(function () {
 
 function createLocalOffer () {
     start().then(function(x){
-	localVideo.srcObject = stream;
-    localVideo.play();
-	stream.getTracks().forEach(function (track) {
-    pc1.addTrack(track, stream);
-	});
-    //console.log(stream);
+	//console.log(stream);
     //console.log('adding stream to pc1');
     setupDC1(); /* <======== function in other script */
 	
@@ -112,14 +102,13 @@ function createLocalOffer () {
     }
 	}
 	codecPreferences.disabled = true;
-	
 	pc1.createOffer().then(function(offer) {
 	console.log("created local offer");
 	return pc1.setLocalDescription(offer); 
-	})
-	.then(function() {  })
-	.catch(function(reason) {console.warn("Couldn't create offer- "+ reason);});
+	}).catch(function(reason) {console.warn("Couldn't create offer- "+ reason);});
+	
 	});
+    
 }
 
 pc1.onicecandidate = function (e) {
