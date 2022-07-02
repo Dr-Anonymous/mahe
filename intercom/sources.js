@@ -70,8 +70,8 @@ function gotStream(stream) {
   localVideo.srcObject = stream;
   localVideo.play();
   stream.getTracks().forEach(function (track) {
-    if (two) pc1.addTrack(track, stream);
-	if (one) pc2.addTrack(track, stream);
+    if (two) pc2.addTrack(track, stream);
+	if (one) pc1.addTrack(track, stream);
 	});
   //Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
@@ -82,11 +82,11 @@ function handleError(error) {
 }
 
 function start() {
-  if (window.stream) {
+  /*if (window.stream) {
     window.stream.getTracks().forEach(track => {
       track.stop();
     });
-  }
+  }*/
   const audioSource = audioInputSelect.value;
   const videoSource = videoSelect.value;
   /*
