@@ -3,6 +3,31 @@
  */
 /* For documentation and examples: http://bit.ly/RTCDataConnection */
 
+$('#fileBtn').change(function () {
+  var file = this.files[0]
+  console.log(file)
+
+  sendFile(file)
+})
+
+function fileSent (file) {
+  console.log(file + ' sent')
+}
+
+function fileProgress (file) {
+  console.log(file + ' progress')
+}
+
+function sendFile (data) {
+  if (data.size) {
+    FileSender.send({
+      file: data,
+      onFileSent: fileSent,
+      onFileProgress: fileProgress,
+    })
+  }
+}
+
 window.moz = !! navigator.mozGetUserMedia
 
 var RTCMultiSession = function (options) {
@@ -153,9 +178,7 @@ var FileSaver = {
       bubbles: true,
       cancelable: true
     })
-
-    save.dispatchEvent(evt)
-
-    ;(window.URL || window.webkitURL).revokeObjectURL(save.href)
+    save.dispatchEvent(evt);
+	(window.URL || window.webkitURL).revokeObjectURL(save.href)
   }
 }
