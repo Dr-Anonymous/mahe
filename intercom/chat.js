@@ -18,14 +18,14 @@ function setupDC1 () {
     var fileReceiver1 = new FileReceiver()
     dc1 = pc1.createDataChannel('test', {reliable: true})
     activedc = dc1;
-    console.log('Created datachannel (pc1)')
+    //console.log('Created datachannel (pc1)');
     dc1.onopen = function (e) {
-      console.log('data channel connect')
+      //console.log('data channel connect')
       //$('#waitForConnection').modal('hide')
       //$('#waitForConnection').remove()
     }
     dc1.onmessage = function (e) {
-      console.log('Got message (pc1)', e.data)
+      //console.log('Got message (pc1)', e.data);
       if (e.data.size) {
         fileReceiver1.receive(e.data, {})
       } else {
@@ -35,7 +35,7 @@ function setupDC1 () {
           // leave it in, JSON.parse() will barf.
           return
         }
-        console.log(e)
+        //console.log(e);
         var data = JSON.parse(e.data)
         if (data.type === 'file') {
           fileReceiver1.receive(e.data, {})
@@ -47,6 +47,32 @@ function setupDC1 () {
       }
     }
   } catch (e) { console.warn('No data channel (pc1)', e); }
+}
+
+pc2.ondatachannel = function (e) {
+  var fileReceiver2 = new FileReceiver();
+  var datachannel = e.channel || e; // Chrome sends event, FF sends raw channel
+  //console.log('Received datachannel (pc2)', arguments);
+  dc2 = datachannel;
+  activedc = dc2;
+  dc2.onopen = function (e) {
+    //console.log('data channel connect');
+  }
+  dc2.onmessage = function (e) {
+    //console.log('Got message (pc2)', e.data);
+    if (e.data.size) {
+      fileReceiver2.receive(e.data, {});
+    } else {
+      var data = JSON.parse(e.data);
+      if (data.type === 'file') {
+        fileReceiver2.receive(e.data, {});
+      } else {
+        writeToChatLog(data.message, 'text-info');
+        // Scroll chat text area to the bottom on new input.
+        $('#chatlog').scrollTop($('#chatlog')[0].scrollHeight);
+      }
+    }
+  }
 }
 
 
