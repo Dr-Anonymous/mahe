@@ -2,7 +2,7 @@
 let mediaRecorder;
 let recordedBlobs;
 
-const recordedVideo = $('#remoteVideo');
+const recordedVideo = $('#remoteVideo')[0];
 const recordButton = $('#record');
 const playButton = $('#play');
 const downloadButton = $('#download');
