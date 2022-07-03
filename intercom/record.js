@@ -14,8 +14,8 @@ recordButton.on('click', () => {
   } else {
     stopRecording();
     recordButton.addClass('btn-secondary').removeClass('btn-danger');
-    playButton[0].disabled = false;
-    downloadButton[0].disabled = false;
+    playButton.parent().removeClass('d-none');
+    downloadButton.parent().removeClass('d-none');
     codecPreferences[0].disabled = false;
   }
 });
@@ -79,8 +79,8 @@ function startRecording() {
 
   console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
   recordButton.addClass('btn-danger').removeClass('btn-secondary');
-  playButton[0].disabled = true;
-  downloadButton[0].disabled = true;
+  playButton.parent().addClass('d-none');
+  downloadButton.parent().addClass('d-none');
   codecPreferences.disabled = true;
   mediaRecorder.onstop = (event) => {
     console.log('Recorder stopped: ', event);
