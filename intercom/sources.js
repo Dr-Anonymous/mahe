@@ -66,7 +66,7 @@ function changeAudioDestination() {
 }
 
 function gotStream(stream) {
-  window.stream = stream; // make stream available to console
+  window.stream = stream;
   localVideo.srcObject = stream;
   localVideo.play();
   stream.getTracks().forEach(function (track) {
@@ -77,9 +77,6 @@ function gotStream(stream) {
   return navigator.mediaDevices.enumerateDevices();
 }
 
-function handleError(error) {
-  console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
-}
 
 function start() {
   if (window.stream) {
@@ -89,18 +86,21 @@ function start() {
   }
   const audioSource = document.querySelector('#audioSource').value;
   const videoSource = document.querySelector('#videoSource').value;
-  /*
-  if ($('#screenShare').attr('share') == 'no') myVar = start();//navigator.mediaDevices.getUserMedia({video: true, audio: true});
-		else myVar = navigator.mediaDevices.getDisplayMedia({video: true});
-  */
+  
   const constraints = {
     audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
     video: {deviceId: videoSource ? {exact: videoSource} : undefined}
   };
-  return navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+  
+  if ($('#screenShare').attr('share') == 'no') return navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+  else return navigator.mediaDevices.getDisplayMedia({video: true}).then(gotStream).then(gotDevices).catch(handleError);
 }
 
 audioInputSelect.onchange = start;
 audioOutputSelect.onchange = changeAudioDestination;
 videoSelect.onchange = start;
 //start();
+
+function handleError(error) {
+  console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
+}
