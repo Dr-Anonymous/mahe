@@ -1,7 +1,6 @@
 var cfg = {	'iceServers': [{urls: 'stun:stun.l.google.com:19302'}]};
 var localVideo = document.getElementById('localVideo'),
-	remoteVideo = document.getElementById('remoteVideo'),
-	remoteStream = [];
+	remoteVideo = document.getElementById('remoteVideo');
 
 /* THIS IS ALICE, THE CALLER/SENDER */
 
@@ -67,19 +66,8 @@ attachMediaStream = function(element, stream) {
 function handleOnaddstream(e) {
 	console.log('Got remote streams', e.streams);
 	remoteVideo.autoplay = true;
-	remoteStream.push(e.streams[0]); /* this variable used in record.js*/
+	window.remoteStream = e.streams[0]; /* this variable used in record.js*/
 	attachMediaStream(remoteVideo, e.streams[0]);
-	/*
-	if (remoteVideo.requestFullscreen) {
-	  remoteVideo.requestFullscreen();
-	} else if (remoteVideo.mozRequestFullScreen) {
-	  remoteVideo.mozRequestFullScreen();
-	} else if (remoteVideo.webkitRequestFullscreen) {
-	  remoteVideo.webkitRequestFullscreen();
-	} else if (remoteVideo.msRequestFullscreen) { 
-	  remoteVideo.msRequestFullscreen();
-	}
-	*/
 }
 
 pc1.ontrack = handleOnaddstream;
