@@ -92,8 +92,8 @@ function start() {
     video: {deviceId: videoSource ? {exact: videoSource} : undefined}
   };
   
-  if ($('#screenShare').attr('share') == 'no') return navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
-  else return navigator.mediaDevices.getDisplayMedia({video: true}).then(gotStream).then(gotDevices).catch(handleError);
+  if ($('#screenShare').attr('share') == 'yes') navigator.mediaDevices.getDisplayMedia({video: true}).then(gotStream).then(gotDevices).catch(handleError);
+  return  navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
 }
 
 audioInputSelect.onchange = start;
