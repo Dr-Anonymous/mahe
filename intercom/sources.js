@@ -3,7 +3,7 @@ const audioOutputSelect = document.querySelector('#audioOutput');
 const videoSelect = document.querySelector('#videoSource');
 const selectors = [audioInputSelect, audioOutputSelect, videoSelect];
 audioOutputSelect.disabled = !('sinkId' in HTMLMediaElement.prototype);
-
+var screenCaptureStream;
 
 function gotDevices(deviceInfos) {
   // Handles being called several times to update labels. Preserve values.
@@ -66,7 +66,7 @@ function changeAudioDestination() {
 }
 
 function gotStream(stream) {
-  window.stream = stream;
+  window.stream = stream; /*this variable used in next function*/
   localVideo.srcObject = stream;
   localVideo.play();
   stream.getTracks().forEach(function (track) {
@@ -84,6 +84,9 @@ function start() {
       track.stop();
     });
   }
+  if (one) pc1.restartIce();
+  else pc2.restartIce();
+  
   const audioSource = document.querySelector('#audioSource').value;
   const videoSource = document.querySelector('#videoSource').value;
   
@@ -91,16 +94,33 @@ function start() {
     audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
     video: {deviceId: videoSource ? {exact: videoSource} : undefined}
   };
-  
-  if ($('#screenShare').attr('share') == 'yes') navigator.mediaDevices.getDisplayMedia({video: true}).then(gotStream).then(gotDevices).catch(handleError);
-  return  navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+
+  if ($('#screenShare').attr('share') == 'yes') {
+		navigator.mediaDevices.getDisplayMedia({video: true}).then(clubAudio).catch(handleError);
+		delete constraints.video;
+		return navigator.mediaDevices.getUserMedia(constraints).then(clubAudio).then(gotStream).then(gotDevices).catch(handleError);
+  } else {
+	  return navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+  }
 }
 
-audioInputSelect.onchange = start;
-audioOutputSelect.onchange = changeAudioDestination;
-videoSelect.onchange = start;
+audioInputSelect.onchange = if (stream) start;
+audioOutputSelect.onchange = if (stream) changeAudioDestination;
+videoSelect.onchange = if (stream) start;
 //start();
 
 function handleError(error) {
   console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
+}
+
+function clubAudio(str){
+	console.log(str.getAudioTracks());
+	if (str.getAudioTracks().length < 1) {
+		screenCaptureStream = str;
+		
+		return;
+	}
+	
+	str.addTrack(screenCaptureStream.getVideoTracks()[0]);
+	return str;
 }
