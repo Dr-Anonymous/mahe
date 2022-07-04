@@ -112,13 +112,10 @@ function handleError(error) {
 }
 
 function clubAudio(str){
-	console.log(str.getAudioTracks());
 	if (str.getAudioTracks().length < 1) {
 		screenCaptureStream = str;
-		
 		return;
 	}
-	
 	str.addTrack(screenCaptureStream.getVideoTracks()[0]);
 	return str;
 }
