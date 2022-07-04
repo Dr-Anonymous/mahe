@@ -1,5 +1,7 @@
 var cfg = {	'iceServers': [{urls: 'stun:stun.l.google.com:19302'}]};
-var localVideo = document.getElementById('localVideo');
+var localVideo = document.getElementById('localVideo'),
+	remoteVideo = document.getElementById('remoteVideo'),
+	remoteStream = [];
 
 /* THIS IS ALICE, THE CALLER/SENDER */
 
@@ -31,7 +33,7 @@ $('#answerSentBtn').click(function() {
 function createLocalOffer() {
 	start().then(function(x) {
 		setupDC1(); /* <======== function in other script */
-		setCodec(pc1);
+		if (window.setCodec) setCodec(pc1);
 		pc1.createOffer().then(function(offer) {
 			//console.log("created local offer");
 			return pc1.setLocalDescription(offer);
@@ -44,7 +46,7 @@ function createLocalOffer() {
 }
 
 pc1.onicecandidate = function(e) {
-	console.log('ICE candidate (pc1)', e);
+	//console.log('ICE candidate (pc1)', e);
 	if (e.candidate == null) {
 		set(ref(db, '0/'), JSON.stringify(pc1.localDescription));
 		//$('#offerSentBtn').click();
@@ -64,10 +66,20 @@ attachMediaStream = function(element, stream) {
 
 function handleOnaddstream(e) {
 	console.log('Got remote streams', e.streams);
-	var el = document.getElementById('remoteVideo');
-	el.autoplay = true;
-	window.remoteStream = e.streams[0]; /* this var used in record.js*/
-	attachMediaStream(el, remoteStream);
+	remoteVideo.autoplay = true;
+	remoteStream.push(e.streams[0]); /* this variable used in record.js*/
+	attachMediaStream(remoteVideo, e.streams[0]);
+	/*
+	if (remoteVideo.requestFullscreen) {
+	  remoteVideo.requestFullscreen();
+	} else if (remoteVideo.mozRequestFullScreen) {
+	  remoteVideo.mozRequestFullScreen();
+	} else if (remoteVideo.webkitRequestFullscreen) {
+	  remoteVideo.webkitRequestFullscreen();
+	} else if (remoteVideo.msRequestFullscreen) { 
+	  remoteVideo.msRequestFullscreen();
+	}
+	*/
 }
 
 pc1.ontrack = handleOnaddstream;
@@ -109,7 +121,7 @@ var pc2 = new RTCPeerConnection(cfg),
 
 function handleOfferFromPC1(offerDesc) {
 	pc2.setRemoteDescription(offerDesc);
-	setCodec(pc2);
+	if (window.setCodec) setCodec(pc2);
 	pc2.createAnswer().then(function(answer) {
 		return pc2.setLocalDescription(answer);
 	}).catch(function(error) {
