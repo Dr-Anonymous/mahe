@@ -28,10 +28,10 @@ function setCodec(x){
 				const selectedCodec = codecs[selectedCodecIndex];
 				codecs.splice(selectedCodecIndex, 1);
 				codecs.unshift(selectedCodec);
-				console.log(codecs);
+				//console.log(codecs);
 				const transceiver = x.getTransceivers().find(t => t.sender && t.sender.track === stream.getVideoTracks()[0]);
 				transceiver.setCodecPreferences(codecs);
-				console.log('Preferred video codec', selectedCodec);
+				console.log('Preferred video codec: ', selectedCodec);
 			}
 		}
 		codecPreferences.disabled = true;
