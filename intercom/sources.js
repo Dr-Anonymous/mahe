@@ -84,8 +84,6 @@ function start() {
       track.stop();
     });
   }
-  if (one) pc1.restartIce();
-  else pc2.restartIce();
   
   const audioSource = document.querySelector('#audioSource').value;
   const videoSource = document.querySelector('#videoSource').value;
@@ -104,9 +102,9 @@ function start() {
   }
 }
 
-audioInputSelect.onchange = if (stream) start;
-audioOutputSelect.onchange = if (stream) changeAudioDestination;
-videoSelect.onchange = if (stream) start;
+audioInputSelect.onchange = start;
+audioOutputSelect.onchange = changeAudioDestination;
+videoSelect.onchange = start;
 //start();
 
 function handleError(error) {
