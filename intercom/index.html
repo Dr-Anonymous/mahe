@@ -10,7 +10,6 @@
 		<meta name="keywords" content="Intercom">
 		<meta name="description" content="intercom, connect, webRTC">
 		<meta name="author" content="Orthosam.com">
-		
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -69,7 +68,6 @@
 			</div>
 			<br/>
 		</div>
-		
 		<div class="modal fade" id="settings" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -90,8 +88,8 @@
 							</div>
 							<div class="col-6 d-none">
 								<div class="form-check form-switch">
-								  <input class="form-check-input" type="checkbox" id="screenShareAudio" onclick="if ($(this).attr('checked')) $(this).attr('checked', false); else $(this).attr('checked', true);" checked>
-								  <label class="form-check-label" for="screenShareAudio">Include mic audio</label>
+									<input class="form-check-input" type="checkbox" id="screenShareAudio" onclick="if ($(this).attr('checked')) $(this).attr('checked', false); else $(this).attr('checked', true);" checked>
+									<label class="form-check-label" for="screenShareAudio">Include mic audio</label>
 								</div>
 							</div>
 						</div>
@@ -130,14 +128,13 @@
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer">
-						<button class="btn btn-primary d-none" id="offerRecdBtn" data-bs-dismiss="modal">Join call.</button>
-						<button class="btn btn-primary d-none" id="offerSentBtn" data-bs-dismiss="modal">Initiate call.</button>
+					<div class="modal-footer d-none">
+						<button class="btn btn-primary" id="offerRecdBtn" data-bs-dismiss="modal">Join call.</button>
+						<button class="btn btn-primary" id="offerSentBtn" data-bs-dismiss="modal">Initiate call.</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		
 		<div class="modal fade" id="chats" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
 			<div class="modal-dialog modal-fullscreen">
 				<div class="modal-content">
@@ -158,9 +155,7 @@
 				</div>
 			</div>
 		</div>
-
 		<script src="./webrtc.js"></script>
-			
 		<script type="module">
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
 			import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
@@ -178,14 +173,15 @@
 			window.set = set;
 			window.ref = ref;
 			window.db = getDatabase();
-			window.one = false;
+			window.one = false; /* the master */
 			
 			onValue(ref(db), (snapshot) => {
 				const data = snapshot.val();
 				if (data == null) {
-					if (localStream) { hangup(); pc1, pc2;}
+					if (localStream) { hangup(); }
 					one = true;
 					start();
+					
 				} else {
 					if (data.length > 1) {
 						if (one) setRemoteDescription1(JSON.parse(data[1]));
@@ -197,11 +193,10 @@
 					}
 				}
 			});
-
+			
 			window.onunload = function() {
-				set(ref(db), null);
+				deleteDB();
 			};
 		</script>
-		
 	</body>
 </html>
