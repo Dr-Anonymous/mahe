@@ -13,12 +13,13 @@ var docId = urlParam() || "1";
 
 if (docId == "2"){
 $(document).attr("title", "Dr Shalima Pinnamaneni");
-$('#project_title').text("Dr Shalima Pinnamaneni")
-$('p').html("Book appointment with <a href='https://orthosam.com/shalima/#about'>Dr Shalima Pinnamaneni</a> <small>M.D General Medicine</small>:");
+$('#project_title').text("Dr Shalima Pinnamaneni");
+$('p').html("Book appointment with <a href='https://orthosam.com/shalima/#about'>Dr Shalima Pinnamaneni</a> <small>M.D General Medicine</small> :");
 $('#myFrame').attr('src', 'https://script.google.com/macros/s/AKfycbwiQilaQaOp7pGQVWu8LVwcRIUfBIcoJTUw6iO4ibt6Uy2LL_78bnkXxNNuDx_pKXP2/exec');
 } else {
 $(document).attr("title", "Dr Samuel Manoj");
-$('p').html("Book appointment with <a href='https://orthosam.com/samuel/#about'>Dr Samuel Manoj Ch</a> <small>M.S Orthopaedics(Manipal)</small>:");
+$('#project_title').text("Dr Samuel Manoj Ch");
+$('p').html("Book appointment with <a href='https://orthosam.com/samuel/#about'>Dr Samuel Manoj Ch</a> <small>M.S Orthopaedics(Manipal)</small> :");
 $('#myFrame').attr('src','https://script.google.com/macros/s/AKfycbyEaM8kjMT4xesnHlfbeLGc1m4T-ZlB34pD_E1NaOhku0OGc5Aiomxb_HPsKS19a1Y7jg/exec');
 }
 function urlParam(){
