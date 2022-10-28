@@ -1,0 +1,53 @@
+---
+---
+
+<button onclick="payee()">click here</button>
+<script>
+const paymentMethods = [
+  
+    { supportedMethods: 'https://google.com/pay' }
+]
+
+const paymentDetails = {
+  total: {
+    label: 'Total Amount',
+    amount: {
+      currency: 'INR',
+      value: 10.00
+    }
+  }
+}
+const options = {
+  requestPayerName: true,
+  requestPayerPhone: true,
+  requestPayerEmail: true
+}
+
+const paymentRequest = new PaymentRequest(paymentMethods, paymentDetails, options);
+
+const processPaymentWithServer = paymentResponse => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ status: true })
+    }, 1500)
+  })
+}
+
+//...
+function payee(){
+paymentRequest
+  .show()
+  .then(paymentResponse => {
+    processPaymentWithServer(paymentResponse).then(data => {
+      if (data.status) {
+        paymentResponse.complete('success')
+      } else {
+        paymentResponse.complete('fail')
+      }
+    })
+  })
+  .catch(err => {
+    console.log('Error:', err)
+  })
+}
+</script>
