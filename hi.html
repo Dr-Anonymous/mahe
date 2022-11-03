@@ -51,13 +51,13 @@ function onBuyClicked() {
  */
 function getGooglePaymentsConfiguration() {
   return {
-    environment: 'TEST',
+    environment: 'PRODUCTION',
     apiVersion: 2,
     apiVersionMinor: 0,
     merchantInfo: {
       // A merchant ID is available after approval by Google.
-      // 'merchantId':'12345678901234567890',
-      merchantName: 'Example Merchant'
+      'merchantId':'BCR2DN6T3OC2VK3O',
+      merchantName: 'Dr Samuel Manoj Cherukuri'
     },
     allowedPaymentMethods: [{
       type: 'CARD',
