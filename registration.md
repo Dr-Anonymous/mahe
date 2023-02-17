@@ -12,7 +12,7 @@ description: New patients registration
 	$("#form").html("Registering your details. Please wait..");
 	var url = "https://script.google.com/macros/s/AKfycbyDnN7ng8BndtpfX-Rl30FqWFsvmHbEh-L1xWwA2o6Bclt7EI8oHIRmOYnEQHjkPj0G/exec?name="+name+"&age="+age+"&sex="+sex+"&phone="+phone ;
 	$.get(url, function( e ) {
-	$("#form").html("<p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p>");
+	$("#form").html("<p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p><p>Click <a href=\"upi://pay?pa=drsamuel@upi&amp;pn=Dr%20Samuel%20Manoj%20Ch&amp;am=300\">this link</a> from a mobile device to complete payment.</p>");
 	});
 	}
 </script>
@@ -26,15 +26,12 @@ description: New patients registration
 	<input type="number" id="age" name="age" placeholder="Your age as a number" style="width: -webkit-fill-available;height: 2em;" required>
 	<br>
 	Sex:<br>
-	<div class="input-field">
-		<div class="select-wrapper">
-			<select id="sex" name="sex" tabindex="-1">
-				<option value="M" selected>Male</option>
-				<option value="F">Female</option>
-				<option value="Other">Other</option>
-			</select>
-		</div>
-	</div>
+    <select id="sex" name="sex" style="display: block;">
+        <option value="M" selected>Male</option>
+        <option value="F">Female</option>
+        <option value="Other">Other</option>
+    </select>
+		
 	<br>
 	Phone number:<br>
 	<input type="tel" id="phone" name="phone" placeholder="Preferably with WhatsApp" style="width: -webkit-fill-available;height: 2em;">
