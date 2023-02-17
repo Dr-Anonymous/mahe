@@ -1,7 +1,7 @@
 ---
 layout: default
-title: registration
-description: new patient registrations
+title: Registration form
+description: New patients registration
 ---
 
 
@@ -26,11 +26,15 @@ description: new patient registrations
 	<input type="number" id="age" name="age" placeholder="Your age as a number" style="width: -webkit-fill-available;height: 2em;" required>
 	<br>
 	Sex:<br>
-	<select id="sex" name="sex">
-		<option value="M" selected>Male</option>
-		<option value="F">Female</option>
-		<option value="Other">Other</option>
-	</select>
+	<div class="input-field">
+		<div class="select-wrapper">
+			<select id="sex" name="sex" tabindex="-1">
+				<option value="M" selected>Male</option>
+				<option value="F">Female</option>
+				<option value="Other">Other</option>
+			</select>
+		</div>
+	</div>
 	<br>
 	Phone number:<br>
 	<input type="tel" id="phone" name="phone" placeholder="Preferably with WhatsApp" style="width: -webkit-fill-available;height: 2em;">
