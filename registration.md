@@ -10,9 +10,11 @@ description: New patients registration
 	function submitForm(name, age, sex, phone) {
 	 if (name == '') return;
 	$("#form").html("Registering your details. Please wait..");
-	var url = "https://script.google.com/macros/s/AKfycbyDnN7ng8BndtpfX-Rl30FqWFsvmHbEh-L1xWwA2o6Bclt7EI8oHIRmOYnEQHjkPj0G/exec?name="+name+"&age="+age+"&sex="+sex+"&phone="+phone ;
+	var url = "https://script.google.com/macros/s/AKfycbx6DvxdJKNKfLoiKHKZbfoivK8SXk7XxAegpuGUQoIwdgF2inmxugsBS3FlAL9_-HNp/exec";
+	url += "?name="+name+"&age="+age+"&sex="+sex+"&phone="+phone;
+	
 	$.get(url, function( e ) {
-	$("#form").html("<p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p><p>Click <a href=\"upi://pay?pa=drsamuel@upi&amp;pn=CHERUKURI SAMUEL MANOJ&amp;am=300\">this link</a> from a mobile device to complete payment.</p>");
+	$("#form").html("<p>Click <a href=\"upi://pay?pa=drsamuel@upi&amp;pn=CHERUKURI SAMUEL MANOJ&amp;am=300\">this link</a> on a mobile device to complete payment via UPI.</p><p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p>");
 	});
 	}
 </script>
