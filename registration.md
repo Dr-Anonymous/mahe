@@ -12,7 +12,7 @@ description: New patients registration
 	$("#form").html("Registering your details. Please wait..");
 	var url = "https://script.google.com/macros/s/AKfycbyDnN7ng8BndtpfX-Rl30FqWFsvmHbEh-L1xWwA2o6Bclt7EI8oHIRmOYnEQHjkPj0G/exec?name="+name+"&age="+age+"&sex="+sex+"&phone="+phone ;
 	$.get(url, function( e ) {
-	$("#form").html("<p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p><p>Click <a href=\"upi://pay?pa=drsamuel@upi&amp;pn=Dr%20Samuel%20Manoj%20Ch&amp;am=300\">this link</a> from a mobile device to complete payment.</p>");
+	$("#form").html("<p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p><p>Click <a href=\"upi://pay?pa=drsamuel@upi&amp;pn=CHERUKURI SAMUEL MANOJ&amp;am=300\">this link</a> from a mobile device to complete payment.</p>");
 	});
 	}
 </script>
