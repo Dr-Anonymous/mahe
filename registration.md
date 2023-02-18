@@ -14,7 +14,7 @@ description: New patients registration
 	url += "?name="+name+"&age="+age+"&sex="+sex+"&phone="+phone;
 	
 	$.get(url, function( e ) {
-	$("#form").html("<p>Click <a href=\"upi://pay?pa=drsamuel@upi&amp;pn=CHERUKURI SAMUEL MANOJ&amp;am=300\">this link</a> on a mobile device to complete payment via UPI.</p><p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p>");
+	$("#form").html("<p>Click <a href=\"upi://pay?pa=drsamuel@upi&amp;pn=CHERUKURI SAMUEL MANOJ&amp;cu=INR&amp;am=300.00\">this link</a> on a mobile device to complete payment via UPI.</p><p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p>");
 	});
 	}
 </script>
