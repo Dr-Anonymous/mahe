@@ -7,24 +7,27 @@ description: New patients registration
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	function submitForm(name, age, sex, phone) {
-	 if (name == '') return;
-	$("#form").html("Registering your details. Please wait..");
-	var url = "https://script.google.com/macros/s/AKfycbx6DvxdJKNKfLoiKHKZbfoivK8SXk7XxAegpuGUQoIwdgF2inmxugsBS3FlAL9_-HNp/exec";
-	if(urlParam == '2') url = "https://script.google.com/macros/s/AKfycbz9H2p6DFWNCTJKMDtxznPkWthSqyshB4vN4yHnoFTIYWPcYgWdJh9jkA5gP8IlrPSl/exec";
-	
-	url += "?name="+name+"&age="+age+"&sex="+sex+"&phone="+phone;
-	
-	$.get(url, function( e ) {
-	$("#form").html("<p>Click <a href=\"upi://pay?pa=drsamuel@upi&amp;pn=CHERUKURI SAMUEL MANOJ&amp;cu=INR&amp;am=300.00\">this link</a> on a mobile device to complete payment via UPI.</p><p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p>");
-	});
-	}
-	
+	var url;
 	function urlParam(){
 	var url = new URL(window.location.href);
 	var param = url.searchParams.toString().slice(0, -1);
 	return param;
 	}
+	
+	function submitForm(name, age, sex, phone) {
+	 if (name == '') return;
+	$("#form").html("Registering your details. Please wait..");
+	
+	if(urlParam == '2') url = "https://script.google.com/macros/s/AKfycbz9H2p6DFWNCTJKMDtxznPkWthSqyshB4vN4yHnoFTIYWPcYgWdJh9jkA5gP8IlrPSl/exec";
+	else url = "https://script.google.com/macros/s/AKfycbx6DvxdJKNKfLoiKHKZbfoivK8SXk7XxAegpuGUQoIwdgF2inmxugsBS3FlAL9_-HNp/exec";
+	
+	url += "?name="+name+"&age="+age+"&sex="+sex+"&phone="+phone;
+	
+	$.get(url, function(e) {
+	$("#form").html("<p>Click <a href=\"upi://pay?pa=drshalima@upi&amp;pn=SHALIMA PINNAMANENI&amp;cu=INR&amp;am=300\">this link</a> on a mobile device to complete payment via UPI.</p><p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p>");
+	});
+	}
+	
 </script>
 <form id="form">
 	<p>New patients: Please enter your basic details below to register yourself and view your prescriptions online.</p>
