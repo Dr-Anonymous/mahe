@@ -8,18 +8,15 @@ description: New patients registration
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	var url;
-	function urlParam(){
-	var url = new URL(window.location.href);
-	var param = url.searchParams.toString().slice(0, -1);
-	return param;
-	}
+	var param = (new URL(window.location.href)).searchParams.toString().slice(0, -1);
+	if(param == '2') url = "https://script.google.com/macros/s/AKfycbz9H2p6DFWNCTJKMDtxznPkWthSqyshB4vN4yHnoFTIYWPcYgWdJh9jkA5gP8IlrPSl/exec";
+	else url = "https://script.google.com/macros/s/AKfycbx6DvxdJKNKfLoiKHKZbfoivK8SXk7XxAegpuGUQoIwdgF2inmxugsBS3FlAL9_-HNp/exec";
+	
+	
 	
 	function submitForm(name, age, sex, phone) {
 	 if (name == '') return;
 	$("#form").html("Registering your details. Please wait..");
-	
-	if(urlParam == '2') url = "https://script.google.com/macros/s/AKfycbz9H2p6DFWNCTJKMDtxznPkWthSqyshB4vN4yHnoFTIYWPcYgWdJh9jkA5gP8IlrPSl/exec";
-	else url = "https://script.google.com/macros/s/AKfycbx6DvxdJKNKfLoiKHKZbfoivK8SXk7XxAegpuGUQoIwdgF2inmxugsBS3FlAL9_-HNp/exec";
 	
 	url += "?name="+name+"&age="+age+"&sex="+sex+"&phone="+phone;
 	
