@@ -11,11 +11,19 @@ description: New patients registration
 	 if (name == '') return;
 	$("#form").html("Registering your details. Please wait..");
 	var url = "https://script.google.com/macros/s/AKfycbx6DvxdJKNKfLoiKHKZbfoivK8SXk7XxAegpuGUQoIwdgF2inmxugsBS3FlAL9_-HNp/exec";
+	if(urlParam == '2') url = "https://script.google.com/macros/s/AKfycbz9H2p6DFWNCTJKMDtxznPkWthSqyshB4vN4yHnoFTIYWPcYgWdJh9jkA5gP8IlrPSl/exec";
+	
 	url += "?name="+name+"&age="+age+"&sex="+sex+"&phone="+phone;
 	
 	$.get(url, function( e ) {
 	$("#form").html("<p>Click <a href=\"upi://pay?pa=drsamuel@upi&amp;pn=CHERUKURI SAMUEL MANOJ&amp;cu=INR&amp;am=300.00\">this link</a> on a mobile device to complete payment via UPI.</p><p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p>");
 	});
+	}
+	
+	function urlParam(){
+	var url = new URL(window.location.href);
+	var param = url.searchParams.toString().slice(0, -1);
+	return param;
 	}
 </script>
 <form id="form">
