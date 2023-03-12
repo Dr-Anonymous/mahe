@@ -10,15 +10,15 @@ description: New patients registration
 	var url;
 	var param = (new URL(window.location.href)).searchParams.toString().slice(0, -1);
 	if(param == '2') url = "https://script.google.com/macros/s/AKfycbz9H2p6DFWNCTJKMDtxznPkWthSqyshB4vN4yHnoFTIYWPcYgWdJh9jkA5gP8IlrPSl/exec";
-	else url = "https://script.google.com/macros/s/AKfycbx6DvxdJKNKfLoiKHKZbfoivK8SXk7XxAegpuGUQoIwdgF2inmxugsBS3FlAL9_-HNp/exec";
+	else url = "https://script.google.com/macros/s/AKfycbzsEB7HnirNB0dDhareuTicdjD66K57uFUZe4OTQlTMUoxOfKgseXuLnJ6otqDAD53F/exec";
 	
 	
 	
-	function submitForm(name, age, sex, phone) {
+	function submitForm(name, dob, sex, phone) {
 	 if (name == '') return;
 	$("#form").html("Registering your details. Please wait..");
 	
-	url += "?name="+name+"&age="+age+"&sex="+sex+"&phone="+phone;
+	url += "?name="+name+"&dob="+dob+"&sex="+sex+"&phone="+phone;
 	
 	$.get(url, function(e) {
 	$("#form").html("<p>Click <a href=\"upi://pay?pa=drshalima@upi&amp;pn=SHALIMA PINNAMANENI&amp;cu=INR&amp;am=300\">this link</a> on a mobile device to complete payment via UPI.</p><p>You can view your prescriptions from now at- <a href='"+ e +"'>"+e+"</a></p>");
@@ -32,8 +32,8 @@ description: New patients registration
 	Name:<br>
 	<input type="text" id="name" name="name" style="width: -webkit-fill-available;height: 2em;">
 	<br>
-	Age:<br>
-	<input type="number" id="age" name="age" placeholder="Your age as a number" style="width: -webkit-fill-available;height: 2em;" required>
+	Date of birth:<br>
+	<input type="date" id="dob" name="dob" style="width: -webkit-fill-available;height: 2em;" required>
 	<br>
 	Sex:<br>
     <select id="sex" name="sex" style="display: block;">
@@ -46,5 +46,5 @@ description: New patients registration
 	Phone number:<br>
 	<input type="tel" id="phone" name="phone" placeholder="Preferably with WhatsApp" style="width: -webkit-fill-available;height: 2em;">
 	<br><br>
-	<center><button onclick="submitForm($('#name').val(), $('#age').val(), $('#sex').val(),$('#phone').val()); return false;" style="border-radius: 6px;width: 50%;height: 2em;">Register</button></center>
+	<center><button onclick="submitForm($('#name').val(), $('#dob').val(), $('#sex').val(),$('#phone').val()); return false;" style="border-radius: 6px;width: 50%;height: 2em;">Register</button></center>
 </form>
