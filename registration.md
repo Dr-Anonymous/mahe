@@ -9,7 +9,7 @@ description: New patients registration
 <script>
 	var url;
 	var param = (new URL(window.location.href)).searchParams.toString().slice(0, -1);
-	if(param == '2') url = "https://script.google.com/macros/s/AKfycbz9H2p6DFWNCTJKMDtxznPkWthSqyshB4vN4yHnoFTIYWPcYgWdJh9jkA5gP8IlrPSl/exec";
+	if(param == '2') url = "https://script.google.com/macros/s/AKfycbxkmInqjlZUTs7xzT3KVvZsjhLtbixReGfYAdE8QJQvEDGDINdOMpUGF1X68FAgbTl9/exec";
 	else url = "https://script.google.com/macros/s/AKfycbzsEB7HnirNB0dDhareuTicdjD66K57uFUZe4OTQlTMUoxOfKgseXuLnJ6otqDAD53F/exec";
 	
 	
