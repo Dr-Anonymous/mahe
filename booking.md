@@ -20,7 +20,7 @@ $('#myFrame').attr('src', 'https://script.google.com/macros/s/AKfycbzn37Ftwqhb8U
 $(document).attr("title", "Dr Samuel Manoj");
 $('#project_title').text("Dr Samuel Manoj Ch");
 $('p').html("Book appointment with <a href='https://orthosam.com/samuel/#about'>Dr Samuel Manoj Ch</a> <small>M.S Orthopaedics(Manipal)</small> :");
-$('#myFrame').attr('src','https://script.google.com/macros/s/AKfycbz08KA7U_syFw6ELrFOGAemT9TUp0C9iFgA66UFY1c8E-F1Ioab5BncD8ArQKq3EC5K_w/exec');
+$('#myFrame').attr('src','https://script.google.com/macros/s/AKfycby0gj-pDf2IK0KDutU0JCP1-DXqrDUl2iFHPT4A0Ha50w4YwVYfv6RAf2Ydab-33U2rjQ/exec');
 }
 function urlParam(){
 var url = new URL(window.location.href);
