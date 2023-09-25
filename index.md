@@ -4,7 +4,7 @@ title: Orthosam
 ---
 # Home
 
-## This site (orthosam.com) is moving to mahe.orthosam.com soon.
+## This site (orthosam.com) is moving to mahe.orthosam.com soon
 You've reached the official site of Orthosam. Head on to the [about](/about) section to know more of the services we offer.
 
 Quick links:
