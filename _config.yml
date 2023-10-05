@@ -2,7 +2,7 @@ url: https://mahe.orthosam.com
 title: Orthosam
 description: for manipal
 show_downloads: false
-show_postss: false
+show_posts: false
 theme: jekyll-theme-slate
 timezone: Asia/Calcutta
 exclude: [exclude]
